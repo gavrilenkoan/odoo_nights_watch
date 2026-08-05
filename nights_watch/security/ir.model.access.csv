@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_nw_role_user,nw.role user,model_nw_role,base.group_user,1,1,1,1
+access_nw_order_user,nw.order user,model_nw_order,base.group_user,1,1,1,1
+access_nw_castle_user,nw.castle user,model_nw_castle,base.group_user,1,1,1,1
+access_nw_brother_user,nw.brother user,model_nw_brother,base.group_user,1,1,1,1
+access_nw_ranging_user,nw.ranging user,model_nw_ranging,base.group_user,1,1,1,1
+access_nw_threat_user,nw.threat user,model_nw_threat,base.group_user,1,1,1,1
