@@ -67,6 +67,21 @@ class NwBrother(models.Model):
         store=True,
         readonly=True,
     )
+    standing = fields.Selection(
+        selection=[
+            ('rangers', 'Rangers'),
+            ('builders', 'Builders'),
+            ('stewards', 'Stewards'),
+            ('outside', 'Outside the Orders'),
+            ('recruit', 'Recruits'),
+        ],
+        compute='_compute_standing',
+        store=True,
+        group_expand=True,
+        help='Where a brother stands relative to the three orders: a man of '
+             'an order, an office above them all, or a recruit who has joined '
+             'none of them yet.',
+    )
     castle_id = fields.Many2one(comodel_name='nw.castle', string='Castle')
     oath_date = fields.Date(string='Date of the Oath')
     years_of_service = fields.Integer(compute='_compute_years_of_service')
@@ -255,6 +270,22 @@ class NwBrother(models.Model):
                 years -= 1
 
             brother.years_of_service = max(years, 0)
+
+    @api.depends('role_id.outside_orders', 'order_id.code', 'status')
+    def _compute_standing(self):
+        """Place every brother relative to the three orders.
+
+        A maester, a septon or the commander of a castle stands above all
+        three; every other sworn brother belongs to his own; a recruit has
+        joined none of them yet.
+        """
+        for brother in self:
+            if brother.role_id.outside_orders:
+                brother.standing = 'outside'
+            elif brother.order_id:
+                brother.standing = brother.order_id.code
+            else:
+                brother.standing = 'recruit'
 
     @api.depends('status')
     def _compute_in_service(self):

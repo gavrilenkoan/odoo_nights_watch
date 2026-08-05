@@ -527,8 +527,9 @@
         <field name="castle_id" ref="castle_shadow_tower"/>
         <field name="oath_date">1997-01-19</field>
         <field name="birth_date">1979-04-02</field>
-        <field name="origin">Taken as a babe from a wildling camp</field>
+        <field name="origin">Beyond the Wall, taken as a babe from a wildling camp</field>
         <field name="recruitment_reason">orphan</field>
+        <field name="is_wildling" eval="True"/>
         <field name="former_life">Raised by the Watch itself</field>
         <field name="can_read" eval="True"/>
         <field name="skills">scouting, sword, music, command</field>
