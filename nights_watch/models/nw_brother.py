@@ -1,5 +1,5 @@
 from odoo import api, fields, models
-from odoo.exceptions import ValidationError
+from odoo.exceptions import UserError, ValidationError
 
 SERVING_STATUSES = ('recruit', 'sworn', 'ranging')
 
@@ -36,6 +36,7 @@ class NwBrother(models.Model):
             ('ranging', 'Ranging'),
             ('lost', 'Lost Beyond the Wall'),
             ('deserted', 'Deserted'),
+            ('executed', 'Executed'),
             ('fallen', 'Fallen'),
         ],
         default='recruit',
@@ -151,11 +152,14 @@ class NwBrother(models.Model):
         return super().create(vals_list)
 
     def write(self, vals):
-        """Relieve the sitting holder when an office changes hands.
+        """Refuse an unearned execution, and relieve a replaced office holder.
 
         :param vals: values to write.
         :return: True
         """
+        if vals.get('status') == 'executed':
+            self._check_execution()
+
         role = self.env['nw.role'].browse(vals.get('role_id'))
         if role:
             for brother in self:
@@ -194,6 +198,22 @@ class NwBrother(models.Model):
         holders = self.sudo().search(domain)
         if holders:
             holders.write({'role_id': False})
+
+    def _check_execution(self):
+        """Refuse to execute a brother who never broke his oath.
+
+        The Watch beheads deserters, and only deserters. A man still on the
+        rolls, lost beyond the Wall or already dead cannot be put to the sword.
+
+        :raises UserError: when a brother is not a deserter.
+        """
+        innocent = self.filtered(lambda brother: brother.status != 'deserted')
+        if innocent:
+            raise UserError(self.env._(
+                'The Watch beheads deserters, and only deserters. '
+                '%(names)s never broke his oath.',
+                names=', '.join(innocent.mapped('name')),
+            ))
 
     @api.depends('name', 'nickname')
     def _compute_display_name(self):
