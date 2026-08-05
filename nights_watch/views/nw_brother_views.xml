@@ -101,9 +101,8 @@
                                     <field name="can_read"/>
                                 </group>
                             </group>
-                            <group string="Notable Deeds">
-                                <field name="notable_deed" nolabel="1"/>
-                            </group>
+                            <separator string="Notable Deeds"/>
+                            <field name="notable_deed" nolabel="1"/>
                         </page>
                         <page string="Personal Stewards" name="stewards"
                               invisible="not is_senior">

@@ -69,11 +69,10 @@
                         <page string="Report" name="report"
                               invisible="status in ('planned', 'ongoing')">
                             <field name="summary" nolabel="1"/>
-                            <group string="Casualties">
-                                <field name="casualty_ids" nolabel="1"
-                                       widget="many2many_tags"
-                                       domain="[('id', 'in', brother_ids)]"/>
-                            </group>
+                            <separator string="Casualties"/>
+                            <field name="casualty_ids" nolabel="1"
+                                   widget="many2many_tags"
+                                   domain="[('id', 'in', brother_ids)]"/>
                         </page>
                     </notebook>
                 </sheet>
