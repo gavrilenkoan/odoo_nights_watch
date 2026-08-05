@@ -167,19 +167,23 @@ class NwBrother(models.Model):
 
             brother.years_of_service = max(years, 0)
 
-    @api.depends('status', 'castle_id.instructor_id', 'order_id.first_id')
+    @api.depends('status', 'order_id', 'castle_id',
+                 'castle_id.instructor_id', 'castle_id.brother_ids.role_id')
     def _compute_mentor_id(self):
         """Derive the mentor instead of assigning him by hand.
 
-        A recruit is trained by the master-at-arms of the castle he was
-        sent to. Once he says the words he answers to the First of his
-        order, so there is nothing left to pick manually.
+        A recruit is trained by the master-at-arms of his castle. A sworn
+        brother answers to the First of his own order in that same castle —
+        every castle has its own.
         """
         for brother in self:
             if brother.status == 'recruit':
                 mentor = brother.castle_id.instructor_id
             else:
-                mentor = brother.order_id.first_id
+                mentor = brother.castle_id.brother_ids.filtered(
+                    lambda holder: holder.role_id.is_order_head
+                    and holder.role_id.order_id == brother.order_id
+                )[:1]
 
             brother.mentor_id = mentor if mentor != brother else False
 
@@ -189,13 +193,11 @@ class NwBrother(models.Model):
         for brother in self:
             brother.is_steward = brother.order_id.code == 'stewards'
 
-    @api.depends('role_id.is_senior', 'order_id.first_id')
+    @api.depends('role_id.is_senior')
     def _compute_is_senior(self):
-        """A brother is senior when he holds a senior office or leads his order."""
+        """A brother is senior when the office he holds is a senior one."""
         for brother in self:
-            brother.is_senior = bool(
-                brother.role_id.is_senior or brother.order_id.first_id == brother
-            )
+            brother.is_senior = brother.role_id.is_senior
 
     @api.depends('ranging_ids')
     def _compute_ranging_count(self):
@@ -296,5 +298,22 @@ class NwBrother(models.Model):
             if brother.status in ('sworn', 'ranging') and not brother.order_id:
                 raise ValidationError(self.env._(
                     'Every sworn brother belongs to an order. %(name)s has none.',
+                    name=brother.name,
+                ))
+
+    @api.constrains('role_id', 'order_id')
+    def _check_role_order(self):
+        """An office tied to an order may only be held by its members.
+
+        :raises ValidationError: when the holder belongs to another order.
+        """
+        for brother in self:
+            role_order = brother.role_id.order_id
+            if role_order and brother.order_id != role_order:
+                raise ValidationError(self.env._(
+                    '"%(role)s" is an office of the %(order)s, so %(name)s must '
+                    'belong to that order.',
+                    role=brother.role_id.name,
+                    order=role_order.name,
                     name=brother.name,
                 ))

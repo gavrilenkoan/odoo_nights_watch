@@ -8,7 +8,6 @@
                 <field name="sequence" widget="handle"/>
                 <field name="name"/>
                 <field name="code"/>
-                <field name="first_id"/>
                 <field name="member_count"/>
             </list>
         </field>
@@ -27,8 +26,16 @@
                     <group>
                         <group>
                             <field name="code"/>
-                            <field name="first_id" domain="[('order_id', '=', id)]"/>
                         </group>
+                        <page string="Firsts" name="heads">
+                            <field name="head_ids" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="castle_id"/>
+                                    <field name="role_id"/>
+                                </list>
+                            </field>
+                        </page>
                         <group>
                             <field name="sequence"/>
                             <field name="member_count"/>

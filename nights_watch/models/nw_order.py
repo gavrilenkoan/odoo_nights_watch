@@ -28,10 +28,11 @@ class NwOrder(models.Model):
         help='Duties the order is responsible for.',
     )
 
-    first_id = fields.Many2one(
+    head_ids = fields.One2many(
         comodel_name='nw.brother',
-        string='First',
-        help='Head of the order: First Ranger / First Builder / First Steward.',
+        inverse_name='order_id',
+        string='Firsts',
+        domain=[('role_id.is_order_head', '=', True)],
     )
     member_ids = fields.One2many(
         comodel_name='nw.brother',

@@ -37,6 +37,8 @@
                         <group string="Rules">
                             <field name="seniority"/>
                             <field name="scope"/>
+                            <field name="order_id"/>
+                            <field name="is_order_head"/>
                             <field name="is_senior"/>
                             <field name="trains_recruits"/>
                             <field name="outside_orders"/>

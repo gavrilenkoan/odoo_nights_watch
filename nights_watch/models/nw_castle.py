@@ -47,6 +47,12 @@ class NwCastle(models.Model):
         string='Recruits',
         domain=[('status', '=', 'recruit')],
     )
+    head_ids = fields.One2many(
+        comodel_name='nw.brother',
+        inverse_name='castle_id',
+        string='Order Firsts',
+        domain=[('role_id.is_order_head', '=', True)],
+    )
 
     _name_uniq = models.Constraint(
         'UNIQUE (name)',
