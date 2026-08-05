@@ -1,0 +1,97 @@
+<odoo>
+
+    <record id="view_nw_threat_list" model="ir.ui.view">
+        <field name="name">nw.threat.list</field>
+        <field name="model">nw.threat</field>
+        <field name="arch" type="xml">
+            <list decoration-danger="severity == 'existential'"
+                  decoration-warning="severity == 'high'"
+                  decoration-muted="not is_active">
+                <field name="name"/>
+                <field name="threat_type"/>
+                <field name="severity" widget="badge"/>
+                <field name="region"/>
+                <field name="first_seen"/>
+                <field name="ranging_count"/>
+                <field name="is_active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_nw_threat_form" model="ir.ui.view">
+        <field name="name">nw.threat.form</field>
+        <field name="model">nw.threat</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="e.g. The Free Folk"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="threat_type"/>
+                            <field name="severity"/>
+                        </group>
+                        <group>
+                            <field name="region"/>
+                            <field name="first_seen"/>
+                            <field name="ranging_count"/>
+                            <field name="is_active" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                    <group string="Description">
+                        <field name="description" nolabel="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Rangings" name="rangings">
+                            <field name="ranging_ids" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="leader_id"/>
+                                    <field name="date_start"/>
+                                    <field name="status"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_nw_threat_search" model="ir.ui.view">
+        <field name="name">nw.threat.search</field>
+        <field name="model">nw.threat</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="region"/>
+                <filter name="filter_active" string="Still Active"
+                        domain="[('is_active', '=', True)]"/>
+                <filter name="filter_critical" string="High &amp; Existential"
+                        domain="[('severity', 'in', ['high', 'existential'])]"/>
+                <group>
+                    <filter name="group_type" string="Type"
+                            context="{'group_by': 'threat_type'}"/>
+                    <filter name="group_severity" string="Severity"
+                            context="{'group_by': 'severity'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_nw_threat" model="ir.actions.act_window">
+        <field name="name">Threats</field>
+        <field name="res_model">nw.threat</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_nw_threat_search"/>
+    </record>
+
+    <menuitem id="menu_nw_threat"
+              parent="menu_nw_operations_root"
+              action="action_nw_threat"
+              name="Threats"
+              sequence="20"/>
+
+</odoo>

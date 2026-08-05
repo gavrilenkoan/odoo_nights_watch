@@ -16,6 +16,10 @@ ranging parties sent beyond the Wall.
     'license': 'LGPL-3',
     'application': True,
 
+    'images': [
+        'static/description/icon.png',
+    ],
+
     'depends': [
         'base',
         'web',
@@ -23,6 +27,16 @@ ranging parties sent beyond the Wall.
 
     'data': [
         'security/ir.model.access.csv',
+
+        'views/nights_watch_menu.xml',
+        'views/nw_brother_views.xml',
+        'views/nw_order_views.xml',
+        'views/nw_castle_views.xml',
+        'views/nw_role_views.xml',
+        'views/nw_ranging_views.xml',
+        'views/nw_threat_views.xml',
+        'views/res_partner_views.xml',
+        'views/res_users_views.xml',
     ],
 
     'installable': True,

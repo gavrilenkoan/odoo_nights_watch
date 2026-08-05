@@ -1,0 +1,84 @@
+<odoo>
+
+    <record id="view_nw_castle_list" model="ir.ui.view">
+        <field name="name">nw.castle.list</field>
+        <field name="model">nw.castle</field>
+        <field name="arch" type="xml">
+            <list decoration-muted="not is_active">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="region"/>
+                <field name="commander_id"/>
+                <field name="instructor_id"/>
+                <field name="garrison"/>
+                <field name="capacity"/>
+                <field name="is_active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_nw_castle_form" model="ir.ui.view">
+        <field name="name">nw.castle.form</field>
+        <field name="model">nw.castle</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="e.g. Castle Black"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="region"/>
+                            <field name="commander_id" domain="[('castle_id', '=', id)]"/>
+                            <field name="instructor_id"/>
+                        </group>
+                        <group>
+                            <field name="garrison"/>
+                            <field name="capacity"/>
+                            <field name="sequence"/>
+                            <field name="is_active" widget="boolean_toggle"/>
+                        </group>
+                    </group>
+                    <group string="Description">
+                        <field name="description" nolabel="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Garrison" name="garrison">
+                            <field name="brother_ids" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="role_id"/>
+                                    <field name="order_id"/>
+                                    <field name="status"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Recruits in Training" name="recruits">
+                            <field name="recruit_ids" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="mentor_id"/>
+                                    <field name="recruitment_reason"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_nw_castle" model="ir.actions.act_window">
+        <field name="name">Castles</field>
+        <field name="res_model">nw.castle</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_nw_castle"
+              parent="menu_nw_config_root"
+              action="action_nw_castle"
+              name="Castles"
+              sequence="20"/>
+
+</odoo>

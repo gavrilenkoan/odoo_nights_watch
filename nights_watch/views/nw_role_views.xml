@@ -1,0 +1,77 @@
+<odoo>
+
+    <record id="view_nw_role_list" model="ir.ui.view">
+        <field name="name">nw.role.list</field>
+        <field name="model">nw.role</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code"/>
+                <field name="seniority"/>
+                <field name="scope"/>
+                <field name="is_senior"/>
+                <field name="trains_recruits"/>
+                <field name="outside_orders"/>
+                <field name="brother_count"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_nw_role_form" model="ir.ui.view">
+        <field name="name">nw.role.form</field>
+        <field name="model">nw.role</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="e.g. Master-at-arms"/></h1>
+                    </div>
+                    <group>
+                        <group string="Identification">
+                            <field name="code" placeholder="e.g. instructor"/>
+                            <field name="sequence"/>
+                            <field name="active" widget="boolean_toggle"/>
+                        </group>
+                        <group string="Rules">
+                            <field name="seniority"/>
+                            <field name="scope"/>
+                            <field name="is_senior"/>
+                            <field name="trains_recruits"/>
+                            <field name="outside_orders"/>
+                        </group>
+                    </group>
+                    <group string="Description">
+                        <field name="description" nolabel="1"/>
+                    </group>
+                    <notebook>
+                        <page string="Holders" name="holders">
+                            <field name="brother_ids" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="castle_id"/>
+                                    <field name="order_id"/>
+                                    <field name="status"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_nw_role" model="ir.actions.act_window">
+        <field name="name">Roles</field>
+        <field name="res_model">nw.role</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_nw_role"
+              parent="menu_nw_config_root"
+              action="action_nw_role"
+              name="Roles"
+              sequence="30"/>
+
+</odoo>
