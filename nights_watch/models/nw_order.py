@@ -1,12 +1,12 @@
 from odoo import api, fields, models
-from odoo.exceptions import ValidationError
 
 
 class NwOrder(models.Model):
     """Order of the Night's Watch: Rangers, Builders or Stewards.
 
-    Each order is headed by a "First" (First Ranger, First Builder,
-    First Steward) and groups the brothers serving in it.
+    An order groups the brothers who serve in it across every castle. Its
+    head in a given castle is a brother holding a head-of-order office —
+    each castle has its own First.
     """
 
     _name = 'nw.order'
@@ -28,10 +28,11 @@ class NwOrder(models.Model):
         help='Duties the order is responsible for.',
     )
 
-    first_id = fields.Many2one(
+    head_ids = fields.One2many(
         comodel_name='nw.brother',
-        string='First',
-        help='Head of the order: First Ranger / First Builder / First Steward.',
+        inverse_name='order_id',
+        string='Firsts',
+        domain=[('role_id.is_order_head', '=', True)],
     )
     member_ids = fields.One2many(
         comodel_name='nw.brother',
@@ -54,16 +55,3 @@ class NwOrder(models.Model):
         """Count the brothers currently attached to the order."""
         for order in self:
             order.member_count = len(order.member_ids)
-
-    @api.constrains('first_id')
-    def _check_first_belongs_to_order(self):
-        """The First of an order must himself be a member of that order.
-
-        :raises ValidationError: if ``first_id`` belongs to another order.
-        """
-        for order in self:
-            if order.first_id and order.first_id.order_id != order:
-                raise ValidationError(self.env._(
-                    'The First of "%(order)s" must be a member of this very order.',
-                    order=order.name,
-                ))

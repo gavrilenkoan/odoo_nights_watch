@@ -46,8 +46,7 @@ class NwBrother(models.Model):
     role_id = fields.Many2one(
         comodel_name='nw.role',
         string='Office',
-        help='Personal appointment on top of the order: maester, septon, '
-             'master-at-arms, recruiter, Lord Commander.',
+        help='Personal appointment on top of the order: castle commander, maester, septon, master-at-arms, recruiter.',
     )
     role_outside_orders = fields.Boolean(
         related='role_id.outside_orders',
@@ -67,8 +66,9 @@ class NwBrother(models.Model):
         string='Mentor',
         compute='_compute_mentor_id',
         store=True,
-        help='While a recruit — the master-at-arms of his castle. '
-             'Once sworn — the First of his order.',
+        help='Recruits answer to the master-at-arms, sworn brothers to the '
+        'First of their order, the Firsts to the commander of their '
+        'castle. The commander answers to no one on the Wall.',
     )
 
     is_steward = fields.Boolean(compute='_compute_is_steward', store=True)
@@ -167,19 +167,28 @@ class NwBrother(models.Model):
 
             brother.years_of_service = max(years, 0)
 
-    @api.depends('status', 'castle_id.instructor_id', 'order_id.first_id')
+    @api.depends('status', 'order_id', 'castle_id',
+                 'castle_id.instructor_id', 'castle_id.commander_id',
+                 'castle_id.brother_ids.role_id')
     def _compute_mentor_id(self):
-        """Derive the mentor instead of assigning him by hand.
+        """Derive the chain of command inside a castle instead of typing it.
 
-        A recruit is trained by the master-at-arms of the castle he was
-        sent to. Once he says the words he answers to the First of his
-        order, so there is nothing left to pick manually.
+        A recruit is trained by the master-at-arms. A sworn brother answers
+        to the First of his own order. The Firsts answer to the commander of
+        the castle, and the commander answers to no one on the Wall.
         """
         for brother in self:
             if brother.status == 'recruit':
                 mentor = brother.castle_id.instructor_id
+            elif brother.role_id.commands_castle:
+                mentor = self.browse()
+            elif brother.role_id.is_order_head:
+                mentor = brother.castle_id.commander_id
             else:
-                mentor = brother.order_id.first_id
+                mentor = brother.castle_id.brother_ids.filtered(
+                    lambda holder: holder.role_id.is_order_head
+                    and holder.role_id.order_id == brother.order_id
+                )[:1]
 
             brother.mentor_id = mentor if mentor != brother else False
 
@@ -189,13 +198,11 @@ class NwBrother(models.Model):
         for brother in self:
             brother.is_steward = brother.order_id.code == 'stewards'
 
-    @api.depends('role_id.is_senior', 'order_id.first_id')
+    @api.depends('role_id.is_senior')
     def _compute_is_senior(self):
-        """A brother is senior when he holds a senior office or leads his order."""
+        """A brother is senior when the office he holds is a senior one."""
         for brother in self:
-            brother.is_senior = bool(
-                brother.role_id.is_senior or brother.order_id.first_id == brother
-            )
+            brother.is_senior = brother.role_id.is_senior
 
     @api.depends('ranging_ids')
     def _compute_ranging_count(self):
@@ -297,4 +304,50 @@ class NwBrother(models.Model):
                 raise ValidationError(self.env._(
                     'Every sworn brother belongs to an order. %(name)s has none.',
                     name=brother.name,
+                ))
+
+    @api.constrains('role_id', 'order_id')
+    def _check_role_order(self):
+        """An office tied to an order may only be held by its members.
+
+        :raises ValidationError: when the holder belongs to another order.
+        """
+        for brother in self:
+            role_order = brother.role_id.order_id
+            if role_order and brother.order_id != role_order:
+                raise ValidationError(self.env._(
+                    '"%(role)s" is an office of the %(order)s, so %(name)s must '
+                    'belong to that order.',
+                    role=brother.role_id.name,
+                    order=role_order.name,
+                    name=brother.name,
+                ))
+
+    @api.constrains('role_id', 'castle_id')
+    def _check_castle_commander(self):
+        """A castle answers to one commander, whatever office he holds.
+
+        :raises ValidationError: when a commanding office is given to a
+            brother with no castle, or when the castle already has one.
+        """
+        for brother in self:
+            if not brother.role_id.commands_castle:
+                continue
+
+            if not brother.castle_id:
+                raise ValidationError(self.env._(
+                    '"%(role)s" commands a castle, so %(name)s must be '
+                    'quartered in one.',
+                    role=brother.role_id.name,
+                    name=brother.name,
+                ))
+
+            if self.sudo().search_count([
+                ('id', '!=', brother.id),
+                ('castle_id', '=', brother.castle_id.id),
+                ('role_id.commands_castle', '=', True),
+            ], limit=1):
+                raise ValidationError(self.env._(
+                    '"%(castle)s" already answers to a commander.',
+                    castle=brother.castle_id.name,
                 ))

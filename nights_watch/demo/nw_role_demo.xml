@@ -1,0 +1,103 @@
+<odoo noupdate="1">
+
+    <record id="role_commander" model="nw.role">
+        <field name="name">Castle Commander</field>
+        <field name="code">commander</field>
+        <field name="sequence">12</field>
+        <field name="seniority">80</field>
+        <field name="scope">castle</field>
+        <field name="is_senior" eval="True"/>
+        <field name="commands_castle" eval="True"/>
+        <field name="outside_orders" eval="True"/>
+        <field name="description">Commands his castle and its garrison. The Wall has no single head: every castle stands on its own.</field>
+    </record>
+
+    <record id="role_first_ranger" model="nw.role">
+        <field name="name">First Ranger</field>
+        <field name="code">first_ranger</field>
+        <field name="sequence">15</field>
+        <field name="seniority">70</field>
+        <field name="scope">castle</field>
+        <field name="is_senior" eval="True"/>
+        <field name="is_order_head" eval="True"/>
+        <field name="order_id" ref="order_rangers"/>
+        <field name="description">Leads the rangers of his castle and answers for every patrol that leaves it.</field>
+    </record>
+
+    <record id="role_first_builder" model="nw.role">
+        <field name="name">First Builder</field>
+        <field name="code">first_builder</field>
+        <field name="sequence">16</field>
+        <field name="seniority">70</field>
+        <field name="scope">castle</field>
+        <field name="is_senior" eval="True"/>
+        <field name="is_order_head" eval="True"/>
+        <field name="order_id" ref="order_builders"/>
+        <field name="description">Leads the builders of his castle and keeps its walls standing.</field>
+    </record>
+
+    <record id="role_first_steward" model="nw.role">
+        <field name="name">First Steward</field>
+        <field name="code">first_steward</field>
+        <field name="sequence">17</field>
+        <field name="seniority">70</field>
+        <field name="scope">castle</field>
+        <field name="is_senior" eval="True"/>
+        <field name="is_order_head" eval="True"/>
+        <field name="order_id" ref="order_stewards"/>
+        <field name="description">Leads the stewards of his castle and answers for its stores.</field>
+    </record>
+
+    <record id="role_maester" model="nw.role">
+        <field name="name">Maester</field>
+        <field name="code">maester</field>
+        <field name="sequence">20</field>
+        <field name="seniority">60</field>
+        <field name="scope">castle</field>
+        <field name="is_senior" eval="True"/>
+        <field name="outside_orders" eval="True"/>
+        <field name="description">Keeps the ravens, the library and the health of the garrison.</field>
+    </record>
+
+    <record id="role_instructor" model="nw.role">
+        <field name="name">Master-at-arms</field>
+        <field name="code">instructor</field>
+        <field name="sequence">30</field>
+        <field name="seniority">55</field>
+        <field name="scope">castle</field>
+        <field name="is_senior" eval="True"/>
+        <field name="trains_recruits" eval="True"/>
+        <field name="description">Trains the recruits of his castle until they say the words.</field>
+    </record>
+
+    <record id="role_septon" model="nw.role">
+        <field name="name">Septon</field>
+        <field name="code">septon</field>
+        <field name="sequence">40</field>
+        <field name="seniority">50</field>
+        <field name="scope">castle</field>
+        <field name="is_senior" eval="True"/>
+        <field name="outside_orders" eval="True"/>
+        <field name="description">Hears the vows of those who keep the faith of the Seven.</field>
+    </record>
+
+    <record id="role_cook" model="nw.role">
+        <field name="name">Cook</field>
+        <field name="code">cook</field>
+        <field name="sequence">45</field>
+        <field name="seniority">25</field>
+        <field name="scope">castle</field>
+        <field name="order_id" ref="order_stewards"/>
+        <field name="description">Feeds the garrison. A steward's duty, and the one every brother notices.</field>
+    </record>
+
+    <record id="role_recruiter" model="nw.role">
+        <field name="name">Recruiter</field>
+        <field name="code">recruiter</field>
+        <field name="sequence">50</field>
+        <field name="seniority">30</field>
+        <field name="scope">free</field>
+        <field name="description">Rides the kingsroad gathering men for the Wall.</field>
+    </record>
+
+</odoo>

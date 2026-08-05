@@ -1,0 +1,24 @@
+<odoo>
+
+    <record id="order_rangers" model="nw.order">
+        <field name="name">Rangers</field>
+        <field name="code">rangers</field>
+        <field name="sequence">10</field>
+        <field name="description">The fighting arm of the Watch. They patrol the haunted forest beyond the Wall and hunt down deserters.</field>
+    </record>
+
+    <record id="order_builders" model="nw.order">
+        <field name="name">Builders</field>
+        <field name="code">builders</field>
+        <field name="sequence">20</field>
+        <field name="description">Masons and carpenters who maintain the Wall, the castles and the tunnels beneath the ice.</field>
+    </record>
+
+    <record id="order_stewards" model="nw.order">
+        <field name="name">Stewards</field>
+        <field name="code">stewards</field>
+        <field name="sequence">30</field>
+        <field name="description">They feed, clothe and supply the Watch, keep the ravens and serve the senior brothers in person.</field>
+    </record>
+
+</odoo>

@@ -23,6 +23,9 @@ class NwCastle(models.Model):
     commander_id = fields.Many2one(
         comodel_name='nw.brother',
         string='Commander',
+        compute='_compute_commander_id',
+        store=True,
+        help='Commands this castle and answers for it to no one on the Wall.',
     )
     brother_ids = fields.One2many(
         comodel_name='nw.brother',
@@ -47,6 +50,12 @@ class NwCastle(models.Model):
         string='Recruits',
         domain=[('status', '=', 'recruit')],
     )
+    head_ids = fields.One2many(
+        comodel_name='nw.brother',
+        inverse_name='castle_id',
+        string='Order Firsts',
+        domain=[('role_id.is_order_head', '=', True)],
+    )
 
     _name_uniq = models.Constraint(
         'UNIQUE (name)',
@@ -59,6 +68,14 @@ class NwCastle(models.Model):
         for castle in self:
             castle.garrison = len(castle.brother_ids)
 
+    @api.depends('brother_ids.role_id.commands_castle')
+    def _compute_commander_id(self):
+        """The commander is whoever in the garrison holds a commanding office."""
+        for castle in self:
+            castle.commander_id = castle.brother_ids.filtered(
+                lambda brother: brother.role_id.commands_castle
+            )[:1]
+
     @api.depends('brother_ids.role_id.trains_recruits')
     def _compute_instructor_id(self):
         """The master-at-arms is whoever in the garrison holds a training office."""
@@ -66,21 +83,6 @@ class NwCastle(models.Model):
             castle.instructor_id = castle.brother_ids.filtered(
                 lambda brother: brother.role_id.trains_recruits
             )[:1]
-
-    @api.constrains('commander_id')
-    def _check_commander(self):
-        """The commander must be quartered in the castle he commands.
-
-        :raises ValidationError: if the commander sits in another castle.
-        """
-        for castle in self:
-            if castle.commander_id and castle.commander_id.castle_id != castle:
-                raise ValidationError(
-                    self.env._(
-                        'The commander of "%(castle)s" must be quartered in that castle.',
-                        castle=castle.name,
-                    )
-                )
 
     @api.constrains('brother_ids', 'capacity')
     def _check_capacity(self):
