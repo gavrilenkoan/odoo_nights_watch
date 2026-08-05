@@ -14,13 +14,24 @@ class ResUsers(models.Model):
     nw_brother_id = fields.Many2one(
         comodel_name='nw.brother',
         string='Brother of the Watch',
-        compute='_compute_nw_brother_id',
+        compute='_compute_nw_brother',
     )
-    nw_castle_id = fields.Many2one(related='nw_brother_id.castle_id', string='Castle')
-    nw_order_id = fields.Many2one(related='nw_brother_id.order_id', string='Order')
+    nw_castle_id = fields.Many2one(
+        comodel_name='nw.castle',
+        string='Castle',
+        compute='_compute_nw_brother',
+    )
+    nw_order_id = fields.Many2one(
+        comodel_name='nw.order',
+        string='Order',
+        compute='_compute_nw_brother',
+    )
 
-    @api.depends('nw_brother_ids')
-    def _compute_nw_brother_id(self):
-        """Expose the first brother record linked to the user, if any."""
+    @api.depends('nw_brother_ids.castle_id', 'nw_brother_ids.order_id')
+    def _compute_nw_brother(self):
+        """Expose the brother record linked to the user, and where he serves."""
         for user in self:
-            user.nw_brother_id = user.nw_brother_ids[:1]
+            brother = user.nw_brother_ids[:1]
+            user.nw_brother_id = brother
+            user.nw_castle_id = brother.castle_id
+            user.nw_order_id = brother.order_id

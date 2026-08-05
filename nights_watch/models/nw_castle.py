@@ -27,7 +27,7 @@ class NwCastle(models.Model):
     brother_ids = fields.One2many(
         comodel_name='nw.brother',
         inverse_name='castle_id',
-        string='Garrison',
+        string='Brothers',
     )
     garrison = fields.Integer(
         compute='_compute_garrison',
@@ -66,6 +66,21 @@ class NwCastle(models.Model):
             castle.instructor_id = castle.brother_ids.filtered(
                 lambda brother: brother.role_id.trains_recruits
             )[:1]
+
+    @api.constrains('commander_id')
+    def _check_commander(self):
+        """The commander must be quartered in the castle he commands.
+
+        :raises ValidationError: if the commander sits in another castle.
+        """
+        for castle in self:
+            if castle.commander_id and castle.commander_id.castle_id != castle:
+                raise ValidationError(
+                    self.env._(
+                        'The commander of "%(castle)s" must be quartered in that castle.',
+                        castle=castle.name,
+                    )
+                )
 
     @api.constrains('brother_ids', 'capacity')
     def _check_capacity(self):
