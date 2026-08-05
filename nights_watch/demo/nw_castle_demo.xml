@@ -1,0 +1,36 @@
+<odoo>
+
+    <record id="castle_black" model="nw.castle">
+        <field name="name">Castle Black</field>
+        <field name="region">Centre of the Wall</field>
+        <field name="capacity">600</field>
+        <field name="sequence">10</field>
+        <field name="description">The main seat of the Night's Watch and the residence of the Lord Commander.</field>
+    </record>
+
+    <record id="castle_eastwatch" model="nw.castle">
+        <field name="name">Eastwatch-by-the-Sea</field>
+        <field name="region">Eastern end of the Wall</field>
+        <field name="capacity">200</field>
+        <field name="sequence">20</field>
+        <field name="description">The port castle of the Watch, guarding the Bay of Seals.</field>
+    </record>
+
+    <record id="castle_shadow_tower" model="nw.castle">
+        <field name="name">The Shadow Tower</field>
+        <field name="region">Western end of the Wall</field>
+        <field name="capacity">200</field>
+        <field name="sequence">30</field>
+        <field name="description">Watches the Gorge and the mountain passes of the Frostfangs.</field>
+    </record>
+
+    <record id="castle_greyguard" model="nw.castle">
+        <field name="name">Greyguard</field>
+        <field name="region">Between Castle Black and the Shadow Tower</field>
+        <field name="capacity">0</field>
+        <field name="is_active" eval="False"/>
+        <field name="sequence">40</field>
+        <field name="description">Abandoned castle, half fallen into ruin.</field>
+    </record>
+
+</odoo>

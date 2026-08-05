@@ -1,0 +1,330 @@
+<odoo>
+
+    <record id="brother_mormont" model="nw.brother">
+        <field name="name">Jeor Mormont</field>
+        <field name="nickname">The Old Bear</field>
+        <field name="role_id" ref="role_lord_commander"/>
+        <field name="status">sworn</field>
+        <field name="castle_id" ref="castle_black"/>
+        <field name="oath_date">1998-04-12</field>
+        <field name="birth_date">1956-02-08</field>
+        <field name="origin">Bear Island</field>
+        <field name="recruitment_reason">volunteer</field>
+        <field name="former_life">Lord of Bear Island</field>
+        <field name="is_noble_born" eval="True"/>
+        <field name="can_read" eval="True"/>
+        <field name="skills">command, sword, letters</field>
+        <field name="notable_deed">Gave up his lordship for the black and led the Great Ranging.</field>
+    </record>
+
+    <record id="brother_aemon" model="nw.brother">
+        <field name="name">Aemon Targaryen</field>
+        <field name="nickname">Maester Aemon</field>
+        <field name="role_id" ref="role_maester"/>
+        <field name="status">sworn</field>
+        <field name="castle_id" ref="castle_black"/>
+        <field name="oath_date">1965-09-03</field>
+        <field name="birth_date">1937-11-21</field>
+        <field name="origin">King's Landing</field>
+        <field name="recruitment_reason">political</field>
+        <field name="former_life">Maester of the Citadel, blood of the dragon</field>
+        <field name="is_noble_born" eval="True"/>
+        <field name="can_read" eval="True"/>
+        <field name="skills">healing, ravens, letters, history</field>
+        <field name="notable_deed">Refused a throne and took the black instead.</field>
+    </record>
+
+    <record id="brother_cellador" model="nw.brother">
+        <field name="name">Cellador</field>
+        <field name="nickname">Septon Cellador</field>
+        <field name="role_id" ref="role_septon"/>
+        <field name="status">sworn</field>
+        <field name="castle_id" ref="castle_black"/>
+        <field name="oath_date">2009-05-17</field>
+        <field name="birth_date">1972-01-09</field>
+        <field name="origin">The Reach</field>
+        <field name="recruitment_reason">volunteer</field>
+        <field name="can_read" eval="True"/>
+        <field name="skills">letters, faith</field>
+    </record>
+
+    <record id="brother_benjen" model="nw.brother">
+        <field name="name">Benjen Stark</field>
+        <field name="role_id" ref="role_first_ranger"/>
+        <field name="order_id" ref="order_rangers"/>
+        <field name="status">ranging</field>
+        <field name="castle_id" ref="castle_black"/>
+        <field name="oath_date">2005-09-01</field>
+        <field name="birth_date">1981-05-20</field>
+        <field name="origin">Winterfell, the North</field>
+        <field name="recruitment_reason">volunteer</field>
+        <field name="is_noble_born" eval="True"/>
+        <field name="can_read" eval="True"/>
+        <field name="skills">scouting, sword, survival</field>
+        <field name="notable_deed">First Ranger of Castle Black. Rode north and never came back.</field>
+    </record>
+
+    <record id="brother_yarwyck" model="nw.brother">
+        <field name="name">Othell Yarwyck</field>
+        <field name="role_id" ref="role_first_builder"/>
+        <field name="order_id" ref="order_builders"/>
+        <field name="status">sworn</field>
+        <field name="castle_id" ref="castle_black"/>
+        <field name="oath_date">2002-07-19</field>
+        <field name="birth_date">1969-10-02</field>
+        <field name="origin">The Reach</field>
+        <field name="recruitment_reason">debt</field>
+        <field name="former_life">Master mason</field>
+        <field name="skills">masonry, carpentry</field>
+    </record>
+
+    <record id="brother_marsh" model="nw.brother">
+        <field name="name">Bowen Marsh</field>
+        <field name="nickname">The Old Pomegranate</field>
+        <field name="role_id" ref="role_first_steward"/>
+        <field name="order_id" ref="order_stewards"/>
+        <field name="status">sworn</field>
+        <field name="castle_id" ref="castle_black"/>
+        <field name="oath_date">2001-02-11</field>
+        <field name="birth_date">1970-12-30</field>
+        <field name="origin">The Riverlands</field>
+        <field name="recruitment_reason">volunteer</field>
+        <field name="can_read" eval="True"/>
+        <field name="skills">stores, accounting, letters</field>
+    </record>
+
+    <record id="brother_thorne" model="nw.brother">
+        <field name="name">Alliser Thorne</field>
+        <field name="role_id" ref="role_instructor"/>
+        <field name="order_id" ref="order_rangers"/>
+        <field name="status">sworn</field>
+        <field name="castle_id" ref="castle_black"/>
+        <field name="oath_date">2001-08-25</field>
+        <field name="birth_date">1966-06-30</field>
+        <field name="origin">The Crownlands</field>
+        <field name="recruitment_reason">political</field>
+        <field name="former_life">Knight sworn to House Targaryen</field>
+        <field name="is_noble_born" eval="True"/>
+        <field name="skills">sword, drilling, tactics</field>
+        <field name="weapon">Longsword</field>
+        <field name="notable_deed">Drills every recruit that comes to Castle Black.</field>
+    </record>
+
+    <record id="brother_jon" model="nw.brother">
+        <field name="name">Jon Snow</field>
+        <field name="nickname">Lord Snow</field>
+        <field name="order_id" ref="order_stewards"/>
+        <field name="serves_id" ref="brother_mormont"/>
+        <field name="status">sworn</field>
+        <field name="castle_id" ref="castle_black"/>
+        <field name="oath_date">2024-09-30</field>
+        <field name="birth_date">2004-12-01</field>
+        <field name="origin">Winterfell, the North</field>
+        <field name="recruitment_reason">bastard</field>
+        <field name="former_life">Bastard son of Lord Stark</field>
+        <field name="is_noble_born" eval="True"/>
+        <field name="is_warg" eval="True"/>
+        <field name="can_read" eval="True"/>
+        <field name="skills">sword, command, scouting</field>
+        <field name="weapon">Longclaw</field>
+        <field name="notable_deed">Steward to the Lord Commander; bonded to the direwolf Ghost.</field>
+    </record>
+
+    <record id="brother_sam" model="nw.brother">
+        <field name="name">Samwell Tarly</field>
+        <field name="nickname">Sam the Slayer</field>
+        <field name="order_id" ref="order_stewards"/>
+        <field name="serves_id" ref="brother_aemon"/>
+        <field name="status">sworn</field>
+        <field name="castle_id" ref="castle_black"/>
+        <field name="oath_date">2024-09-30</field>
+        <field name="birth_date">2005-04-16</field>
+        <field name="origin">Horn Hill, the Reach</field>
+        <field name="recruitment_reason">political</field>
+        <field name="former_life">Heir of House Tarly</field>
+        <field name="is_noble_born" eval="True"/>
+        <field name="can_read" eval="True"/>
+        <field name="skills">letters, ravens, healing</field>
+        <field name="notable_deed">Keeps the ravens and the library of Castle Black.</field>
+    </record>
+
+    <record id="brother_pyp" model="nw.brother">
+        <field name="name">Pypar</field>
+        <field name="nickname">Pyp</field>
+        <field name="order_id" ref="order_stewards"/>
+        <field name="serves_id" ref="brother_marsh"/>
+        <field name="status">sworn</field>
+        <field name="castle_id" ref="castle_black"/>
+        <field name="oath_date">2024-09-30</field>
+        <field name="birth_date">2005-06-14</field>
+        <field name="origin">The Crownlands</field>
+        <field name="recruitment_reason">crime</field>
+        <field name="former_life">Mummer's boy</field>
+        <field name="skills">mimicry, bow</field>
+    </record>
+
+    <record id="brother_grenn" model="nw.brother">
+        <field name="name">Grenn</field>
+        <field name="nickname">Aurochs</field>
+        <field name="order_id" ref="order_rangers"/>
+        <field name="status">sworn</field>
+        <field name="castle_id" ref="castle_black"/>
+        <field name="oath_date">2024-09-30</field>
+        <field name="birth_date">2005-01-22</field>
+        <field name="origin">The Gift</field>
+        <field name="recruitment_reason">orphan</field>
+        <field name="former_life">Farm boy</field>
+        <field name="skills">sword, strength</field>
+    </record>
+
+    <record id="brother_yoren" model="nw.brother">
+        <field name="name">Yoren</field>
+        <field name="role_id" ref="role_recruiter"/>
+        <field name="order_id" ref="order_rangers"/>
+        <field name="status">sworn</field>
+        <field name="castle_id" ref="castle_black"/>
+        <field name="oath_date">2006-11-08</field>
+        <field name="birth_date">1974-03-12</field>
+        <field name="origin">The Riverlands</field>
+        <field name="recruitment_reason">crime</field>
+        <field name="skills">travel, judging men</field>
+        <field name="notable_deed">Walks the kingsroad twice a year gathering men for the Wall.</field>
+    </record>
+
+    <record id="brother_gared" model="nw.brother">
+        <field name="name">Gared</field>
+        <field name="order_id" ref="order_rangers"/>
+        <field name="status">deserted</field>
+        <field name="castle_id" ref="castle_black"/>
+        <field name="oath_date">1982-04-01</field>
+        <field name="birth_date">1963-09-17</field>
+        <field name="origin">The North</field>
+        <field name="recruitment_reason">volunteer</field>
+        <field name="notable_deed">Forty years on the Wall, then he ran.</field>
+    </record>
+
+    <record id="brother_recruit_todder" model="nw.brother">
+        <field name="name">Todder</field>
+        <field name="nickname">Toad</field>
+        <field name="status">recruit</field>
+        <field name="castle_id" ref="castle_black"/>
+        <field name="birth_date">2007-02-28</field>
+        <field name="origin">Lannisport</field>
+        <field name="recruitment_reason">crime</field>
+        <field name="former_life">Cutpurse</field>
+    </record>
+
+    <record id="brother_recruit_halder" model="nw.brother">
+        <field name="name">Halder</field>
+        <field name="status">recruit</field>
+        <field name="castle_id" ref="castle_black"/>
+        <field name="birth_date">2006-11-09</field>
+        <field name="origin">The Westerlands</field>
+        <field name="recruitment_reason">orphan</field>
+        <field name="former_life">Stonemason's apprentice</field>
+    </record>
+
+    <record id="brother_cotter_pyke" model="nw.brother">
+        <field name="name">Cotter Pyke</field>
+        <field name="role_id" ref="role_first_ranger"/>
+        <field name="order_id" ref="order_rangers"/>
+        <field name="status">sworn</field>
+        <field name="castle_id" ref="castle_eastwatch"/>
+        <field name="oath_date">2006-10-30</field>
+        <field name="birth_date">1977-07-04</field>
+        <field name="origin">Iron Islands</field>
+        <field name="recruitment_reason">bastard</field>
+        <field name="former_life">Reaver</field>
+        <field name="skills">seamanship, axe</field>
+        <field name="notable_deed">Commands Eastwatch and its fleet.</field>
+    </record>
+
+    <record id="brother_dareon" model="nw.brother">
+        <field name="name">Dareon</field>
+        <field name="role_id" ref="role_first_steward"/>
+        <field name="order_id" ref="order_stewards"/>
+        <field name="status">sworn</field>
+        <field name="castle_id" ref="castle_eastwatch"/>
+        <field name="oath_date">2024-09-30</field>
+        <field name="birth_date">2005-08-19</field>
+        <field name="origin">The Reach</field>
+        <field name="recruitment_reason">crime</field>
+        <field name="former_life">Singer in a lord's hall</field>
+        <field name="can_read" eval="True"/>
+        <field name="skills">singing, music, letters</field>
+        <field name="notable_deed">Sings for the garrison of Eastwatch when the nights are long.</field>
+    </record>
+
+    <record id="brother_mallister" model="nw.brother">
+        <field name="name">Denys Mallister</field>
+        <field name="role_id" ref="role_first_ranger"/>
+        <field name="order_id" ref="order_rangers"/>
+        <field name="status">sworn</field>
+        <field name="castle_id" ref="castle_shadow_tower"/>
+        <field name="oath_date">1989-06-23</field>
+        <field name="birth_date">1958-03-19</field>
+        <field name="origin">Seagard, the Riverlands</field>
+        <field name="recruitment_reason">volunteer</field>
+        <field name="is_noble_born" eval="True"/>
+        <field name="can_read" eval="True"/>
+        <field name="skills">command, sword</field>
+        <field name="notable_deed">Commands the Shadow Tower and leads its rangers.</field>
+    </record>
+
+    <record id="brother_qhorin" model="nw.brother">
+        <field name="name">Qhorin</field>
+        <field name="nickname">Halfhand</field>
+        <field name="order_id" ref="order_rangers"/>
+        <field name="status">fallen</field>
+        <field name="castle_id" ref="castle_shadow_tower"/>
+        <field name="oath_date">2004-05-05</field>
+        <field name="birth_date">1975-08-11</field>
+        <field name="origin">The North</field>
+        <field name="recruitment_reason">volunteer</field>
+        <field name="skills">scouting, sword, mountain craft</field>
+        <field name="notable_deed">The finest ranger of his generation.</field>
+    </record>
+
+    <record id="brother_dalbridge" model="nw.brother">
+        <field name="name">Dalbridge</field>
+        <field name="nickname">The Squire</field>
+        <field name="order_id" ref="order_rangers"/>
+        <field name="status">sworn</field>
+        <field name="castle_id" ref="castle_shadow_tower"/>
+        <field name="oath_date">1994-03-17</field>
+        <field name="birth_date">1962-07-23</field>
+        <field name="origin">The Vale</field>
+        <field name="recruitment_reason">volunteer</field>
+        <field name="former_life">Squire to a knight of the Vale</field>
+        <field name="skills">bow, scouting, horsemanship</field>
+        <field name="weapon">Longbow</field>
+        <field name="notable_deed">The oldest ranger of the Shadow Tower, and still the best bow in it.</field>
+    </record>
+
+    <record id="brother_ebben" model="nw.brother">
+        <field name="name">Ebben</field>
+        <field name="order_id" ref="order_rangers"/>
+        <field name="status">sworn</field>
+        <field name="castle_id" ref="castle_shadow_tower"/>
+        <field name="oath_date">2008-02-09</field>
+        <field name="birth_date">1980-05-14</field>
+        <field name="origin">The Westerlands</field>
+        <field name="recruitment_reason">crime</field>
+        <field name="skills">axe, wrestling, scouting</field>
+        <field name="weapon">Throwing axes</field>
+    </record>
+
+    <record id="brother_stonesnake" model="nw.brother">
+        <field name="name">Stonesnake</field>
+        <field name="order_id" ref="order_rangers"/>
+        <field name="status">sworn</field>
+        <field name="castle_id" ref="castle_shadow_tower"/>
+        <field name="oath_date">2010-06-28</field>
+        <field name="birth_date">1983-09-02</field>
+        <field name="origin">The Mountains of the Moon</field>
+        <field name="recruitment_reason">exile</field>
+        <field name="skills">climbing, scouting, stealth</field>
+        <field name="notable_deed">Climbs the Frostfangs where other men would not walk.</field>
+    </record>
+
+</odoo>

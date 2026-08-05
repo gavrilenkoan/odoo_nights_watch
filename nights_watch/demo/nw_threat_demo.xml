@@ -1,0 +1,40 @@
+<odoo noupdate="1">
+
+    <record id="threat_free_folk" model="nw.threat">
+        <field name="name">The Free Folk</field>
+        <field name="threat_type">wildling</field>
+        <field name="severity">high</field>
+        <field name="region">Haunted Forest</field>
+        <field name="first_seen">2023-03-01</field>
+        <field name="description">Wildling host gathering beyond the Wall under a King-Beyond-the-Wall.</field>
+    </record>
+
+    <record id="threat_others" model="nw.threat">
+        <field name="name">The Others</field>
+        <field name="threat_type">white_walker</field>
+        <field name="severity">existential</field>
+        <field name="region">The Lands of Always Winter</field>
+        <field name="first_seen">2023-11-14</field>
+        <field name="description">Long thought a children's tale. Sightings confirmed by returning rangers; the dead do not stay dead.</field>
+    </record>
+
+    <record id="threat_deserters" model="nw.threat">
+        <field name="name">Deserters of the Watch</field>
+        <field name="threat_type">deserter</field>
+        <field name="severity">medium</field>
+        <field name="region">The Gift</field>
+        <field name="first_seen">2024-01-20</field>
+        <field name="description">Oathbreakers fleeing south. The penalty for desertion is death.</field>
+    </record>
+
+    <record id="threat_giants" model="nw.threat">
+        <field name="name">Giants of the Frostfangs</field>
+        <field name="threat_type">giant</field>
+        <field name="severity">low</field>
+        <field name="region">Frostfangs</field>
+        <field name="first_seen">2024-06-05</field>
+        <field name="is_active" eval="False"/>
+        <field name="description">Mostly peaceful unless their camps are disturbed.</field>
+    </record>
+
+</odoo>

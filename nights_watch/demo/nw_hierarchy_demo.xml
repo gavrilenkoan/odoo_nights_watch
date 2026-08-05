@@ -1,0 +1,15 @@
+<odoo>
+
+    <record id="castle_black" model="nw.castle">
+        <field name="commander_id" ref="brother_mormont"/>
+    </record>
+
+    <record id="castle_eastwatch" model="nw.castle">
+        <field name="commander_id" ref="brother_cotter_pyke"/>
+    </record>
+
+    <record id="castle_shadow_tower" model="nw.castle">
+        <field name="commander_id" ref="brother_mallister"/>
+    </record>
+
+</odoo>

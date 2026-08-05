@@ -39,6 +39,16 @@ ranging parties sent beyond the Wall.
         'views/res_users_views.xml',
     ],
 
+    'demo': [
+        'demo/nw_order_demo.xml',
+        'demo/nw_castle_demo.xml',
+        'demo/nw_threat_demo.xml',
+        'demo/nw_role_demo.xml',
+        'demo/nw_brother_demo.xml',
+        'demo/nw_hierarchy_demo.xml',
+        'demo/nw_ranging_demo.xml',
+    ],
+
     'installable': True,
     'auto_install': False,
 }

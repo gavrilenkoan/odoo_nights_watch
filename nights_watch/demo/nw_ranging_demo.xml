@@ -1,0 +1,72 @@
+<odoo>
+
+    <record id="ranging_great" model="nw.ranging">
+        <field name="name">The Great Ranging</field>
+        <field name="status">returned</field>
+        <field name="castle_id" ref="castle_black"/>
+        <field name="threat_id" ref="threat_others"/>
+        <field name="leader_id" ref="brother_mormont"/>
+        <field name="brother_ids" eval="[Command.set([
+            ref('brother_mormont'),
+            ref('brother_jon'),
+            ref('brother_sam'),
+            ref('brother_grenn'),
+            ref('brother_thorne'),
+            ref('brother_qhorin'),
+            ref('brother_dalbridge'),
+            ref('brother_ebben'),
+            ref('brother_stonesnake'),
+        ])]"/>
+        <field name="casualty_ids" eval="[Command.set([ref('brother_qhorin')])]"/>
+        <field name="date_start">2024-10-01</field>
+        <field name="date_end">2024-12-18</field>
+        <field name="objective">Find out what became of Benjen Stark's rangers and confirm the sightings reported by the Free Folk.</field>
+        <field name="summary" type="html">
+            <p>Two hundred rode north from Castle Black. The party reached the
+            Fist of the First Men and held it through the first snows. Qhorin
+            Halfhand fell in the Skirling Pass covering the scouts' retreat.</p>
+        </field>
+    </record>
+
+    <record id="ranging_benjen" model="nw.ranging">
+        <field name="name">Benjen Stark's Ranging</field>
+        <field name="status">ongoing</field>
+        <field name="castle_id" ref="castle_black"/>
+        <field name="threat_id" ref="threat_free_folk"/>
+        <field name="leader_id" ref="brother_benjen"/>
+        <field name="brother_ids" eval="[Command.set([ref('brother_benjen')])]"/>
+        <field name="date_start">2024-08-14</field>
+        <field name="objective">Scout the haunted forest for signs of the King-Beyond-the-Wall.</field>
+    </record>
+
+    <record id="ranging_fist" model="nw.ranging">
+        <field name="name">Patrol to the Fist of the First Men</field>
+        <field name="status">planned</field>
+        <field name="castle_id" ref="castle_black"/>
+        <field name="threat_id" ref="threat_free_folk"/>
+        <field name="leader_id" ref="brother_jon"/>
+        <field name="brother_ids" eval="[Command.set([
+            ref('brother_jon'),
+            ref('brother_grenn'),
+            ref('brother_pyp'),
+        ])]"/>
+        <field name="date_start">2025-03-05</field>
+        <field name="objective">Re-establish the outpost on the Fist and leave a cache of supplies.</field>
+    </record>
+
+    <record id="ranging_search_benjen" model="nw.ranging">
+        <field name="name">Search for Benjen Stark</field>
+        <field name="status">planned</field>
+        <field name="castle_id" ref="castle_shadow_tower"/>
+        <field name="threat_id" ref="threat_deserters"/>
+        <field name="leader_id" ref="brother_mallister"/>
+        <field name="brother_ids" eval="[Command.set([
+            ref('brother_mallister'),
+            ref('brother_dalbridge'),
+            ref('brother_stonesnake'),
+        ])]"/>
+        <field name="date_start">2025-04-11</field>
+        <field name="objective">Follow the Gorge west and search the passes for the First Ranger.</field>
+    </record>
+
+</odoo>
