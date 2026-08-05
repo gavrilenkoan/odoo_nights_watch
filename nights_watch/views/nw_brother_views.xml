@@ -136,7 +136,7 @@
         <field name="name">nw.brother.kanban</field>
         <field name="model">nw.brother</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="order_id" sample="1"
+            <kanban default_group_by="standing" sample="1"
                     group_create="false" group_delete="false" group_edit="false"
                     quick_create="false">
                 <field name="image_128"/>
@@ -214,6 +214,8 @@
                 <filter name="filter_archived" string="Archived"
                         domain="[('active', '=', False)]"/>
                 <group>
+                    <filter name="group_standing" string="Standing"
+                            context="{'group_by': 'standing'}"/>
                     <filter name="group_order" string="Order"
                             context="{'group_by': 'order_id'}"/>
                     <filter name="group_role" string="Office"
