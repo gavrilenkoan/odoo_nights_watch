@@ -39,6 +39,7 @@
                             <field name="scope"/>
                             <field name="order_id"/>
                             <field name="is_order_head"/>
+                            <field name="commands_castle"/>
                             <field name="is_senior"/>
                             <field name="trains_recruits"/>
                             <field name="outside_orders"/>

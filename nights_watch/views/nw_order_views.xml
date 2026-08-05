@@ -32,9 +32,9 @@
                             <field name="member_count"/>
                         </group>
                     </group>
-                    <group string="Duties">
-                        <field name="description" nolabel="1"/>
-                    </group>
+                    <separator string="Duties"/>
+                    <field name="description" nolabel="1"
+                           placeholder="What this order is responsible for..."/>
                     <notebook>
                         <page string="Firsts" name="heads">
                             <field name="head_ids" readonly="1">

@@ -6,8 +6,8 @@ class NwRole(models.Model):
     """Office a brother of the Watch may hold, on top of his order.
 
     An order says what a brother does day to day — ranging, building or
-    keeping the stores. A role is his personal appointment: the Lord
-    Commander, the maester, the septon, the master-at-arms who trains the
+    keeping the stores. A role is his personal appointment: the commander of
+    a castle, the maester, the septon, the master-at-arms who trains the
     recruits, the recruiters who ride south for new men.
     """
 
@@ -49,13 +49,18 @@ class NwRole(models.Model):
     outside_orders = fields.Boolean(
         string='Stands Outside the Orders',
         help='The office places its holder above the three orders: he belongs '
-             'to none of them. The Lord Commander, the maester, the septon.',
+        'to none of them. The castle commander, the maester, the septon.',
     )
     order_id = fields.Many2one(
         comodel_name='nw.order',
         string='Order',
         help='The office belongs to this order: only its members may hold it. '
              'Empty for offices open to a brother of any order.',
+    )
+    commands_castle = fields.Boolean(
+        string='Commands a Castle',
+        help='The holder commands the castle he is quartered in. Only one '
+             'brother per castle may hold such an office.',
     )
     is_order_head = fields.Boolean(
         string='Heads the Order',
