@@ -50,9 +50,8 @@
 
     <record id="brother_benjen" model="nw.brother">
         <field name="name">Benjen Stark</field>
-        <field name="role_id" ref="role_first_ranger"/>
         <field name="order_id" ref="order_rangers"/>
-        <field name="status">ranging</field>
+        <field name="status">lost</field>
         <field name="castle_id" ref="castle_black"/>
         <field name="oath_date">2005-09-01</field>
         <field name="birth_date">1981-05-20</field>
@@ -61,7 +60,7 @@
         <field name="is_noble_born" eval="True"/>
         <field name="can_read" eval="True"/>
         <field name="skills">scouting, sword, survival</field>
-        <field name="notable_deed">First Ranger of Castle Black. Rode north with six men and never came back.</field>
+        <field name="notable_deed">First Ranger of Castle Black until he rode north with six men and never came back.</field>
     </record>
 
     <record id="brother_yarwyck" model="nw.brother">
@@ -141,6 +140,7 @@
 
     <record id="brother_rykker" model="nw.brother">
         <field name="name">Jeremy Rykker</field>
+        <field name="role_id" ref="role_first_ranger"/>
         <field name="order_id" ref="order_rangers"/>
         <field name="status">sworn</field>
         <field name="castle_id" ref="castle_black"/>
@@ -152,7 +152,7 @@
         <field name="is_noble_born" eval="True"/>
         <field name="can_read" eval="True"/>
         <field name="skills">sword, command, horsemanship</field>
-        <field name="notable_deed">Tywin Lannister offered him a fine choice: the black, or his head on a spike by evening. Leads the rangers of Castle Black while Benjen Stark is missing.</field>
+        <field name="notable_deed">Tywin Lannister offered him a fine choice: the black, or his head on a spike by evening. Took the post of First Ranger of Castle Black when Benjen Stark did not return.</field>
     </record>
 
     <record id="brother_jon" model="nw.brother">
@@ -285,14 +285,14 @@
     <record id="brother_gared" model="nw.brother">
         <field name="name">Gared</field>
         <field name="order_id" ref="order_rangers"/>
-        <field name="status">deserted</field>
+        <field name="status">executed</field>
         <field name="castle_id" ref="castle_black"/>
         <field name="oath_date">1986-04-01</field>
         <field name="birth_date">1972-09-17</field>
         <field name="origin">The North</field>
         <field name="recruitment_reason">volunteer</field>
         <field name="skills">scouting, survival, cold</field>
-        <field name="notable_deed">Forty years on the Wall, and the cold took both ears, three toes and the little finger of his left hand. Counted himself lucky: his brother froze on watch and was found smiling. Then he ran, and lost his head for it.</field>
+        <field name="notable_deed">Forty years on the Wall, and the cold took both ears, three toes and the little finger of his left hand. Counted himself lucky: his brother froze on watch and was found smiling. Then he ran, was taken south of the Wall, and Lord Eddard Stark took his head.</field>
     </record>
 
     <record id="brother_will" model="nw.brother">
@@ -517,6 +517,22 @@
         <field name="recruitment_reason">exile</field>
         <field name="skills">climbing, scouting, stealth</field>
         <field name="notable_deed">Climbs the Frostfangs where other men would not walk.</field>
+    </record>
+
+    <record id="brother_mance" model="nw.brother">
+        <field name="name">Mance Rayder</field>
+        <field name="nickname">The King-Beyond-the-Wall</field>
+        <field name="order_id" ref="order_rangers"/>
+        <field name="status">deserted</field>
+        <field name="castle_id" ref="castle_shadow_tower"/>
+        <field name="oath_date">1997-01-19</field>
+        <field name="birth_date">1979-04-02</field>
+        <field name="origin">Taken as a babe from a wildling camp</field>
+        <field name="recruitment_reason">orphan</field>
+        <field name="former_life">Raised by the Watch itself</field>
+        <field name="can_read" eval="True"/>
+        <field name="skills">scouting, sword, music, command</field>
+        <field name="notable_deed">Rode with the rangers of the Shadow Tower until he chose a torn red-silk cloak over his black one. Never taken, and now he leads the Free Folk gathering beyond the Wall.</field>
     </record>
 
 </odoo>

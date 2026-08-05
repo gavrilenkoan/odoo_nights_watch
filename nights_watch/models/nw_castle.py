@@ -54,7 +54,7 @@ class NwCastle(models.Model):
         comodel_name='nw.brother',
         inverse_name='castle_id',
         string='Order Firsts',
-        domain=[('role_id.is_order_head', '=', True)],
+        domain=[('role_id.is_order_head', '=', True), ('in_service', '=', True)],
     )
 
     _name_uniq = models.Constraint(
@@ -68,20 +68,20 @@ class NwCastle(models.Model):
         for castle in self:
             castle.garrison = len(castle.brother_ids)
 
-    @api.depends('brother_ids.role_id.commands_castle')
+    @api.depends('brother_ids.role_id.commands_castle', 'brother_ids.in_service')
     def _compute_commander_id(self):
         """The commander is whoever in the garrison holds a commanding office."""
         for castle in self:
             castle.commander_id = castle.brother_ids.filtered(
-                lambda brother: brother.role_id.commands_castle
+                lambda brother: brother.in_service and brother.role_id.commands_castle
             )[:1]
 
-    @api.depends('brother_ids.role_id.trains_recruits')
+    @api.depends('brother_ids.role_id.trains_recruits', 'brother_ids.in_service')
     def _compute_instructor_id(self):
         """The master-at-arms is whoever in the garrison holds a training office."""
         for castle in self:
             castle.instructor_id = castle.brother_ids.filtered(
-                lambda brother: brother.role_id.trains_recruits
+                lambda brother: brother.in_service and brother.role_id.trains_recruits
             )[:1]
 
     @api.constrains('brother_ids', 'capacity')

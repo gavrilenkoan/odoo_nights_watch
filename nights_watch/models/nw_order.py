@@ -32,7 +32,7 @@ class NwOrder(models.Model):
         comodel_name='nw.brother',
         inverse_name='order_id',
         string='Firsts',
-        domain=[('role_id.is_order_head', '=', True)],
+        domain=[('role_id.is_order_head', '=', True), ('in_service', '=', True)],
     )
     member_ids = fields.One2many(
         comodel_name='nw.brother',

@@ -1,5 +1,7 @@
 from odoo import api, fields, models
-from odoo.exceptions import ValidationError
+from odoo.exceptions import UserError, ValidationError
+
+SERVING_STATUSES = ('recruit', 'sworn', 'ranging')
 
 
 class NwBrother(models.Model):
@@ -31,12 +33,20 @@ class NwBrother(models.Model):
         selection=[
             ('recruit', 'Recruit'),
             ('sworn', 'Sworn'),
-            ('ranging', 'Beyond the Wall'),
+            ('ranging', 'Ranging'),
+            ('lost', 'Lost Beyond the Wall'),
             ('deserted', 'Deserted'),
+            ('executed', 'Executed'),
             ('fallen', 'Fallen'),
         ],
         default='recruit',
         required=True,
+    )
+    in_service = fields.Boolean(
+        compute='_compute_in_service',
+        store=True,
+        help='Still on the rolls. A brother lost beyond the Wall, fallen or '
+        'deserted holds no office: his post passes to another man.',
     )
     order_id = fields.Many2one(
         comodel_name='nw.order',
@@ -126,6 +136,85 @@ class NwBrother(models.Model):
         'A brother cannot serve himself.',
     )
 
+    @api.model_create_multi
+    def create(self, vals_list):
+        """Relieve the sitting holder before the newcomer takes his office.
+
+        :param vals_list: values of the brothers to create.
+        :return: the created brothers.
+        """
+        for vals in vals_list:
+            self._relieve_office(
+                self.env['nw.role'].browse(vals.get('role_id')),
+                vals.get('castle_id'),
+            )
+
+        return super().create(vals_list)
+
+    def write(self, vals):
+        """Refuse an unearned execution, and relieve a replaced office holder.
+
+        :param vals: values to write.
+        :return: True
+        """
+        if vals.get('status') == 'executed':
+            self._check_execution()
+
+        role = self.env['nw.role'].browse(vals.get('role_id'))
+        if role:
+            for brother in self:
+                self._relieve_office(
+                    role,
+                    vals.get('castle_id') or brother.castle_id.id,
+                    exclude=brother,
+                )
+
+        return super().write(vals)
+
+    def _relieve_office(self, role, castle_id, exclude=None):
+        """Take a limited office from whoever holds it.
+
+        A castle answers to one commander and each order to one First per
+        castle, so appointing a man necessarily unseats his predecessor.
+
+        :param role: the office about to be handed over.
+        :param castle_id: castle of the newcomer, for castle-wide offices.
+        :param exclude: brother who must keep the office (the newcomer).
+        :return: None
+        """
+        if not role or role.scope == 'free':
+            return
+
+        domain = [('role_id', '=', role.id)]
+
+        if role.scope == 'castle':
+            if not castle_id:
+                return
+            domain.append(('castle_id', '=', castle_id))
+
+        if exclude:
+            domain.append(('id', 'not in', exclude.ids))
+
+        holders = self.sudo().search(domain)
+        if holders:
+            holders.write({'role_id': False})
+
+    def _check_execution(self):
+        """Refuse to execute a brother who never broke his oath.
+
+        The Watch beheads deserters, and only deserters. A man still on the
+        rolls, lost beyond the Wall or already dead cannot be put to the sword.
+
+        :raises UserError: when a brother is not a deserter.
+        """
+        innocent = self.filtered(lambda brother: brother.status != 'deserted')
+        if innocent:
+            raise UserError(self.env._(
+                'The Watch beheads deserters, and only deserters. '
+                '%(names)s never broke his oath.',
+                names=', '.join(innocent.mapped('name')),
+            ))
+
     @api.depends('name', 'nickname')
     def _compute_display_name(self):
         """Show the nickname next to the name: ``Jon Snow ("Lord Snow")``."""
@@ -167,9 +256,16 @@ class NwBrother(models.Model):
 
             brother.years_of_service = max(years, 0)
 
+    @api.depends('status')
+    def _compute_in_service(self):
+        """Flag the brothers still counted on the rolls of the Watch."""
+        for brother in self:
+            brother.in_service = brother.status in SERVING_STATUSES
+
     @api.depends('status', 'order_id', 'castle_id',
-                 'castle_id.instructor_id', 'castle_id.commander_id',
-                 'castle_id.brother_ids.role_id')
+        'castle_id.instructor_id', 'castle_id.commander_id',
+        'castle_id.brother_ids.role_id', 'castle_id.brother_ids.in_service',
+    )
     def _compute_mentor_id(self):
         """Derive the chain of command inside a castle instead of typing it.
 
@@ -185,10 +281,11 @@ class NwBrother(models.Model):
             elif brother.role_id.is_order_head:
                 mentor = brother.castle_id.commander_id
             else:
-                mentor = brother.castle_id.brother_ids.filtered(
-                    lambda holder: holder.role_id.is_order_head
+                mentor = brother.castle_id.brother_ids.filtered(lambda holder: (
+                    holder.in_service
+                    and holder.role_id.is_order_head
                     and holder.role_id.order_id == brother.order_id
-                )[:1]
+                ))[:1]
 
             brother.mentor_id = mentor if mentor != brother else False
 
@@ -245,7 +342,7 @@ class NwBrother(models.Model):
         """
         for brother in self:
             role = brother.role_id
-            if not role:
+            if not role or not brother.in_service:
                 continue
 
             if brother.status == 'recruit':
@@ -256,7 +353,11 @@ class NwBrother(models.Model):
             if role.scope == 'free':
                 continue
 
-            domain = [('role_id', '=', role.id), ('id', '!=', brother.id)]
+            domain = [
+                ('role_id', '=', role.id),
+                ('id', '!=', brother.id),
+                ('in_service', '=', True),
+            ]
 
             if role.scope == 'castle':
                 if not brother.castle_id:
@@ -323,7 +424,7 @@ class NwBrother(models.Model):
                     name=brother.name,
                 ))
 
-    @api.constrains('role_id', 'castle_id')
+    @api.constrains('role_id', 'castle_id', 'status')
     def _check_castle_commander(self):
         """A castle answers to one commander, whatever office he holds.
 
@@ -331,7 +432,7 @@ class NwBrother(models.Model):
             brother with no castle, or when the castle already has one.
         """
         for brother in self:
-            if not brother.role_id.commands_castle:
+            if not brother.role_id.commands_castle or not brother.in_service:
                 continue
 
             if not brother.castle_id:
@@ -346,6 +447,7 @@ class NwBrother(models.Model):
                 ('id', '!=', brother.id),
                 ('castle_id', '=', brother.castle_id.id),
                 ('role_id.commands_castle', '=', True),
+                ('in_service', '=', True),
             ], limit=1):
                 raise ValidationError(self.env._(
                     '"%(castle)s" already answers to a commander.',

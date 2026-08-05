@@ -4,7 +4,8 @@
         <field name="name">nw.brother.list</field>
         <field name="model">nw.brother</field>
         <field name="arch" type="xml">
-            <list decoration-muted="status == 'fallen'"
+            <list decoration-muted="status in ('fallen', 'lost')"
+                  decoration-it="status == 'executed'"
                   decoration-danger="status == 'deserted'"
                   decoration-info="status == 'ranging'">
                 <field name="name"/>
@@ -21,6 +22,7 @@
                 <field name="status" widget="badge"
                        decoration-success="status == 'sworn'"
                        decoration-info="status == 'ranging'"
+                       decoration-warning="status == 'lost'"
                        decoration-danger="status == 'deserted'"/>
             </list>
         </field>
@@ -34,6 +36,7 @@
                 <header>
                     <field name="status" widget="statusbar" clickable="1"
                            statusbar_visible="recruit,sworn,ranging"/>
+                    <field name="in_service" invisible="1"/>
                 </header>
                 <sheet>
                     <widget name="web_ribbon" title="Archived"
@@ -98,9 +101,8 @@
                                     <field name="can_read"/>
                                 </group>
                             </group>
-                            <group string="Notable Deeds">
-                                <field name="notable_deed" nolabel="1"/>
-                            </group>
+                            <separator string="Notable Deeds"/>
+                            <field name="notable_deed" nolabel="1"/>
                         </page>
                         <page string="Personal Stewards" name="stewards"
                               invisible="not is_senior">
@@ -160,6 +162,7 @@
                                 <field name="status" widget="badge"
                                        decoration-success="status == 'sworn'"
                                        decoration-info="status == 'ranging'"
+                                       decoration-warning="status == 'lost'"
                                        decoration-danger="status == 'deserted'"/>
                             </div>
                         </main>
@@ -189,8 +192,15 @@
                         domain="[('status', '=', 'sworn')]"/>
                 <filter name="filter_recruits" string="Recruits"
                         domain="[('status', '=', 'recruit')]"/>
-                <filter name="filter_ranging" string="Beyond the Wall"
+                <filter name="filter_ranging" string="Ranging"
                         domain="[('status', '=', 'ranging')]"/>
+                <filter name="filter_lost" string="Lost Beyond the Wall"
+                        domain="[('status', '=', 'lost')]"/>
+                <filter name="filter_oathbreakers" string="Oathbreakers"
+                        domain="[('status', 'in', ['deserted', 'executed'])]"/>
+                <separator/>
+                <filter name="filter_in_service" string="Still in Service"
+                        domain="[('in_service', '=', True)]"/>
                 <separator/>
                 <filter name="filter_senior" string="Senior Brothers"
                         domain="[('is_senior', '=', True)]"/>
