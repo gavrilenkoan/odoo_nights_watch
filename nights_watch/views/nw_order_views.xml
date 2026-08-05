@@ -27,15 +27,6 @@
                         <group>
                             <field name="code"/>
                         </group>
-                        <page string="Firsts" name="heads">
-                            <field name="head_ids" readonly="1">
-                                <list>
-                                    <field name="name"/>
-                                    <field name="castle_id"/>
-                                    <field name="role_id"/>
-                                </list>
-                            </field>
-                        </page>
                         <group>
                             <field name="sequence"/>
                             <field name="member_count"/>
@@ -45,6 +36,15 @@
                         <field name="description" nolabel="1"/>
                     </group>
                     <notebook>
+                        <page string="Firsts" name="heads">
+                            <field name="head_ids" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="castle_id"/>
+                                    <field name="role_id"/>
+                                </list>
+                            </field>
+                        </page>
                         <page string="Members" name="members">
                             <field name="member_ids" readonly="1">
                                 <list>
