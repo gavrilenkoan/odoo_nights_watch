@@ -54,19 +54,54 @@
         <field name="objective">Re-establish the outpost on the Fist and leave a cache of supplies.</field>
     </record>
 
-    <record id="ranging_search_benjen" model="nw.ranging">
-        <field name="name">Search for Benjen Stark</field>
-        <field name="status">planned</field>
-        <field name="castle_id" ref="castle_shadow_tower"/>
-        <field name="threat_id" ref="threat_deserters"/>
-        <field name="leader_id" ref="brother_mallister"/>
+    <record id="ranging_benjen" model="nw.ranging">
+        <field name="name">Benjen Stark's Ranging</field>
+        <field name="status">ongoing</field>
+        <field name="castle_id" ref="castle_black"/>
+        <field name="threat_id" ref="threat_free_folk"/>
+        <field name="leader_id" ref="brother_benjen"/>
         <field name="brother_ids" eval="[Command.set([
-            ref('brother_mallister'),
-            ref('brother_dalbridge'),
-            ref('brother_stonesnake'),
+            ref('brother_benjen'),
+            ref('brother_othor'),
+            ref('brother_jafer'),
         ])]"/>
-        <field name="date_start">2025-04-11</field>
-        <field name="objective">Follow the Gorge west and search the passes for the First Ranger.</field>
+        <field name="casualty_ids" eval="[Command.set([
+            ref('brother_othor'),
+            ref('brother_jafer'),
+        ])]"/>
+        <field name="date_start">2026-04-14</field>
+        <field name="objective">Scout the haunted forest for signs of the King-Beyond-the-Wall.</field>
+        <field name="summary" type="html">
+            <p>Six men rode north with the First Ranger. The bodies of Othor and
+            Jafer Flowers were found beyond the Wall and carried back to Castle
+            Black, six days dead and showing no sign of rot. Benjen Stark and the
+            rest have not been seen since.</p>
+        </field>
+    </record>
+
+    <record id="ranging_waymar" model="nw.ranging">
+        <field name="name">Ser Waymar's Patrol</field>
+        <field name="status">lost</field>
+        <field name="castle_id" ref="castle_black"/>
+        <field name="threat_id" ref="threat_others"/>
+        <field name="leader_id" ref="brother_waymar"/>
+        <field name="brother_ids" eval="[Command.set([
+            ref('brother_waymar'),
+            ref('brother_will'),
+            ref('brother_gared'),
+        ])]"/>
+        <field name="casualty_ids" eval="[Command.set([
+            ref('brother_waymar'),
+            ref('brother_will'),
+        ])]"/>
+        <field name="date_start">2026-05-02</field>
+        <field name="date_end">2026-05-04</field>
+        <field name="objective">Track a band of wildlings reported a half-day north of the Wall.</field>
+        <field name="summary" type="html">
+            <p>Ser Waymar led two seasoned men against their counsel and would
+            not turn back. He was cut down in the snow. Gared alone came south,
+            and did not stop at Castle Black.</p>
+        </field>
     </record>
 
 </odoo>

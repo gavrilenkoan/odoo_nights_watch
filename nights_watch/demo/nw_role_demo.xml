@@ -1,14 +1,15 @@
 <odoo noupdate="1">
 
-    <record id="role_lord_commander" model="nw.role">
-        <field name="name">Lord Commander</field>
-        <field name="code">lord_commander</field>
-        <field name="sequence">10</field>
-        <field name="seniority">100</field>
-        <field name="scope">watch</field>
+    <record id="role_commander" model="nw.role">
+        <field name="name">Castle Commander</field>
+        <field name="code">commander</field>
+        <field name="sequence">12</field>
+        <field name="seniority">80</field>
+        <field name="scope">castle</field>
         <field name="is_senior" eval="True"/>
+        <field name="commands_castle" eval="True"/>
         <field name="outside_orders" eval="True"/>
-        <field name="description">Commands the whole Watch. Elected by the brothers, he stands above the three orders.</field>
+        <field name="description">Commands his castle and its garrison. The Wall has no single head: every castle stands on its own.</field>
     </record>
 
     <record id="role_first_ranger" model="nw.role">
@@ -78,6 +79,16 @@
         <field name="is_senior" eval="True"/>
         <field name="outside_orders" eval="True"/>
         <field name="description">Hears the vows of those who keep the faith of the Seven.</field>
+    </record>
+
+    <record id="role_cook" model="nw.role">
+        <field name="name">Cook</field>
+        <field name="code">cook</field>
+        <field name="sequence">45</field>
+        <field name="seniority">25</field>
+        <field name="scope">castle</field>
+        <field name="order_id" ref="order_stewards"/>
+        <field name="description">Feeds the garrison. A steward's duty, and the one every brother notices.</field>
     </record>
 
     <record id="role_recruiter" model="nw.role">

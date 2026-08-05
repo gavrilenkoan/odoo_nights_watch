@@ -5,7 +5,7 @@
         <field name="region">Centre of the Wall</field>
         <field name="capacity">600</field>
         <field name="sequence">10</field>
-        <field name="description">The main seat of the Night's Watch and the residence of the Lord Commander.</field>
+        <field name="description">The largest and oldest of the manned castles, and the heart of the Watch.</field>
     </record>
 
     <record id="castle_eastwatch" model="nw.castle">

@@ -45,7 +45,6 @@ ranging parties sent beyond the Wall.
         'demo/nw_threat_demo.xml',
         'demo/nw_role_demo.xml',
         'demo/nw_brother_demo.xml',
-        'demo/nw_hierarchy_demo.xml',
         'demo/nw_ranging_demo.xml',
     ],
 
