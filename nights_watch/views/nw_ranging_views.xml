@@ -1,0 +1,142 @@
+<odoo>
+
+    <record id="view_nw_ranging_list" model="ir.ui.view">
+        <field name="name">nw.ranging.list</field>
+        <field name="model">nw.ranging</field>
+        <field name="arch" type="xml">
+            <list decoration-info="status == 'ongoing'"
+                  decoration-danger="status == 'lost'"
+                  decoration-success="status == 'returned'">
+                <field name="name"/>
+                <field name="leader_id"/>
+                <field name="castle_id"/>
+                <field name="threat_id"/>
+                <field name="date_start"/>
+                <field name="date_end" optional="show"/>
+                <field name="duration" optional="hide"/>
+                <field name="member_count" optional="show"/>
+                <field name="casualty_count" optional="show"/>
+                <field name="status" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_nw_ranging_form" model="ir.ui.view">
+        <field name="name">nw.ranging.form</field>
+        <field name="model">nw.ranging</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="status" widget="statusbar" clickable="1"
+                           statusbar_visible="planned,ongoing,returned"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="e.g. The Great Ranging"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="leader_id" domain="[('id', 'in', brother_ids)]"/>
+                            <field name="castle_id"/>
+                            <field name="threat_id"/>
+                            <field name="threat_type" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="date_start"/>
+                            <field name="date_end"/>
+                            <field name="duration"/>
+                            <field name="member_count"/>
+                            <field name="casualty_count"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Party" name="party">
+                            <field name="brother_ids">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="order_id"/>
+                                    <field name="role_id"/>
+                                    <field name="castle_id"/>
+                                    <field name="status"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Objective" name="objective">
+                            <field name="objective" nolabel="1"
+                                   placeholder="What the party is sent to do..."/>
+                        </page>
+                        <page string="Report" name="report"
+                              invisible="status in ('planned', 'ongoing')">
+                            <field name="summary" nolabel="1"/>
+                            <group string="Casualties">
+                                <field name="casualty_ids" nolabel="1"
+                                       widget="many2many_tags"
+                                       domain="[('id', 'in', brother_ids)]"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_nw_ranging_graph" model="ir.ui.view">
+        <field name="name">nw.ranging.graph</field>
+        <field name="model">nw.ranging</field>
+        <field name="arch" type="xml">
+            <graph string="Rangings" sample="1" stacked="1">
+                <field name="date_start" interval="year" type="row"/>
+                <field name="threat_type" type="col"/>
+                <field name="casualty_count" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_nw_ranging_search" model="ir.ui.view">
+        <field name="name">nw.ranging.search</field>
+        <field name="model">nw.ranging</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="leader_id"/>
+                <field name="brother_ids"/>
+                <field name="threat_id"/>
+                <field name="castle_id"/>
+                <filter name="filter_planned" string="Planned"
+                        domain="[('status', '=', 'planned')]"/>
+                <filter name="filter_ongoing" string="Beyond the Wall"
+                        domain="[('status', '=', 'ongoing')]"/>
+                <filter name="filter_lost" string="Lost"
+                        domain="[('status', '=', 'lost')]"/>
+                <separator/>
+                <filter name="filter_with_casualties" string="With Casualties"
+                        domain="[('casualty_count', '>', 0)]"/>
+                <group>
+                    <filter name="group_status" string="Status"
+                            context="{'group_by': 'status'}"/>
+                    <filter name="group_castle" string="Castle"
+                            context="{'group_by': 'castle_id'}"/>
+                    <filter name="group_threat" string="Threat"
+                            context="{'group_by': 'threat_id'}"/>
+                    <filter name="group_year" string="Year"
+                            context="{'group_by': 'date_start:year'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_nw_ranging" model="ir.actions.act_window">
+        <field name="name">Rangings</field>
+        <field name="res_model">nw.ranging</field>
+        <field name="view_mode">list,form,graph</field>
+        <field name="search_view_id" ref="view_nw_ranging_search"/>
+    </record>
+
+    <menuitem id="menu_nw_ranging"
+              parent="menu_nw_operations_root"
+              action="action_nw_ranging"
+              name="Rangings"
+              sequence="10"/>
+
+</odoo>

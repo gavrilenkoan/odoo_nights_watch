@@ -1,0 +1,23 @@
+<odoo>
+
+    <menuitem id="menu_nights_watch_root"
+              name="Night's Watch"
+              web_icon="nights_watch,static/description/icon.png"
+              sequence="905"/>
+
+    <menuitem id="menu_nw_brothers_root"
+              parent="menu_nights_watch_root"
+              name="Brothers"
+              sequence="10"/>
+
+    <menuitem id="menu_nw_operations_root"
+              parent="menu_nights_watch_root"
+              name="Operations"
+              sequence="20"/>
+
+    <menuitem id="menu_nw_config_root"
+              parent="menu_nights_watch_root"
+              name="Configuration"
+              sequence="90"/>
+
+</odoo>

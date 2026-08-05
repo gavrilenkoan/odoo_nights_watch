@@ -1,0 +1,20 @@
+<odoo>
+
+    <record id="view_users_form_nights_watch" model="ir.ui.view">
+        <field name="name">res.users.form.nights.watch</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Night's Watch" name="nights_watch">
+                    <group>
+                        <field name="nw_brother_id" readonly="1"/>
+                        <field name="nw_order_id" readonly="1"/>
+                        <field name="nw_castle_id" readonly="1"/>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,238 @@
+<odoo>
+
+    <record id="view_nw_brother_list" model="ir.ui.view">
+        <field name="name">nw.brother.list</field>
+        <field name="model">nw.brother</field>
+        <field name="arch" type="xml">
+            <list decoration-muted="status == 'fallen'"
+                  decoration-danger="status == 'deserted'"
+                  decoration-info="status == 'ranging'">
+                <field name="name"/>
+                <field name="nickname" optional="show"/>
+                <field name="role_id" optional="show"/>
+                <field name="order_id"/>
+                <field name="castle_id"/>
+                <field name="mentor_id" optional="hide"/>
+                <field name="serves_id" optional="hide"/>
+                <field name="oath_date" optional="hide"/>
+                <field name="years_of_service" optional="hide"/>
+                <field name="origin" optional="hide"/>
+                <field name="seniority" optional="hide"/>
+                <field name="status" widget="badge"
+                       decoration-success="status == 'sworn'"
+                       decoration-info="status == 'ranging'"
+                       decoration-danger="status == 'deserted'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_nw_brother_form" model="ir.ui.view">
+        <field name="name">nw.brother.form</field>
+        <field name="model">nw.brother</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="status" widget="statusbar" clickable="1"
+                           statusbar_visible="recruit,sworn,ranging"/>
+                </header>
+                <sheet>
+                    <widget name="web_ribbon" title="Archived"
+                            bg_color="text-bg-danger" invisible="active"/>
+
+                    <field name="image" widget="image" class="oe_avatar"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="e.g. Jon Snow"/></h1>
+                        <h3 class="text-muted">
+                            <field name="nickname" placeholder="e.g. Lord Snow"/>
+                        </h3>
+                    </div>
+
+                    <group>
+                        <group string="Identity">
+                            <field name="birth_date"/>
+                            <field name="age"/>
+                            <field name="origin"/>
+                            <field name="user_id"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                        <group string="Service">
+                            <field name="role_outside_orders" invisible="1"/>
+                            <field name="is_steward" invisible="1"/>
+                            <field name="is_senior" invisible="1"/>
+                            <field name="role_id" invisible="status == 'recruit'"/>
+                            <field name="order_id"
+                                   invisible="status == 'recruit' or role_outside_orders"
+                                   required="status in ('sworn', 'ranging') and not role_outside_orders"/>
+                            <field name="castle_id"/>
+                            <field name="mentor_id"/>
+                            <field name="oath_date" invisible="status == 'recruit'"/>
+                            <field name="years_of_service" invisible="status == 'recruit'"/>
+                            <field name="serves_id"
+                                   domain="[('is_senior', '=', True), ('id', '!=', id)]"
+                                   invisible="not is_steward"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Background" name="background">
+                            <group>
+                                <group>
+                                    <field name="recruitment_reason"/>
+                                    <field name="former_life"/>
+                                </group>
+                                <group>
+                                    <field name="is_wildling"/>
+                                    <field name="is_noble_born"/>
+                                </group>
+                            </group>
+                        </page>
+                        <page string="Traits" name="traits">
+                            <group>
+                                <group>
+                                    <field name="skills" placeholder="sword, bow, scouting"/>
+                                    <field name="weapon"/>
+                                </group>
+                                <group>
+                                    <field name="is_warg"/>
+                                    <field name="can_read"/>
+                                </group>
+                            </group>
+                            <group string="Notable Deeds">
+                                <field name="notable_deed" nolabel="1"/>
+                            </group>
+                        </page>
+                        <page string="Personal Stewards" name="stewards"
+                              invisible="not is_senior">
+                            <field name="steward_ids" readonly="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="castle_id"/>
+                                    <field name="status"/>
+                                </list>
+                            </field>
+                        </page>
+                        <page string="Rangings" name="rangings">
+                            <field name="ranging_count" readonly="1"/>
+                            <field name="ranging_ids" readonly="1" nolabel="1">
+                                <list>
+                                    <field name="name"/>
+                                    <field name="date_start"/>
+                                    <field name="date_end"/>
+                                    <field name="threat_id"/>
+                                    <field name="status"/>
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_nw_brother_kanban" model="ir.ui.view">
+        <field name="name">nw.brother.kanban</field>
+        <field name="model">nw.brother</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="order_id" sample="1"
+                    group_create="false" group_delete="false" group_edit="false"
+                    quick_create="false">
+                <field name="image_128"/>
+                <templates>
+                    <t t-name="card" class="flex-row">
+                        <aside>
+                            <field name="image_128" widget="image"
+                                   options="{'size': [64, 64]}"/>
+                        </aside>
+                        <main class="ms-2">
+                            <field name="name" class="fw-bold fs-5"/>
+                            <div t-if="record.nickname.raw_value" class="text-muted fst-italic">
+                                <field name="nickname"/>
+                            </div>
+                            <div t-if="record.role_id.raw_value">
+                                <field name="role_id"/>
+                            </div>
+                            <div t-if="record.castle_id.raw_value">
+                                <i class="fa fa-fort-awesome me-1" title="Castle"/>
+                                <field name="castle_id"/>
+                            </div>
+                            <div class="mt-1">
+                                <field name="status" widget="badge"
+                                       decoration-success="status == 'sworn'"
+                                       decoration-info="status == 'ranging'"
+                                       decoration-danger="status == 'deserted'"/>
+                            </div>
+                        </main>
+                    </t>
+                    <t t-name="menu">
+                        <a role="menuitem" type="open" class="dropdown-item">Open</a>
+                        <a role="menuitem" type="archive" class="dropdown-item">Archive</a>
+                        <a role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_nw_brother_search" model="ir.ui.view">
+        <field name="name">nw.brother.search</field>
+        <field name="model">nw.brother</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"
+                       filter_domain="['|', ('name', 'ilike', self), ('nickname', 'ilike', self)]"/>
+                <field name="order_id"/>
+                <field name="role_id"/>
+                <field name="castle_id"/>
+                <field name="origin"/>
+                <filter name="filter_sworn" string="Sworn Only"
+                        domain="[('status', '=', 'sworn')]"/>
+                <filter name="filter_recruits" string="Recruits"
+                        domain="[('status', '=', 'recruit')]"/>
+                <filter name="filter_ranging" string="Beyond the Wall"
+                        domain="[('status', '=', 'ranging')]"/>
+                <separator/>
+                <filter name="filter_senior" string="Senior Brothers"
+                        domain="[('is_senior', '=', True)]"/>
+                <filter name="filter_wargs" string="Wargs"
+                        domain="[('is_warg', '=', True)]"/>
+                <filter name="filter_wildlings" string="Former Wildlings"
+                        domain="[('is_wildling', '=', True)]"/>
+                <filter name="filter_literate" string="Literate"
+                        domain="[('can_read', '=', True)]"/>
+                <separator/>
+                <filter name="filter_archived" string="Archived"
+                        domain="[('active', '=', False)]"/>
+                <group>
+                    <filter name="group_order" string="Order"
+                            context="{'group_by': 'order_id'}"/>
+                    <filter name="group_role" string="Office"
+                            context="{'group_by': 'role_id'}"/>
+                    <filter name="group_castle" string="Castle"
+                            context="{'group_by': 'castle_id'}"/>
+                    <filter name="group_status" string="Status"
+                            context="{'group_by': 'status'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_nw_brother" model="ir.actions.act_window">
+        <field name="name">Brothers</field>
+        <field name="res_model">nw.brother</field>
+        <field name="view_mode">list,kanban,form</field>
+        <field name="search_view_id" ref="view_nw_brother_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Enlist the first brother of the Watch
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_nw_brother"
+              parent="menu_nw_brothers_root"
+              action="action_nw_brother"
+              name="Brothers"
+              sequence="10"/>
+
+</odoo>
