@@ -28,6 +28,10 @@ ranging parties sent beyond the Wall.
     'data': [
         'security/ir.model.access.csv',
 
+        'data/nw_order_data.xml',
+        'data/nw_role_data.xml',
+        'data/nw_threat_data.xml',
+
         'views/nights_watch_menu.xml',
         'views/nw_brother_views.xml',
         'views/nw_order_views.xml',
@@ -40,10 +44,7 @@ ranging parties sent beyond the Wall.
     ],
 
     'demo': [
-        'demo/nw_order_demo.xml',
         'demo/nw_castle_demo.xml',
-        'demo/nw_threat_demo.xml',
-        'demo/nw_role_demo.xml',
         'demo/nw_brother_demo.xml',
         'demo/nw_ranging_demo.xml',
     ],
