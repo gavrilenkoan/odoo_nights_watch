@@ -4,7 +4,7 @@
         <field name="name">nw.brother.list</field>
         <field name="model">nw.brother</field>
         <field name="arch" type="xml">
-            <list decoration-muted="status == 'fallen'"
+            <list decoration-muted="status in ('fallen', 'lost')"
                   decoration-danger="status == 'deserted'"
                   decoration-info="status == 'ranging'">
                 <field name="name"/>
@@ -34,6 +34,7 @@
                 <header>
                     <field name="status" widget="statusbar" clickable="1"
                            statusbar_visible="recruit,sworn,ranging"/>
+                    <field name="in_service" invisible="1"/>
                 </header>
                 <sheet>
                     <widget name="web_ribbon" title="Archived"
@@ -189,8 +190,13 @@
                         domain="[('status', '=', 'sworn')]"/>
                 <filter name="filter_recruits" string="Recruits"
                         domain="[('status', '=', 'recruit')]"/>
-                <filter name="filter_ranging" string="Beyond the Wall"
+                <filter name="filter_ranging" string="Ranging"
                         domain="[('status', '=', 'ranging')]"/>
+                <filter name="filter_lost" string="Lost Beyond the Wall"
+                        domain="[('status', '=', 'lost')]"/>
+                <separator/>
+                <filter name="filter_in_service" string="Still in Service"
+                        domain="[('in_service', '=', True)]"/>
                 <separator/>
                 <filter name="filter_senior" string="Senior Brothers"
                         domain="[('is_senior', '=', True)]"/>
