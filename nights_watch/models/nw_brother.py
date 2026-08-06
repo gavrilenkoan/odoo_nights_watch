@@ -647,16 +647,26 @@ class NwBrother(models.Model):
 
         return True
 
-    def action_declare_dead(self):
-        """Give up hope for a man lost beyond the Wall.
+    def action_declare_fallen(self):
+        """Count a brother among the fallen.
+
+        Any man still on the rolls may die: on the ice, of a wound, or of age
+        in his bed. So may one lost beyond the Wall, when hope for him runs
+        out. Those who left the Watch by another road keep the record of it.
 
         :return: True
-        :raises UserError: when the brother was not lost beyond the Wall.
+        :raises UserError: when the brother already left the Watch as a
+            deserter, an executed man, or one who refused the oath.
         """
         for brother in self:
-            if brother.status != 'lost':
-                raise UserError(self.env._(
-                    '%(name)s is not lost beyond the Wall.', name=brother.name,
-                ))
+            if not (brother.in_service or brother.status == 'lost'):
+                raise UserError(
+                    self.env._(
+                        'Only a man still on the rolls, or one lost beyond the '
+                        'Wall, may be counted among the fallen. %(name)s left the '
+                        'Watch by another road.',
+                        name=brother.name,
+                    )
+                )
 
         return self.write({'status': 'fallen'})
