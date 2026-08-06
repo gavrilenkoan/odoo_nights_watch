@@ -28,17 +28,6 @@
         </field>
     </record>
 
-    <record id="ranging_benjen" model="nw.ranging">
-        <field name="name">Benjen Stark's Ranging</field>
-        <field name="status">ongoing</field>
-        <field name="castle_id" ref="castle_black"/>
-        <field name="threat_id" ref="threat_free_folk"/>
-        <field name="leader_id" ref="brother_benjen"/>
-        <field name="brother_ids" eval="[Command.set([ref('brother_benjen')])]"/>
-        <field name="date_start">2024-08-14</field>
-        <field name="objective">Scout the haunted forest for signs of the King-Beyond-the-Wall.</field>
-    </record>
-
     <record id="ranging_fist" model="nw.ranging">
         <field name="name">Patrol to the Fist of the First Men</field>
         <field name="status">planned</field>

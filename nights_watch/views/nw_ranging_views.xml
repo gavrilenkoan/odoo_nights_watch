@@ -30,12 +30,8 @@
                     <button name="action_depart" type="object"
                             string="Depart" class="btn-primary"
                             invisible="status != 'planned'"/>
-                    <button name="action_return" type="object"
-                            string="Return" class="btn-primary"
-                            invisible="status != 'ongoing'"/>
-                    <button name="action_mark_lost" type="object"
-                            string="Declare Lost"
-                            confirm="Give up on this ranging? Every man not counted among the casualties will be marked lost beyond the Wall."
+                    <button name="%(nights_watch.action_nw_ranging_return_wizard)d" type="action"
+                            string="Bring Home" class="btn-primary"
                             invisible="status != 'ongoing'"/>
                     <field name="status" widget="statusbar"
                            statusbar_visible="planned,ongoing,returned"/>
@@ -82,6 +78,7 @@
                             <separator string="Casualties"/>
                             <field name="casualty_ids" nolabel="1"
                                    widget="many2many_tags"
+                                   readonly="status in ('returned', 'lost')"
                                    domain="[('id', 'in', brother_ids)]"/>
                         </page>
                     </notebook>

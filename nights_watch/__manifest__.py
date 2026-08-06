@@ -35,6 +35,8 @@ ranging parties sent beyond the Wall.
         'data/nw_threat_data.xml',
 
         'wizard/nw_assign_wizard_views.xml',
+        'wizard/nw_ranging_wizard_views.xml',
+        'wizard/nw_ranging_return_wizard_views.xml',
 
         'views/nights_watch_menu.xml',
         'views/nw_brother_views.xml',

@@ -19,3 +19,5 @@ access_nw_ranging_officer,nw.ranging officer,model_nw_ranging,nights_watch.group
 access_nw_ranging_commander,nw.ranging commander,model_nw_ranging,nights_watch.group_nw_commander,1,1,1,1
 access_nw_ranging_system,nw.ranging system,model_nw_ranging,base.group_system,1,1,1,1
 access_nw_assign_wizard,nw.assign.wizard,model_nw_assign_wizard,nights_watch.group_nw_brother,1,1,1,0
+access_nw_ranging_wizard,nw.ranging.wizard,model_nw_ranging_wizard,nights_watch.group_nw_brother,1,1,1,0
+access_nw_ranging_return_wizard,nw.ranging.return.wizard,model_nw_ranging_return_wizard,nights_watch.group_nw_brother,1,1,1,0
