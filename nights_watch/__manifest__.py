@@ -49,7 +49,16 @@ ranging parties sent beyond the Wall.
         'views/nw_threat_views.xml',
         'views/res_partner_views.xml',
         'views/res_users_views.xml',
+
+        'report/nw_ranging_report.xml',
+        'report/nw_brother_report.xml',
     ],
+
+    'assets': {
+        'web.report_assets_common': [
+            'nights_watch/static/src/scss/nights_watch_report.scss',
+        ],
+    },
 
     'demo': [
         'demo/nw_castle_demo.xml',

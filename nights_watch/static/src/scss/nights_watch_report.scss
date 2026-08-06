@@ -1,0 +1,217 @@
+$nw-ink:    #1a1a1a;
+$nw-muted:  #7a7a7a;
+$nw-rule:   #e2e0da;
+$nw-band:   #f3f2ee;
+$nw-stripe: #faf9f6;
+$nw-header: #26262b;
+
+.o_nw_report {
+    font-family: Helvetica, Arial, "Liberation Sans", sans-serif;
+    color: $nw-ink;
+    font-size: 0.92rem;
+
+    .o_nw_head {
+        margin-bottom: 22px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid $nw-ink;
+    }
+
+    .o_nw_name {
+        margin: 0;
+        font-size: 1.75rem;
+        font-weight: 700;
+        line-height: 1.2;
+    }
+
+    .o_nw_sub {
+        margin-top: 2px;
+        color: $nw-muted;
+        font-style: italic;
+    }
+
+    .o_nw_portrait {
+        max-width: 100%;
+        border: 1px solid $nw-ink;
+    }
+
+    .o_nw_section {
+        margin: 24px 0 8px;
+        color: $nw-ink;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+    }
+
+    table {
+        width: 100%;
+        margin: 0;
+        border-collapse: collapse;
+    }
+
+    thead {
+        display: table-header-group;
+    }
+
+    tr {
+        page-break-inside: avoid;
+    }
+
+    .o_nw_facts {
+        table-layout: fixed;
+        border: 1px solid $nw-ink;
+
+        th,
+        td {
+            padding: 6px 10px;
+            border-right: 1px solid $nw-rule;
+            border-bottom: 1px solid $nw-rule;
+            vertical-align: top;
+            word-wrap: break-word;
+        }
+
+        th:last-child,
+        td:last-child {
+            border-right: none;
+        }
+
+        tr:last-child th,
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        th {
+            width: 21%;
+            background-color: $nw-band;
+            text-align: left;
+            color: #55534d;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        td {
+            width: 29%;
+        }
+    }
+
+    .o_nw_grid {
+        table-layout: fixed;
+        border: 1px solid $nw-ink;
+
+        thead th {
+            padding: 7px 10px;
+            background-color: $nw-header;
+            text-align: left;
+            word-wrap: break-word;
+            color: #ffffff;
+            font-size: 0.76rem;
+            font-weight: 600;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        thead th:not(:last-child) {
+            border-right: 1px solid #43434b;
+        }
+
+        tbody td {
+            padding: 6px 10px;
+            border-right: 1px solid $nw-rule;
+            border-bottom: 1px solid $nw-rule;
+            vertical-align: top;
+            word-wrap: break-word;
+        }
+
+        tbody td:last-child {
+            border-right: none;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .text-end {
+            text-align: right;
+        }
+
+        tbody tr:nth-child(even) td {
+            background-color: $nw-stripe;
+        }
+    }
+
+    .o_nw_rangings {
+        font-size: 0.84rem;
+    }
+
+    .o_nw_badge {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 3px 12px;
+        border: 1px solid $nw-ink;
+        border-radius: 12px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+
+        &.o_nw_badge_ongoing,
+        &.o_nw_badge_ranging { background-color: #dce8f4; }
+
+        &.o_nw_badge_returned,
+        &.o_nw_badge_sworn { background-color: #dcecd6; }
+
+        &.o_nw_badge_lost { background-color: #f8ead0; }
+
+        &.o_nw_badge_deserted,
+        &.o_nw_badge_executed { background-color: #f3d9d9; }
+
+        &.o_nw_badge_fallen,
+        &.o_nw_badge_refused { background-color: #e6e5e2; }
+    }
+
+    .o_nw_tag {
+        display: inline-block;
+        margin-left: 8px;
+        padding: 0 7px;
+        border: 1px solid $nw-muted;
+        border-radius: 9px;
+        color: $nw-muted;
+        font-size: 0.66rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .o_nw_fell {
+        color: #8b1a1a;
+        font-weight: 700;
+    }
+
+    .o_nw_lost {
+        color: #8a6d1f;
+        font-weight: 600;
+    }
+
+    .o_nw_prose {
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    .o_nw_dead {
+        ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        li {
+            padding: 1px 0;
+        }
+    }
+}
+
+.header,
+.footer {
+    font-family: Helvetica, Arial, "Liberation Sans", sans-serif;
+}

@@ -1,0 +1,183 @@
+<odoo>
+
+    <record id="action_report_nw_brother" model="ir.actions.report">
+        <field name="name">Brother Dossier</field>
+        <field name="model">nw.brother</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nights_watch.report_nw_brother</field>
+        <field name="report_file">nights_watch.report_nw_brother</field>
+        <field name="print_report_name">'Dossier - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_nw_brother"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_nw_brother_document">
+        <t t-call="web.external_layout">
+            <t t-set="o" t-value="brother"/>
+            <div class="page o_nw_report">
+
+                <div class="o_nw_head row">
+                    <div class="col-3" t-if="brother.image_128">
+                        <img t-att-src="image_data_uri(brother.image_128)"
+                             class="o_nw_portrait" alt="Portrait"/>
+                    </div>
+                    <div t-attf-class="col-#{brother.image_128 and 9 or 12}">
+                        <h2 class="o_nw_name"><span t-field="brother.name"/></h2>
+                        <div t-if="brother.nickname" class="o_nw_sub">
+                            "<span t-field="brother.nickname"/>"
+                        </div>
+                        <span t-attf-class="o_nw_badge o_nw_badge_#{brother.status}"
+                              t-field="brother.status"/>
+                    </div>
+                </div>
+
+                <h4 class="o_nw_section">Service</h4>
+                <table class="o_nw_facts o_ignore_layout_styling">
+                    <tr>
+                        <th>Order</th>
+                        <td><span t-field="brother.order_id"/></td>
+                        <th>Office</th>
+                        <td><span t-field="brother.role_id"/></td>
+                    </tr>
+                    <tr>
+                        <th>Castle</th>
+                        <td><span t-field="brother.castle_id"/></td>
+                        <th>Answers To</th>
+                        <td>
+                            <span t-if="brother.mentor_id" t-field="brother.mentor_id"/>
+                            <span t-else="">no one on the Wall</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Date of the Oath</th>
+                        <td>
+                            <span t-if="brother.oath_date" t-field="brother.oath_date"/>
+                            <span t-else="">not yet sworn</span>
+                        </td>
+                        <th>Years Served</th>
+                        <td><span t-field="brother.years_of_service"/></td>
+                    </tr>
+                    <tr t-if="brother.serves_id or brother.steward_ids">
+                        <th>Serves</th>
+                        <td><span t-field="brother.serves_id"/></td>
+                        <th>Personal Stewards</th>
+                        <td><span t-out="len(brother.steward_ids)"/></td>
+                    </tr>
+                </table>
+
+                <h4 class="o_nw_section">How He Came to the Wall</h4>
+                <table class="o_nw_facts o_ignore_layout_styling">
+                    <tr>
+                        <th>Comes From</th>
+                        <td><span t-field="brother.origin"/></td>
+                        <th>Age</th>
+                        <td>
+                            <span t-if="brother.age" t-field="brother.age"/>
+                            <span t-else="">unknown</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Reason</th>
+                        <td><span t-field="brother.recruitment_reason"/></td>
+                        <th>Before the Wall</th>
+                        <td><span t-field="brother.former_life"/></td>
+                    </tr>
+                    <tr>
+                        <th>Born</th>
+                        <td>
+                            <span t-if="brother.is_noble_born">noble born</span>
+                            <span t-else="">common born</span>
+                        </td>
+                        <th>Free Folk</th>
+                        <td>
+                            <span t-if="brother.is_wildling">came from beyond the Wall</span>
+                            <span t-else="">no</span>
+                        </td>
+                    </tr>
+                </table>
+
+                <h4 class="o_nw_section">What He Can Do</h4>
+                <table class="o_nw_facts o_ignore_layout_styling">
+                    <tr>
+                        <th>Skills</th>
+                        <td><span t-field="brother.skills"/></td>
+                        <th>Weapon</th>
+                        <td><span t-field="brother.weapon"/></td>
+                    </tr>
+                    <tr>
+                        <th>Letters</th>
+                        <td>
+                            <span t-if="brother.can_read">reads and writes</span>
+                            <span t-else="">unlettered</span>
+                        </td>
+                        <th>Warg</th>
+                        <td>
+                            <span t-if="brother.is_warg">said to walk in the skins of beasts</span>
+                            <span t-else="">no</span>
+                        </td>
+                    </tr>
+                </table>
+
+                <h4 class="o_nw_section">Rangings Beyond the Wall</h4>
+                <table class="o_nw_grid o_nw_rangings o_ignore_layout_styling"
+                       t-if="brother.ranging_ids">
+                    <colgroup>
+                        <col style="width: 24%"/>
+                        <col style="width: 14%"/>
+                        <col style="width: 14%"/>
+                        <col style="width: 12%"/>
+                        <col style="width: 12%"/>
+                        <col style="width: 8%"/>
+                        <col style="width: 16%"/>
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Ranging</th>
+                            <th>Departs From</th>
+                            <th>Threat</th>
+                            <th>Departure</th>
+                            <th>Return</th>
+                            <th class="text-end">Days</th>
+                            <th>Outcome</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="brother.ranging_ids" t-as="ranging">
+                            <td>
+                                <span t-field="ranging.name"/>
+                                <span t-if="ranging.leader_id == brother"
+                                      class="o_nw_tag">led</span>
+                            </td>
+                            <td><span t-field="ranging.castle_id"/></td>
+                            <td><span t-field="ranging.threat_id"/></td>
+                            <td><span t-field="ranging.date_start"/></td>
+                            <td><span t-field="ranging.date_end"/></td>
+                            <td class="text-end"><span t-field="ranging.duration"/></td>
+                            <td>
+                                <span t-if="brother in ranging.casualty_ids"
+                                      class="o_nw_fell">Fell</span>
+                                <span t-else="" t-field="ranging.status"/>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p t-else="" class="o_nw_sub">He has never ridden beyond the Wall.</p>
+
+                <div t-if="brother.notable_deed">
+                    <h4 class="o_nw_section">Notable Deeds</h4>
+                    <p class="o_nw_prose" t-field="brother.notable_deed"/>
+                </div>
+
+            </div>
+        </t>
+    </template>
+
+    <template id="report_nw_brother">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="brother">
+                <t t-call="nights_watch.report_nw_brother_document"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>
