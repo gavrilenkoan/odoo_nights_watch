@@ -3,6 +3,16 @@ from odoo.exceptions import UserError, ValidationError
 
 SERVING_STATUSES = ('recruit', 'waiting', 'sworn', 'ranging')
 
+RECRUITMENT_REASONS = [
+    ('volunteer', 'Volunteer'),
+    ('crime', 'Sentenced for a Crime'),
+    ('bastard', 'Bastard Born'),
+    ('exile', 'Exiled'),
+    ('orphan', 'Orphan'),
+    ('debt', 'Debt'),
+    ('political', 'Political Reasons'),
+]
+
 
 class NwBrother(models.Model):
     """Recruit or sworn brother of the Night's Watch.
@@ -117,15 +127,7 @@ class NwBrother(models.Model):
     )
 
     recruitment_reason = fields.Selection(
-        selection=[
-            ('volunteer', 'Volunteer'),
-            ('crime', 'Sentenced for a Crime'),
-            ('bastard', 'Bastard Born'),
-            ('exile', 'Exiled'),
-            ('orphan', 'Orphan'),
-            ('debt', 'Debt'),
-            ('political', 'Political Reasons'),
-        ],
+        selection=RECRUITMENT_REASONS,
         help='Why he ended up on the Wall.',
     )
     former_life = fields.Char(help='What he was before the Wall: smith, lord, thief...')
@@ -369,6 +371,7 @@ class NwBrother(models.Model):
             else:
                 brother.standing = 'recruit'
 
+    @api.depends('user_id')
     @api.depends_context('uid')
     def _compute_is_current_user(self):
         """Flag the record of whoever is looking at it."""

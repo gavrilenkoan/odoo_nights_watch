@@ -3,6 +3,7 @@ access_nw_role_brother,nw.role brother,model_nw_role,nights_watch.group_nw_broth
 access_nw_role_system,nw.role system,model_nw_role,base.group_system,1,1,1,1
 access_nw_order_brother,nw.order brother,model_nw_order,nights_watch.group_nw_brother,1,0,0,0
 access_nw_order_system,nw.order system,model_nw_order,base.group_system,1,1,1,1
+access_nw_castle_south,nw.castle men of the south,model_nw_castle,base.group_user,1,0,0,0
 access_nw_castle_brother,nw.castle brother,model_nw_castle,nights_watch.group_nw_brother,1,0,0,0
 access_nw_castle_commander,nw.castle commander,model_nw_castle,nights_watch.group_nw_commander,1,1,0,0
 access_nw_castle_system,nw.castle system,model_nw_castle,base.group_system,1,1,1,1
@@ -18,3 +19,10 @@ access_nw_ranging_brother,nw.ranging brother,model_nw_ranging,nights_watch.group
 access_nw_ranging_officer,nw.ranging officer,model_nw_ranging,nights_watch.group_nw_officer,1,1,1,0
 access_nw_ranging_commander,nw.ranging commander,model_nw_ranging,nights_watch.group_nw_commander,1,1,1,1
 access_nw_ranging_system,nw.ranging system,model_nw_ranging,base.group_system,1,1,1,1
+access_nw_assign_wizard,nw.assign.wizard,model_nw_assign_wizard,nights_watch.group_nw_brother,1,1,1,0
+access_nw_assign_wizard_system,nw.assign.wizard system,model_nw_assign_wizard,base.group_system,1,1,1,1
+access_nw_ranging_wizard,nw.ranging.wizard,model_nw_ranging_wizard,nights_watch.group_nw_brother,1,1,1,0
+access_nw_ranging_wizard_system,nw.ranging.wizard system,model_nw_ranging_wizard,base.group_system,1,1,1,1
+access_nw_ranging_return_wizard,nw.ranging.return.wizard,model_nw_ranging_return_wizard,nights_watch.group_nw_brother,1,1,1,0
+access_nw_ranging_return_wizard_system,nw.ranging.return.wizard system,model_nw_ranging_return_wizard,base.group_system,1,1,1,1
+access_nw_take_black_wizard,nw.take.black.wizard,model_nw_take_black_wizard,base.group_user,1,1,1,0

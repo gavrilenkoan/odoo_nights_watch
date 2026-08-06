@@ -41,7 +41,7 @@
                     <button name="action_say_the_words" type="object"
                             string="Say the Words" class="btn-primary"
                             invisible="status != 'recruit' or not is_current_user"/>
-                    <button name="action_assign_order" type="object"
+                    <button name="%(nights_watch.action_nw_assign_wizard)d" type="action"
                             string="Assign to Order" class="btn-primary"
                             invisible="status != 'waiting'"/>
                     <button name="action_found" type="object"

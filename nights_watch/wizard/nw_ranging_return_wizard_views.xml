@@ -1,0 +1,40 @@
+<odoo>
+
+    <record id="view_nw_ranging_return_wizard_form" model="ir.ui.view">
+        <field name="name">nw.ranging.return.wizard.form</field>
+        <field name="model">nw.ranging.return.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Bring the Ranging Home">
+                <field name="party_ids" invisible="1"/>
+                <group>
+                    <field name="ranging_id"/>
+                    <field name="outcome" widget="radio"/>
+                    <field name="date_end"/>
+                </group>
+                <div class="alert alert-warning" role="alert" invisible="outcome != 'lost'">
+                    Every man not named below is given up as lost beyond the Wall.
+                    His office passes to another.
+                </div>
+                <separator string="Casualties"/>
+                <field name="casualty_ids" nolabel="1" widget="many2many_tags"
+                       domain="[('id', 'in', party_ids)]"/>
+                <separator string="Report"/>
+                <field name="summary" nolabel="1"/>
+                <footer>
+                    <button name="action_confirm" type="object" string="Close the Ranging"
+                            class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_nw_ranging_return_wizard" model="ir.actions.act_window">
+        <field name="name">Bring the Ranging Home</field>
+        <field name="res_model">nw.ranging.return.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_nw_ranging_return_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

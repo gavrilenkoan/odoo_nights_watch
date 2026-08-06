@@ -1,0 +1,54 @@
+<odoo>
+
+    <record id="view_nw_ranging_wizard_form" model="ir.ui.view">
+        <field name="name">nw.ranging.wizard.form</field>
+        <field name="model">nw.ranging.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Form a Ranging Party">
+                <div class="alert alert-warning" role="alert" invisible="not note">
+                    <field name="note" nolabel="1"/>
+                </div>
+                <group>
+                    <group>
+                        <field name="name" placeholder="e.g. The Great Ranging"/>
+                        <field name="castle_id"/>
+                        <field name="threat_id"/>
+                    </group>
+                    <group>
+                        <field name="leader_id" domain="[('id', 'in', brother_ids)]"/>
+                        <field name="date_start"/>
+                        <field name="depart_now"/>
+                    </group>
+                </group>
+                <separator string="Party"/>
+                <field name="brother_ids" nolabel="1">
+                    <list>
+                        <field name="name"/>
+                        <field name="order_id"/>
+                        <field name="role_id"/>
+                        <field name="castle_id"/>
+                    </list>
+                </field>
+                <separator string="Objective"/>
+                <field name="objective" nolabel="1"
+                       placeholder="What the party is sent to do..."/>
+                <footer>
+                    <button name="action_form_party" type="object" string="Form the Party"
+                            class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_nw_ranging_wizard" model="ir.actions.act_window">
+        <field name="name">Form a Ranging Party</field>
+        <field name="res_model">nw.ranging.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_nw_ranging_wizard_form"/>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_nw_brother"/>
+        <field name="binding_view_types">list</field>
+    </record>
+
+</odoo>

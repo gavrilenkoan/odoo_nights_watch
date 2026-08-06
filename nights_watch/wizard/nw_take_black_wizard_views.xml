@@ -1,0 +1,39 @@
+<odoo>
+
+    <record id="view_nw_take_black_wizard_form" model="ir.ui.view">
+        <field name="name">nw.take.black.wizard.form</field>
+        <field name="model">nw.take.black.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Take the Black">
+                <div class="alert alert-warning" role="alert" invisible="not note">
+                    <field name="note" nolabel="1"/>
+                </div>
+                <div class="alert alert-info" role="alert">
+                    Night gathers, and now my watch begins. It shall not end until my death.
+                </div>
+                <group>
+                    <field name="castle_id"/>
+                    <field name="recruitment_reason"/>
+                </group>
+                <separator string="Men"/>
+                <field name="partner_ids" nolabel="1" widget="many2many_tags"/>
+                <footer>
+                    <button name="action_take_the_black" type="object" string="Take the Black"
+                            class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_nw_take_black_wizard" model="ir.actions.act_window">
+        <field name="name">Take the Black</field>
+        <field name="res_model">nw.take.black.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_nw_take_black_wizard_form"/>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="base.model_res_partner"/>
+        <field name="binding_view_types">list</field>
+    </record>
+
+</odoo>
