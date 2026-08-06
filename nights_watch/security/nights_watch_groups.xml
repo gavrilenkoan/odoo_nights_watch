@@ -1,0 +1,35 @@
+<odoo>
+
+    <record id="module_category_nights_watch" model="ir.module.category">
+        <field name="name">Night's Watch</field>
+        <field name="sequence">20</field>
+    </record>
+
+    <record id="privilege_nights_watch" model="res.groups.privilege">
+        <field name="name">Night's Watch</field>
+        <field name="category_id" ref="module_category_nights_watch"/>
+        <field name="sequence">10</field>
+    </record>
+
+    <record id="group_nw_brother" model="res.groups">
+        <field name="name">Brother</field>
+        <field name="privilege_id" ref="privilege_nights_watch"/>
+        <field name="implied_ids" eval="[Command.link(ref('base.group_user'))]"/>
+        <field name="comment">Every man of the Watch. He reads the rolls of the whole Wall and changes nothing.</field>
+    </record>
+
+    <record id="group_nw_officer" model="res.groups">
+        <field name="name">Officer</field>
+        <field name="privilege_id" ref="privilege_nights_watch"/>
+        <field name="implied_ids" eval="[Command.link(ref('group_nw_brother'))]"/>
+        <field name="comment">A holder of a senior office. He enrols and posts the men of his own castle, but deletes nothing.</field>
+    </record>
+
+    <record id="group_nw_commander" model="res.groups">
+        <field name="name">Castle Commander</field>
+        <field name="privilege_id" ref="privilege_nights_watch"/>
+        <field name="implied_ids" eval="[Command.link(ref('group_nw_officer'))]"/>
+        <field name="comment">He answers for a castle, and may strike its records out entirely. Other castles are not his to touch.</field>
+    </record>
+
+</odoo>

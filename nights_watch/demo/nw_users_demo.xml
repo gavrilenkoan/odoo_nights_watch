@@ -1,0 +1,103 @@
+<odoo>
+
+    <record id="user_mormont" model="res.users">
+        <field name="name">Jeor Mormont</field>
+        <field name="login">mormont</field>
+        <field name="password">mormont</field>
+        <field name="group_ids" eval="[Command.link(ref('base.group_user'))]"/>
+    </record>
+
+    <record id="user_mallister" model="res.users">
+        <field name="name">Denys Mallister</field>
+        <field name="login">mallister</field>
+        <field name="password">mallister</field>
+        <field name="group_ids" eval="[Command.link(ref('base.group_user'))]"/>
+    </record>
+
+    <record id="user_rykker" model="res.users">
+        <field name="name">Jeremy Rykker</field>
+        <field name="login">rykker</field>
+        <field name="password">rykker</field>
+        <field name="group_ids" eval="[Command.link(ref('base.group_user'))]"/>
+    </record>
+
+    <record id="user_rast" model="res.users">
+        <field name="name">Rast</field>
+        <field name="login">rast</field>
+        <field name="password">rast</field>
+        <field name="group_ids" eval="[Command.link(ref('base.group_user'))]"/>
+    </record>
+
+    <record id="user_aemon" model="res.users">
+        <field name="name">Aemon Targaryen</field>
+        <field name="login">aemon</field>
+        <field name="password">aemon</field>
+        <field name="group_ids" eval="[Command.link(ref('base.group_user'))]"/>
+    </record>
+
+    <record id="user_cellador" model="res.users">
+        <field name="name">Cellador</field>
+        <field name="login">cellador</field>
+        <field name="password">cellador</field>
+        <field name="group_ids" eval="[Command.link(ref('base.group_user'))]"/>
+    </record>
+
+    <record id="user_dalbridge" model="res.users">
+        <field name="name">Dalbridge</field>
+        <field name="login">dalbridge</field>
+        <field name="password">dalbridge</field>
+        <field name="group_ids" eval="[Command.link(ref('base.group_user'))]"/>
+    </record>
+
+    <record id="user_jon" model="res.users">
+        <field name="name">Jon Snow</field>
+        <field name="login">jon</field>
+        <field name="password">jon</field>
+        <field name="group_ids" eval="[Command.link(ref('base.group_user'))]"/>
+    </record>
+
+    <record id="user_jeren" model="res.users">
+        <field name="name">Jeren</field>
+        <field name="login">jeren</field>
+        <field name="password">jeren</field>
+        <field name="group_ids" eval="[Command.link(ref('base.group_user'))]"/>
+    </record>
+
+
+    <record id="brother_mormont" model="nw.brother">
+        <field name="user_id" ref="user_mormont"/>
+    </record>
+
+    <record id="brother_mallister" model="nw.brother">
+        <field name="user_id" ref="user_mallister"/>
+    </record>
+
+    <record id="brother_rykker" model="nw.brother">
+        <field name="user_id" ref="user_rykker"/>
+    </record>
+
+    <record id="brother_rast" model="nw.brother">
+        <field name="user_id" ref="user_rast"/>
+    </record>
+
+    <record id="brother_aemon" model="nw.brother">
+        <field name="user_id" ref="user_aemon"/>
+    </record>
+
+    <record id="brother_cellador" model="nw.brother">
+        <field name="user_id" ref="user_cellador"/>
+    </record>
+
+    <record id="brother_dalbridge" model="nw.brother">
+        <field name="user_id" ref="user_dalbridge"/>
+    </record>
+
+    <record id="brother_jon" model="nw.brother">
+        <field name="user_id" ref="user_jon"/>
+    </record>
+
+    <record id="brother_jeren" model="nw.brother">
+        <field name="user_id" ref="user_jeren"/>
+    </record>
+
+</odoo>

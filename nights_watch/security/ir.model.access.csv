@@ -1,7 +1,20 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_nw_role_user,nw.role user,model_nw_role,base.group_user,1,1,1,1
-access_nw_order_user,nw.order user,model_nw_order,base.group_user,1,1,1,1
-access_nw_castle_user,nw.castle user,model_nw_castle,base.group_user,1,1,1,1
-access_nw_brother_user,nw.brother user,model_nw_brother,base.group_user,1,1,1,1
-access_nw_ranging_user,nw.ranging user,model_nw_ranging,base.group_user,1,1,1,1
-access_nw_threat_user,nw.threat user,model_nw_threat,base.group_user,1,1,1,1
+access_nw_role_brother,nw.role brother,model_nw_role,nights_watch.group_nw_brother,1,0,0,0
+access_nw_role_system,nw.role system,model_nw_role,base.group_system,1,1,1,1
+access_nw_order_brother,nw.order brother,model_nw_order,nights_watch.group_nw_brother,1,0,0,0
+access_nw_order_system,nw.order system,model_nw_order,base.group_system,1,1,1,1
+access_nw_castle_brother,nw.castle brother,model_nw_castle,nights_watch.group_nw_brother,1,0,0,0
+access_nw_castle_commander,nw.castle commander,model_nw_castle,nights_watch.group_nw_commander,1,1,0,0
+access_nw_castle_system,nw.castle system,model_nw_castle,base.group_system,1,1,1,1
+access_nw_threat_brother,nw.threat brother,model_nw_threat,nights_watch.group_nw_brother,1,0,0,0
+access_nw_threat_officer,nw.threat officer,model_nw_threat,nights_watch.group_nw_officer,1,1,1,0
+access_nw_threat_commander,nw.threat commander,model_nw_threat,nights_watch.group_nw_commander,1,1,1,1
+access_nw_threat_system,nw.threat system,model_nw_threat,base.group_system,1,1,1,1
+access_nw_brother_brother,nw.brother brother,model_nw_brother,nights_watch.group_nw_brother,1,0,0,0
+access_nw_brother_officer,nw.brother officer,model_nw_brother,nights_watch.group_nw_officer,1,1,1,0
+access_nw_brother_commander,nw.brother commander,model_nw_brother,nights_watch.group_nw_commander,1,1,1,1
+access_nw_brother_system,nw.brother system,model_nw_brother,base.group_system,1,1,1,1
+access_nw_ranging_brother,nw.ranging brother,model_nw_ranging,nights_watch.group_nw_brother,1,0,0,0
+access_nw_ranging_officer,nw.ranging officer,model_nw_ranging,nights_watch.group_nw_officer,1,1,1,0
+access_nw_ranging_commander,nw.ranging commander,model_nw_ranging,nights_watch.group_nw_commander,1,1,1,1
+access_nw_ranging_system,nw.ranging system,model_nw_ranging,base.group_system,1,1,1,1

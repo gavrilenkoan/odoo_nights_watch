@@ -26,7 +26,9 @@ ranging parties sent beyond the Wall.
     ],
 
     'data': [
+        'security/nights_watch_groups.xml',
         'security/ir.model.access.csv',
+        'security/nights_watch_security.xml',
 
         'data/nw_order_data.xml',
         'data/nw_role_data.xml',
@@ -47,6 +49,7 @@ ranging parties sent beyond the Wall.
         'demo/nw_castle_demo.xml',
         'demo/nw_brother_demo.xml',
         'demo/nw_ranging_demo.xml',
+        'demo/nw_users_demo.xml',
     ],
 
     'installable': True,
