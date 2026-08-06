@@ -27,7 +27,17 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <field name="status" widget="statusbar" clickable="1"
+                    <button name="action_depart" type="object"
+                            string="Depart" class="btn-primary"
+                            invisible="status != 'planned'"/>
+                    <button name="action_return" type="object"
+                            string="Return" class="btn-primary"
+                            invisible="status != 'ongoing'"/>
+                    <button name="action_mark_lost" type="object"
+                            string="Declare Lost"
+                            confirm="Give up on this ranging? Every man not counted among the casualties will be marked lost beyond the Wall."
+                            invisible="status != 'ongoing'"/>
+                    <field name="status" widget="statusbar"
                            statusbar_visible="planned,ongoing,returned"/>
                 </header>
                 <sheet>

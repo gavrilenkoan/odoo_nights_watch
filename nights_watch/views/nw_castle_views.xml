@@ -34,7 +34,6 @@
                             <field name="instructor_id"/>
                         </group>
                         <group>
-                            <field name="garrison"/>
                             <field name="capacity"/>
                             <field name="sequence"/>
                             <field name="is_active" widget="boolean_toggle"/>
@@ -63,6 +62,12 @@
                             </field>
                         </page>
                     </notebook>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_garrison" type="object"
+                                class="oe_stat_button" icon="fa-users">
+                            <field name="garrison" widget="statinfo" string="Garrison"/>
+                        </button>
+                    </div>
                 </sheet>
             </form>
         </field>

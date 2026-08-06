@@ -584,3 +584,89 @@ class NwBrother(models.Model):
                 ))
 
         return self.write({'status': 'refused', 'active': False})
+
+    def action_desert(self):
+        """Strike an oathbreaker from the rolls.
+
+        :return: True
+        :raises UserError: when the brother is no longer in service.
+        """
+        for brother in self:
+            if not brother.in_service:
+                raise UserError(self.env._(
+                    '%(name)s is no longer on the rolls of the Watch.',
+                    name=brother.name,
+                ))
+
+        return self.write({'status': 'deserted'})
+
+    def action_execute(self):
+        """Carry out the sentence on a deserter.
+
+        The refusal itself lives in :meth:`_check_execution`, which ``write``
+        already calls.
+
+        :return: True
+        """
+        return self.write({'status': 'executed'})
+
+    def action_view_rangings(self):
+        """Open the rangings this brother took part in.
+
+        :return: an ``ir.actions.act_window`` dict.
+        """
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': self.env._('Rangings'),
+            'res_model': 'nw.ranging',
+            'view_mode': 'list,form',
+            'domain': [('id', 'in', self.ranging_ids.ids)],
+        }
+
+    def action_found(self):
+        """A man given up for lost comes back through the gate.
+
+        He returns to whatever duty he can still hold: to his order if he
+        belongs to one, otherwise to the queue awaiting a posting. An office
+        he held may have passed to another man while he was gone, and that is
+        not undone by his return.
+
+        :return: True
+        :raises UserError: when the brother was not lost beyond the Wall.
+        """
+        for brother in self:
+            if brother.status != 'lost':
+                raise UserError(self.env._(
+                    '%(name)s is not lost beyond the Wall.', name=brother.name,
+                ))
+
+            brother.write({
+                'status': 'sworn' if brother.order_id else 'waiting',
+            })
+
+        return True
+
+    def action_declare_fallen(self):
+        """Count a brother among the fallen.
+
+        Any man still on the rolls may die: on the ice, of a wound, or of age
+        in his bed. So may one lost beyond the Wall, when hope for him runs
+        out. Those who left the Watch by another road keep the record of it.
+
+        :return: True
+        :raises UserError: when the brother already left the Watch as a
+            deserter, an executed man, or one who refused the oath.
+        """
+        for brother in self:
+            if not (brother.in_service or brother.status == 'lost'):
+                raise UserError(
+                    self.env._(
+                        'Only a man still on the rolls, or one lost beyond the '
+                        'Wall, may be counted among the fallen. %(name)s left the '
+                        'Watch by another road.',
+                        name=brother.name,
+                    )
+                )
+
+        return self.write({'status': 'fallen'})

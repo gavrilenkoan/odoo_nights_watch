@@ -44,14 +44,34 @@
                     <button name="action_assign_order" type="object"
                             string="Assign to Order" class="btn-primary"
                             invisible="status != 'waiting'"/>
-                    <field name="status" widget="statusbar" clickable="1"
+                    <button name="action_found" type="object"
+                            string="Found Alive" class="btn-primary"
+                            invisible="status != 'lost'"/>
+                    <button name="action_declare_fallen" type="object"
+                            string="Declare Fallen"
+                            confirm="Count this brother among the fallen? And now his watch is ended."
+                            invisible="not in_service and status != 'lost'"/>
+                    <button name="action_desert" type="object"
+                            string="Declare Deserter"
+                            confirm="Strike this brother from the rolls as an oathbreaker?"
+                            invisible="status not in ('waiting', 'sworn', 'ranging')"/>
+                    <button name="action_execute" type="object"
+                            string="Execute" class="btn-danger"
+                            confirm="The Watch beheads deserters. Carry out the sentence?"
+                            invisible="status != 'deserted'"/>
+                    <field name="status" widget="statusbar"
                            statusbar_visible="recruit,waiting,sworn,ranging"/>
                     <field name="in_service" invisible="1"/>
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_rangings" type="object"
+                                class="oe_stat_button" icon="fa-shield">
+                            <field name="ranging_count" widget="statinfo" string="Rangings"/>
+                        </button>
+                    </div>
                     <widget name="web_ribbon" title="Archived"
                             bg_color="text-bg-danger" invisible="active"/>
-
                     <field name="image" widget="image" class="oe_avatar"/>
                     <div class="oe_title">
                         <label for="name"/>
@@ -125,7 +145,6 @@
                             </field>
                         </page>
                         <page string="Rangings" name="rangings">
-                            <field name="ranging_count" readonly="1"/>
                             <field name="ranging_ids" readonly="1" nolabel="1">
                                 <list>
                                     <field name="name"/>

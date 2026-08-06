@@ -97,3 +97,18 @@ class NwCastle(models.Model):
                     castle=castle.name,
                     capacity=castle.capacity,
                 ))
+
+    def action_view_garrison(self):
+        """Open the brothers quartered in this castle.
+
+        :return: an ``ir.actions.act_window`` dict filtered by castle.
+        """
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': self.env._('Garrison'),
+            'res_model': 'nw.brother',
+            'view_mode': 'list,kanban,form',
+            'domain': [('castle_id', '=', self.id)],
+            'context': {'default_castle_id': self.id},
+        }

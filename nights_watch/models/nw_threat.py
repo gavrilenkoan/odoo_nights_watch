@@ -47,3 +47,18 @@ class NwThreat(models.Model):
         """Count the rangings targeting this threat."""
         for threat in self:
             threat.ranging_count = len(threat.ranging_ids)
+
+    def action_view_rangings(self):
+        """Open the rangings sent against this threat.
+
+        :return: an ``ir.actions.act_window`` dict filtered by threat.
+        """
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': self.env._('Rangings'),
+            'res_model': 'nw.ranging',
+            'view_mode': 'list,form',
+            'domain': [('threat_id', '=', self.id)],
+            'context': {'default_threat_id': self.id},
+        }

@@ -113,3 +113,18 @@ class NwRole(models.Model):
                     'limited to one per castle.',
                     role=role.name,
                 ))
+
+    def action_view_holders(self):
+        """Open the brothers holding this office.
+
+        :return: an ``ir.actions.act_window`` dict filtered by role.
+        """
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': self.env._('Holders'),
+            'res_model': 'nw.brother',
+            'view_mode': 'list,form',
+            'domain': [('role_id', '=', self.id)],
+            'context': {'default_role_id': self.id},
+        }

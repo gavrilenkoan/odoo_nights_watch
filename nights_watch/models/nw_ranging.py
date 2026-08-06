@@ -1,5 +1,5 @@
 from odoo import api, fields, models
-from odoo.exceptions import ValidationError
+from odoo.exceptions import UserError, ValidationError
 
 
 class NwRanging(models.Model):
@@ -114,3 +114,82 @@ class NwRanging(models.Model):
                 raise ValidationError(self.env._(
                     'A ranging cannot come back before it departs.',
                 ))
+
+    def action_depart(self):
+        """Send the party beyond the Wall.
+
+        :return: True
+        :raises UserError: when the ranging is not planned, has no party, or
+            counts men who cannot ride.
+        """
+        for ranging in self:
+            if ranging.status != 'planned':
+                raise UserError(self.env._(
+                    '"%(name)s" has already departed.', name=ranging.name,
+                ))
+
+            if not ranging.brother_ids:
+                raise UserError(self.env._('A ranging needs at least one brother.'))
+
+            unfit = ranging.brother_ids.filtered(
+                lambda brother: brother.status != 'sworn'
+            )
+            if unfit:
+                raise UserError(self.env._(
+                    'Only sworn brothers ride beyond the Wall. These cannot: '
+                    '%(names)s.',
+                    names=', '.join(unfit.mapped('name')),
+                ))
+
+            ranging.write({
+                'status': 'ongoing',
+                'date_start': ranging.date_start or fields.Date.context_today(self),
+            })
+            ranging.brother_ids.write({'status': 'ranging'})
+
+        return True
+
+    def action_return(self):
+        """Bring the party home: the fallen are counted, the rest go back to duty.
+
+        :return: True
+        :raises UserError: when the ranging is not beyond the Wall.
+        """
+        for ranging in self:
+            if ranging.status != 'ongoing':
+                raise UserError(self.env._(
+                    '"%(name)s" is not beyond the Wall.', name=ranging.name,
+                ))
+
+            ranging.write({
+                'status': 'returned',
+                'date_end': ranging.date_end or fields.Date.context_today(self),
+            })
+            ranging.casualty_ids.write({'status': 'fallen'})
+            (ranging.brother_ids - ranging.casualty_ids).write({'status': 'sworn'})
+
+        return True
+
+    def action_mark_lost(self):
+        """Give up a ranging that never came back.
+
+        Known casualties are counted fallen; the rest are lost beyond the
+        Wall, their fate unknown, and their offices pass to other men.
+
+        :return: True
+        :raises UserError: when the ranging is not beyond the Wall.
+        """
+        for ranging in self:
+            if ranging.status != 'ongoing':
+                raise UserError(self.env._(
+                    '"%(name)s" is not beyond the Wall.', name=ranging.name,
+                ))
+
+            ranging.write({
+                'status': 'lost',
+                'date_end': ranging.date_end or fields.Date.context_today(self),
+            })
+            ranging.casualty_ids.write({'status': 'fallen'})
+            (ranging.brother_ids - ranging.casualty_ids).write({'status': 'lost'})
+
+        return True
