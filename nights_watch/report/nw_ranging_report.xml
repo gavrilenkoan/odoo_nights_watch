@@ -1,0 +1,135 @@
+<odoo>
+
+    <record id="action_report_nw_ranging" model="ir.actions.report">
+        <field name="name">Ranging Report</field>
+        <field name="model">nw.ranging</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">nights_watch.report_nw_ranging</field>
+        <field name="report_file">nights_watch.report_nw_ranging</field>
+        <field name="print_report_name">'Ranging - %s' % (object.name)</field>
+        <field name="binding_model_id" ref="model_nw_ranging"/>
+        <field name="binding_type">report</field>
+    </record>
+
+    <template id="report_nw_ranging_document">
+        <t t-call="web.external_layout">
+            <t t-set="o" t-value="ranging"/>
+            <div class="page o_nw_report">
+
+                <div class="o_nw_head">
+                    <h2 class="o_nw_name"><span t-field="ranging.name"/></h2>
+                    <div class="o_nw_sub">
+                        Ranging beyond the Wall
+                        <span t-if="ranging.threat_id">
+                            against <span t-field="ranging.threat_id"/>
+                        </span>
+                    </div>
+                    <span t-attf-class="o_nw_badge o_nw_badge_#{ranging.status}"
+                          t-field="ranging.status"/>
+                </div>
+
+                <table class="o_nw_facts o_ignore_layout_styling">
+                    <tr>
+                        <th>Departs From</th>
+                        <td><span t-field="ranging.castle_id"/></td>
+                        <th>Leader</th>
+                        <td><span t-field="ranging.leader_id"/></td>
+                    </tr>
+                    <tr>
+                        <th>Departure</th>
+                        <td><span t-field="ranging.date_start"/></td>
+                        <th>Return</th>
+                        <td>
+                            <span t-if="ranging.date_end" t-field="ranging.date_end"/>
+                            <span t-else="">still beyond the Wall</span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Days Beyond the Wall</th>
+                        <td><span t-field="ranging.duration"/></td>
+                        <th>Men Who Rode</th>
+                        <td><span t-field="ranging.member_count"/></td>
+                    </tr>
+                    <tr t-if="ranging.status in ('returned', 'lost')">
+                        <th>Fell</th>
+                        <td><span t-field="ranging.casualty_count"/></td>
+                        <th>Came Back</th>
+                        <td><span t-out="ranging.member_count - ranging.casualty_count"/></td>
+                    </tr>
+                </table>
+
+                <h4 class="o_nw_section">The Party</h4>
+                <table class="o_nw_grid o_ignore_layout_styling">
+                    <colgroup>
+                        <col style="width: 28%"/>
+                        <col style="width: 15%"/>
+                        <col style="width: 22%"/>
+                        <col style="width: 18%"/>
+                        <col style="width: 17%"/>
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>Brother</th>
+                            <th>Order</th>
+                            <th>Office</th>
+                            <th>Castle</th>
+                            <th>Fate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr t-foreach="ranging.brother_ids" t-as="brother">
+                            <td>
+                                <span t-field="brother.name"/>
+                                <span t-if="brother == ranging.leader_id"
+                                      class="o_nw_tag">leader</span>
+                            </td>
+                            <td><span t-field="brother.order_id"/></td>
+                            <td><span t-field="brother.role_id"/></td>
+                            <td><span t-field="brother.castle_id"/></td>
+                            <td>
+                                <span t-if="brother in ranging.casualty_ids"
+                                      class="o_nw_fell">Fell</span>
+                                <span t-elif="ranging.status == 'lost'"
+                                      class="o_nw_lost">Lost beyond the Wall</span>
+                                <span t-elif="ranging.status == 'returned'">Came back</span>
+                                <span t-else="">—</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div t-if="ranging.objective">
+                    <h4 class="o_nw_section">Objective</h4>
+                    <p class="o_nw_prose" t-field="ranging.objective"/>
+                </div>
+
+                <div t-if="ranging.summary">
+                    <h4 class="o_nw_section">What Came of It</h4>
+                    <div class="o_nw_prose" t-field="ranging.summary"/>
+                </div>
+
+                <div t-if="ranging.casualty_ids" class="o_nw_dead">
+                    <h4 class="o_nw_section">And Now Their Watch Is Ended</h4>
+                    <ul>
+                        <li t-foreach="ranging.casualty_ids" t-as="fallen">
+                            <span t-field="fallen.display_name"/>
+                            <span t-if="fallen.castle_id">
+                                of <span t-field="fallen.castle_id"/>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </t>
+    </template>
+
+    <template id="report_nw_ranging">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="ranging">
+                <t t-call="nights_watch.report_nw_ranging_document"/>
+            </t>
+        </t>
+    </template>
+
+</odoo>
