@@ -1,0 +1,40 @@
+<odoo>
+
+    <record id="view_nw_assign_wizard_form" model="ir.ui.view">
+        <field name="name">nw.assign.wizard.form</field>
+        <field name="model">nw.assign.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Post to an Order">
+                <field name="single_brother" invisible="1"/>
+                <div class="alert alert-warning" role="alert" invisible="not note">
+                    <field name="note" nolabel="1"/>
+                </div>
+                <group>
+                    <field name="order_id"/>
+                    <field name="role_id"
+                           invisible="not single_brother"
+                           domain="[('outside_orders', '=', False),
+                                    '|', ('order_id', '=', False), ('order_id', '=', order_id)]"/>
+                </group>
+                <separator string="Brothers to Post"/>
+                <field name="brother_ids" nolabel="1" widget="many2many_tags"/>
+                <footer>
+                    <button name="action_assign" type="object" string="Post to the Order"
+                            class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_nw_assign_wizard" model="ir.actions.act_window">
+        <field name="name">Post to an Order</field>
+        <field name="res_model">nw.assign.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_nw_assign_wizard_form"/>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="model_nw_brother"/>
+        <field name="binding_view_types">list</field>
+    </record>
+
+</odoo>
