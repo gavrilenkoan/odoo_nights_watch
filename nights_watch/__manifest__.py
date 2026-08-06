@@ -23,6 +23,7 @@ ranging parties sent beyond the Wall.
     'depends': [
         'base',
         'web',
+        'contacts',
     ],
 
     'data': [
@@ -37,6 +38,7 @@ ranging parties sent beyond the Wall.
         'wizard/nw_assign_wizard_views.xml',
         'wizard/nw_ranging_wizard_views.xml',
         'wizard/nw_ranging_return_wizard_views.xml',
+        'wizard/nw_take_black_wizard_views.xml',
 
         'views/nights_watch_menu.xml',
         'views/nw_brother_views.xml',
