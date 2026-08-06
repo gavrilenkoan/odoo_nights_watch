@@ -55,3 +55,18 @@ class NwOrder(models.Model):
         """Count the brothers currently attached to the order."""
         for order in self:
             order.member_count = len(order.member_ids)
+
+    def action_view_members(self):
+        """Open the brothers serving in this order.
+
+        :return: an ``ir.actions.act_window`` dict filtered by order.
+        """
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': self.env._('Members'),
+            'res_model': 'nw.brother',
+            'view_mode': 'list,kanban,form',
+            'domain': [('order_id', '=', self.id)],
+            'context': {'default_order_id': self.id},
+        }

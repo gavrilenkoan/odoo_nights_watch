@@ -60,6 +60,12 @@
                             </field>
                         </page>
                     </notebook>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_holders" type="object"
+                                class="oe_stat_button" icon="fa-user">
+                            <field name="brother_count" widget="statinfo" string="Holders"/>
+                        </button>
+                    </div>
                 </sheet>
             </form>
         </field>
