@@ -1,0 +1,91 @@
+<odoo noupdate="1">
+
+    <record id="rule_nw_brother_read_all" model="ir.rule">
+        <field name="name">Brother: the whole Watch is read</field>
+        <field name="model_id" ref="model_nw_brother"/>
+        <field name="groups" eval="[Command.link(ref('group_nw_brother'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_nw_brother_officer_own_castle" model="ir.rule">
+        <field name="name">Brother: an officer enrols and posts his own garrison</field>
+        <field name="model_id" ref="model_nw_brother"/>
+        <field name="groups" eval="[Command.link(ref('group_nw_officer'))]"/>
+        <field name="domain_force">[('castle_id', '=', user.nw_brother_id.castle_id.id)]</field>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_nw_brother_commander_own_castle" model="ir.rule">
+        <field name="name">Brother: a commander strikes out only his own men</field>
+        <field name="model_id" ref="model_nw_brother"/>
+        <field name="groups" eval="[Command.link(ref('group_nw_commander'))]"/>
+        <field name="domain_force">[('castle_id', '=', user.nw_brother_id.castle_id.id)]</field>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="rule_nw_ranging_read_all" model="ir.rule">
+        <field name="name">Ranging: the whole Watch is read</field>
+        <field name="model_id" ref="model_nw_ranging"/>
+        <field name="groups" eval="[Command.link(ref('group_nw_brother'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_nw_ranging_officer_own_castle" model="ir.rule">
+        <field name="name">Ranging: an officer musters only from his own castle</field>
+        <field name="model_id" ref="model_nw_ranging"/>
+        <field name="groups" eval="[Command.link(ref('group_nw_officer'))]"/>
+        <field name="domain_force">[('castle_id', '=', user.nw_brother_id.castle_id.id)]</field>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_nw_ranging_commander_own_castle" model="ir.rule">
+        <field name="name">Ranging: a commander strikes out only his own</field>
+        <field name="model_id" ref="model_nw_ranging"/>
+        <field name="groups" eval="[Command.link(ref('group_nw_commander'))]"/>
+        <field name="domain_force">[('castle_id', '=', user.nw_brother_id.castle_id.id)]</field>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
+    <record id="rule_nw_castle_read_all" model="ir.rule">
+        <field name="name">Castle: every castle is read</field>
+        <field name="model_id" ref="model_nw_castle"/>
+        <field name="groups" eval="[Command.link(ref('group_nw_brother'))]"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record id="rule_nw_castle_commander_own" model="ir.rule">
+        <field name="name">Castle: a commander keeps his own gate</field>
+        <field name="model_id" ref="model_nw_castle"/>
+        <field name="groups" eval="[Command.link(ref('group_nw_commander'))]"/>
+        <field name="domain_force">[('id', '=', user.nw_brother_id.castle_id.id)]</field>
+        <field name="perm_read" eval="False"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+</odoo>

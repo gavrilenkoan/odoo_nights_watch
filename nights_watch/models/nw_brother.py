@@ -139,6 +139,10 @@ class NwBrother(models.Model):
     notable_deed = fields.Text()
 
     user_id = fields.Many2one(comodel_name='res.users', string='System User')
+    is_current_user = fields.Boolean(
+        compute='_compute_is_current_user',
+        help='True on the record of the man who is looking at it.',
+    )
     ranging_ids = fields.Many2many(
         comodel_name='nw.ranging',
         relation='nw_ranging_brother_rel',
@@ -178,6 +182,9 @@ class NwBrother(models.Model):
         if vals.get('status') == 'executed':
             self._check_execution()
 
+        if 'role_id' in vals:
+            self._check_officer()
+
         role = self.env['nw.role'].browse(vals.get('role_id'))
         if role:
             for brother in self:
@@ -187,7 +194,41 @@ class NwBrother(models.Model):
                     exclude=brother,
                 )
 
-        return super().write(vals)
+        result = super().write(vals)
+
+        if {'role_id', 'user_id'} & vals.keys():
+            self._sync_user_groups()
+
+        return result
+
+    def _sync_user_groups(self):
+        """Keep a brother's system groups in step with the office he holds.
+
+        An office is given and taken in the rolls, not in the settings, so the
+        groups follow the office rather than the other way round.
+
+        :return: None
+        """
+        groups = {
+            'nights_watch.group_nw_brother': True,
+            'nights_watch.group_nw_officer': None,
+            'nights_watch.group_nw_commander': None,
+        }
+
+        for brother in self.filtered('user_id'):
+            groups['nights_watch.group_nw_officer'] = brother.role_id.is_senior
+            groups['nights_watch.group_nw_commander'] = brother.role_id.commands_castle
+
+            commands = []
+            for xmlid, granted in groups.items():
+                group = self.env.ref(xmlid, raise_if_not_found=False)
+                if group:
+                    commands.append(
+                        fields.Command.link(group.id) if granted
+                        else fields.Command.unlink(group.id)
+                    )
+
+            brother.user_id.sudo().write({'group_ids': commands})
 
     def _relieve_office(self, role, castle_id, exclude=None):
         """Take a limited office from whoever holds it.
@@ -220,6 +261,38 @@ class NwBrother(models.Model):
                 values['status'] = 'waiting'
 
             holder.write(values)
+
+    def _check_officer(self):
+        """Refuse an act that belongs to an officer of the Watch.
+
+        Which men he may act upon is not decided here: the record rules keep
+        every officer inside his own castle.
+
+        :raises UserError: when the user holds no senior office.
+        """
+        if self.env.su or self.env.user.has_group('base.group_system'):
+            return
+
+        if not self.env.user.has_group('nights_watch.group_nw_officer'):
+            raise UserError(self.env._(
+                'This is for the officers of the Watch to decide.',
+            ))
+
+    def _check_is_self(self):
+        """Refuse to answer the oath in another man's place.
+
+        :raises UserError: when the record is not the user's own.
+        """
+        if self.env.su:
+            return
+
+        for brother in self:
+            if brother.user_id != self.env.user:
+                raise UserError(self.env._(
+                    'No man says the words for another. This is %(name)s to '
+                    'answer, and no one else.',
+                    name=brother.name,
+                ))
 
     def _check_execution(self):
         """Refuse to execute a brother who never broke his oath.
@@ -295,6 +368,12 @@ class NwBrother(models.Model):
                 brother.standing = 'waiting'
             else:
                 brother.standing = 'recruit'
+
+    @api.depends_context('uid')
+    def _compute_is_current_user(self):
+        """Flag the record of whoever is looking at it."""
+        for brother in self:
+            brother.is_current_user = brother.user_id == self.env.user
 
     @api.depends('status')
     def _compute_in_service(self):
@@ -511,6 +590,20 @@ class NwBrother(models.Model):
                     castle=brother.castle_id.name,
                 ))
 
+    def action_view_rangings(self):
+        """Open the rangings this brother took part in.
+
+        :return: an ``ir.actions.act_window`` dict.
+        """
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': self.env._('Rangings'),
+            'res_model': 'nw.ranging',
+            'view_mode': 'list,form',
+            'domain': [('id', 'in', self.ranging_ids.ids)],
+        }
+
     def action_say_the_words(self, oath_date=None):
         """Take the oath. The man is of the Watch, but of no order yet.
 
@@ -521,6 +614,7 @@ class NwBrother(models.Model):
         :return: True
         :raises UserError: when the brother is not a recruit, or has no castle.
         """
+        self._check_is_self()
         for brother in self:
             if brother.status != 'recruit':
                 raise UserError(self.env._(
@@ -533,10 +627,31 @@ class NwBrother(models.Model):
                     name=brother.name,
                 ))
 
-        return self.write({
+        return self.sudo().write({
             'status': 'waiting',
             'oath_date': oath_date or fields.Date.context_today(self),
         })
+
+    def action_refuse(self):
+        """Let a recruit turn back before he says the words.
+
+        A man who never swore breaks no oath: he goes home, and the Watch has
+        no claim on him. Once the words are said there is no going back. He is
+        archived along the way: the Watch keeps the record, not the man.
+
+        :return: True
+        :raises UserError: when the brother has already said the words.
+        """
+        self._check_is_self()
+        for brother in self:
+            if brother.status != 'recruit':
+                raise UserError(self.env._(
+                    '%(name)s has already said the words. The Watch does not '
+                    'release a sworn brother.',
+                    name=brother.name,
+                ))
+
+        return self.sudo().write({'status': 'refused', 'active': False})
 
     def action_assign_order(self, order=None):
         """Post a sworn brother who is awaiting assignment to an order.
@@ -547,6 +662,7 @@ class NwBrother(models.Model):
         :raises UserError: when a brother is not awaiting assignment, or when
             no order is named for him.
         """
+        self._check_officer()
         for brother in self:
             if brother.status != 'waiting':
                 raise UserError(self.env._(
@@ -565,32 +681,13 @@ class NwBrother(models.Model):
 
         return True
 
-    def action_refuse(self):
-        """Let a recruit turn back before he says the words.
-
-        A man who never swore breaks no oath: he goes home, and the Watch has
-        no claim on him. Once the words are said there is no going back. He is
-        archived along the way: the Watch keeps the record, not the man.
-
-        :return: True
-        :raises UserError: when the brother has already said the words.
-        """
-        for brother in self:
-            if brother.status != 'recruit':
-                raise UserError(self.env._(
-                    '%(name)s has already said the words. The Watch does not '
-                    'release a sworn brother.',
-                    name=brother.name,
-                ))
-
-        return self.write({'status': 'refused', 'active': False})
-
     def action_desert(self):
         """Strike an oathbreaker from the rolls.
 
         :return: True
         :raises UserError: when the brother is no longer in service.
         """
+        self._check_officer()
         for brother in self:
             if not brother.in_service:
                 raise UserError(self.env._(
@@ -608,21 +705,8 @@ class NwBrother(models.Model):
 
         :return: True
         """
+        self._check_officer()
         return self.write({'status': 'executed'})
-
-    def action_view_rangings(self):
-        """Open the rangings this brother took part in.
-
-        :return: an ``ir.actions.act_window`` dict.
-        """
-        self.ensure_one()
-        return {
-            'type': 'ir.actions.act_window',
-            'name': self.env._('Rangings'),
-            'res_model': 'nw.ranging',
-            'view_mode': 'list,form',
-            'domain': [('id', 'in', self.ranging_ids.ids)],
-        }
 
     def action_found(self):
         """A man given up for lost comes back through the gate.
@@ -635,6 +719,7 @@ class NwBrother(models.Model):
         :return: True
         :raises UserError: when the brother was not lost beyond the Wall.
         """
+        self._check_officer()
         for brother in self:
             if brother.status != 'lost':
                 raise UserError(self.env._(
@@ -658,6 +743,7 @@ class NwBrother(models.Model):
         :raises UserError: when the brother already left the Watch as a
             deserter, an executed man, or one who refused the oath.
         """
+        self._check_officer()
         for brother in self:
             if not (brother.in_service or brother.status == 'lost'):
                 raise UserError(
