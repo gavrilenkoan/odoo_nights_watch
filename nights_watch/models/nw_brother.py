@@ -36,6 +36,7 @@ class NwBrother(models.Model):
             ('sworn', 'Sworn'),
             ('ranging', 'Ranging'),
             ('lost', 'Lost Beyond the Wall'),
+            ('refused', 'Refused the Oath'),
             ('deserted', 'Deserted'),
             ('executed', 'Executed'),
             ('fallen', 'Fallen'),
@@ -563,3 +564,23 @@ class NwBrother(models.Model):
             })
 
         return True
+
+    def action_refuse(self):
+        """Let a recruit turn back before he says the words.
+
+        A man who never swore breaks no oath: he goes home, and the Watch has
+        no claim on him. Once the words are said there is no going back. He is
+        archived along the way: the Watch keeps the record, not the man.
+
+        :return: True
+        :raises UserError: when the brother has already said the words.
+        """
+        for brother in self:
+            if brother.status != 'recruit':
+                raise UserError(self.env._(
+                    '%(name)s has already said the words. The Watch does not '
+                    'release a sworn brother.',
+                    name=brother.name,
+                ))
+
+        return self.write({'status': 'refused', 'active': False})
