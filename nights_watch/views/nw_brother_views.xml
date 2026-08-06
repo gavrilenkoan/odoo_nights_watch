@@ -34,8 +34,14 @@
         <field name="arch" type="xml">
             <form>
                 <header>
+                    <button name="action_say_the_words" type="object"
+                            string="Say the Words" class="btn-primary"
+                            invisible="status != 'recruit'"/>
+                    <button name="action_assign_order" type="object"
+                            string="Assign to Order" class="btn-primary"
+                            invisible="status != 'waiting'"/>
                     <field name="status" widget="statusbar" clickable="1"
-                           statusbar_visible="recruit,sworn,ranging"/>
+                           statusbar_visible="recruit,waiting,sworn,ranging"/>
                     <field name="in_service" invisible="1"/>
                 </header>
                 <sheet>
@@ -190,6 +196,8 @@
                 <field name="origin"/>
                 <filter name="filter_sworn" string="Sworn Only"
                         domain="[('status', '=', 'sworn')]"/>
+                <filter name="filter_waiting" string="Awaiting Assignment"
+                        domain="[('status', '=', 'waiting')]"/>
                 <filter name="filter_recruits" string="Recruits"
                         domain="[('status', '=', 'recruit')]"/>
                 <filter name="filter_ranging" string="Ranging"

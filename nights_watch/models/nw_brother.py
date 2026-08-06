@@ -1,7 +1,7 @@
 from odoo import api, fields, models
 from odoo.exceptions import UserError, ValidationError
 
-SERVING_STATUSES = ('recruit', 'sworn', 'ranging')
+SERVING_STATUSES = ('recruit', 'waiting', 'sworn', 'ranging')
 
 
 class NwBrother(models.Model):
@@ -32,6 +32,7 @@ class NwBrother(models.Model):
     status = fields.Selection(
         selection=[
             ('recruit', 'Recruit'),
+            ('waiting', 'Awaiting Assignment'),
             ('sworn', 'Sworn'),
             ('ranging', 'Ranging'),
             ('lost', 'Lost Beyond the Wall'),
@@ -73,14 +74,15 @@ class NwBrother(models.Model):
             ('builders', 'Builders'),
             ('stewards', 'Stewards'),
             ('outside', 'Outside the Orders'),
+            ('waiting', 'Awaiting Assignment'),
             ('recruit', 'Recruits'),
         ],
         compute='_compute_standing',
         store=True,
         group_expand=True,
         help='Where a brother stands relative to the three orders: a man of '
-             'an order, an office above them all, or a recruit who has joined '
-             'none of them yet.',
+        'an order, an office above them all, or a recruit who has joined '
+        'none of them yet.',
     )
     castle_id = fields.Many2one(comodel_name='nw.castle', string='Castle')
     oath_date = fields.Date(string='Date of the Oath')
@@ -210,9 +212,13 @@ class NwBrother(models.Model):
         if exclude:
             domain.append(('id', 'not in', exclude.ids))
 
-        holders = self.sudo().search(domain)
-        if holders:
-            holders.write({'role_id': False})
+        for holder in self.sudo().search(domain):
+            values = {'role_id': False}
+
+            if holder.in_service and not holder.order_id:
+                values['status'] = 'waiting'
+
+            holder.write(values)
 
     def _check_execution(self):
         """Refuse to execute a brother who never broke his oath.
@@ -284,6 +290,8 @@ class NwBrother(models.Model):
                 brother.standing = 'outside'
             elif brother.order_id:
                 brother.standing = brother.order_id.code
+            elif brother.status == 'waiting':
+                brother.standing = 'waiting'
             else:
                 brother.standing = 'recruit'
 
@@ -307,6 +315,8 @@ class NwBrother(models.Model):
         for brother in self:
             if brother.status == 'recruit':
                 mentor = brother.castle_id.instructor_id
+            elif brother.status == 'waiting':
+                mentor = brother.castle_id.commander_id
             elif brother.role_id.commands_castle:
                 mentor = self.browse()
             elif brother.role_id.is_order_head:
@@ -432,6 +442,21 @@ class NwBrother(models.Model):
                     ))
                 continue
 
+            if brother.status == 'waiting':
+                if brother.role_id:
+                    raise ValidationError(self.env._(
+                        '%(name)s is still awaiting an assignment, so he holds no office yet.',
+                        name=brother.name,
+                    ))
+
+                if not brother.castle_id:
+                    raise ValidationError(self.env._(
+                        '%(name)s waits at a castle for its commander to post him. He has none.',
+                        name=brother.name,
+                    ))
+
+                continue
+
             if brother.status in ('sworn', 'ranging') and not brother.order_id:
                 raise ValidationError(self.env._(
                     'Every sworn brother belongs to an order. %(name)s has none.',
@@ -484,3 +509,57 @@ class NwBrother(models.Model):
                     '"%(castle)s" already answers to a commander.',
                     castle=brother.castle_id.name,
                 ))
+
+    def action_say_the_words(self, oath_date=None):
+        """Take the oath. The man is of the Watch, but of no order yet.
+
+        Which order he serves is not his to choose: he waits for the
+        commander of his castle, or the First of an order, to post him.
+
+        :param oath_date: date of the oath, today when omitted.
+        :return: True
+        :raises UserError: when the brother is not a recruit, or has no castle.
+        """
+        for brother in self:
+            if brother.status != 'recruit':
+                raise UserError(self.env._(
+                    '%(name)s has already said the words.', name=brother.name,
+                ))
+
+            if not brother.castle_id:
+                raise UserError(self.env._(
+                    '%(name)s must be posted to a castle before the oath.',
+                    name=brother.name,
+                ))
+
+        return self.write({
+            'status': 'waiting',
+            'oath_date': oath_date or fields.Date.context_today(self),
+        })
+
+    def action_assign_order(self, order=None):
+        """Post a sworn brother who is awaiting assignment to an order.
+
+        :param order: the ``nw.order`` to post them to, using the one already
+            named on each record when omitted.
+        :return: True
+        :raises UserError: when a brother is not awaiting assignment, or when
+            no order is named for him.
+        """
+        for brother in self:
+            if brother.status != 'waiting':
+                raise UserError(self.env._(
+                    '%(name)s is not awaiting an assignment.', name=brother.name,
+                ))
+
+            if not (order or brother.order_id):
+                raise UserError(self.env._(
+                    'Name the order %(name)s is to serve in.', name=brother.name,
+                ))
+
+            brother.write({
+                'status': 'sworn',
+                'order_id': (order or brother.order_id).id,
+            })
+
+        return True
