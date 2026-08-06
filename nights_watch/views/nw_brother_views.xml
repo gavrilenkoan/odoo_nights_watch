@@ -4,7 +4,7 @@
         <field name="name">nw.brother.list</field>
         <field name="model">nw.brother</field>
         <field name="arch" type="xml">
-            <list decoration-muted="status in ('fallen', 'lost')"
+            <list decoration-muted="status in ('fallen', 'lost', 'refused')"
                   decoration-it="status == 'executed'"
                   decoration-danger="status == 'deserted'"
                   decoration-info="status == 'ranging'">
@@ -34,8 +34,18 @@
         <field name="arch" type="xml">
             <form>
                 <header>
+                    <button name="action_refuse" type="object"
+                            string="Refuse the Oath"
+                            confirm="This man turns back before saying the words. Let him go?"
+                            invisible="status != 'recruit'"/>
+                    <button name="action_say_the_words" type="object"
+                            string="Say the Words" class="btn-primary"
+                            invisible="status != 'recruit'"/>
+                    <button name="action_assign_order" type="object"
+                            string="Assign to Order" class="btn-primary"
+                            invisible="status != 'waiting'"/>
                     <field name="status" widget="statusbar" clickable="1"
-                           statusbar_visible="recruit,sworn,ranging"/>
+                           statusbar_visible="recruit,waiting,sworn,ranging"/>
                     <field name="in_service" invisible="1"/>
                 </header>
                 <sheet>
@@ -190,12 +200,16 @@
                 <field name="origin"/>
                 <filter name="filter_sworn" string="Sworn Only"
                         domain="[('status', '=', 'sworn')]"/>
+                <filter name="filter_waiting" string="Awaiting Assignment"
+                        domain="[('status', '=', 'waiting')]"/>
                 <filter name="filter_recruits" string="Recruits"
                         domain="[('status', '=', 'recruit')]"/>
                 <filter name="filter_ranging" string="Ranging"
                         domain="[('status', '=', 'ranging')]"/>
                 <filter name="filter_lost" string="Lost Beyond the Wall"
                         domain="[('status', '=', 'lost')]"/>
+                <filter name="filter_refused" string="Refused the Oath"
+                        domain="[('status', '=', 'refused')]"/>
                 <filter name="filter_oathbreakers" string="Oathbreakers"
                         domain="[('status', 'in', ['deserted', 'executed'])]"/>
                 <separator/>
