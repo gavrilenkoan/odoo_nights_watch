@@ -50,6 +50,7 @@ ranging parties sent beyond the Wall.
         'views/res_partner_views.xml',
         'views/res_users_views.xml',
 
+        'report/nw_paperformat.xml',
         'report/nw_ranging_report.xml',
         'report/nw_brother_report.xml',
     ],

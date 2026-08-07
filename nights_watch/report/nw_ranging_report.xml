@@ -7,25 +7,35 @@
         <field name="report_name">nights_watch.report_nw_ranging</field>
         <field name="report_file">nights_watch.report_nw_ranging</field>
         <field name="print_report_name">'Ranging - %s' % (object.name)</field>
+        <field name="paperformat_id" ref="paperformat_nw"/>
         <field name="binding_model_id" ref="model_nw_ranging"/>
         <field name="binding_type">report</field>
     </record>
 
-    <template id="report_nw_ranging_document">
-        <t t-call="web.external_layout">
+        <template id="report_nw_ranging_document">
+        <t t-call="web.basic_layout">
             <t t-set="o" t-value="ranging"/>
+            <t t-set="company" t-value="ranging.env.company"/>
             <div class="page o_nw_report">
 
-                <div class="o_nw_head">
-                    <h2 class="o_nw_name"><span t-field="ranging.name"/></h2>
-                    <div class="o_nw_sub">
-                        Ranging beyond the Wall
-                        <span t-if="ranging.threat_id">
-                            against <span t-field="ranging.threat_id"/>
-                        </span>
+                <div class="o_nw_head row">
+                    <div class="col-8">
+                        <h2 class="o_nw_name"><span t-field="ranging.name"/></h2>
+                        <div class="o_nw_sub">
+                            Ranging beyond the Wall
+                            <span t-if="ranging.threat_id">
+                                against <span t-field="ranging.threat_id"/>
+                            </span>
+                        </div>
+                        <span t-attf-class="o_nw_badge o_nw_badge_#{ranging.status}"
+                              t-field="ranging.status"/>
                     </div>
-                    <span t-attf-class="o_nw_badge o_nw_badge_#{ranging.status}"
-                          t-field="ranging.status"/>
+                    <div class="col-4 o_nw_company">
+                        <img t-if="company.logo" class="o_nw_company_logo"
+                             t-att-src="image_data_uri(company.logo)" alt="Logo"/>
+                        <span t-field="company.partner_id"
+                              t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
+                    </div>
                 </div>
 
                 <table class="o_nw_facts o_ignore_layout_styling">
@@ -120,6 +130,11 @@
                     </ul>
                 </div>
 
+            </div>
+            <div class="footer o_nw_foot">
+                <div t-if="report_type == 'pdf'">
+                    Page <span class="page"/> / <span class="topage"/>
+                </div>
             </div>
         </t>
     </template>
