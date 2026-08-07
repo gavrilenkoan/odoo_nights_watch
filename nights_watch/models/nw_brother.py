@@ -138,7 +138,7 @@ class NwBrother(models.Model):
     weapon = fields.Char()
     is_warg = fields.Boolean(string='Warg')
     can_read = fields.Boolean(string='Literate')
-    notable_deed = fields.Text()
+    notable_deed = fields.Text(translate=True)
 
     user_id = fields.Many2one(comodel_name='res.users', string='System User')
     is_current_user = fields.Boolean(
