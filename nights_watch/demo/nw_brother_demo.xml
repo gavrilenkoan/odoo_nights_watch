@@ -2,6 +2,7 @@
 
     <record id="brother_mormont" model="nw.brother">
         <field name="name">Jeor Mormont</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/jeor.jpg"/>
         <field name="nickname">The Old Bear</field>
         <field name="role_id" ref="role_commander"/>
         <field name="status">sworn</field>
@@ -19,6 +20,7 @@
 
     <record id="brother_aemon" model="nw.brother">
         <field name="name">Aemon Targaryen</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/aemon.png"/>
         <field name="nickname">Maester Aemon</field>
         <field name="role_id" ref="role_maester"/>
         <field name="status">sworn</field>
@@ -50,6 +52,7 @@
 
     <record id="brother_benjen" model="nw.brother">
         <field name="name">Benjen Stark</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/benjen.jpg"/>
         <field name="order_id" ref="order_rangers"/>
         <field name="status">lost</field>
         <field name="castle_id" ref="castle_black"/>
@@ -79,6 +82,7 @@
 
     <record id="brother_marsh" model="nw.brother">
         <field name="name">Bowen Marsh</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/bowen.png"/>
         <field name="nickname">The Old Pomegranate</field>
         <field name="role_id" ref="role_first_steward"/>
         <field name="order_id" ref="order_stewards"/>
@@ -94,6 +98,7 @@
 
     <record id="brother_thorne" model="nw.brother">
         <field name="name">Alliser Thorne</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/alister.jpeg"/>
         <field name="role_id" ref="role_instructor"/>
         <field name="order_id" ref="order_rangers"/>
         <field name="status">sworn</field>
@@ -111,6 +116,7 @@
 
     <record id="brother_hobb" model="nw.brother">
         <field name="name">Hobb</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/hobb.png"/>
         <field name="nickname">Three-Finger Hobb</field>
         <field name="role_id" ref="role_cook"/>
         <field name="order_id" ref="order_stewards"/>
@@ -126,6 +132,7 @@
 
     <record id="brother_yoren" model="nw.brother">
         <field name="name">Yoren</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/yoren.png"/>
         <field name="role_id" ref="role_recruiter"/>
         <field name="order_id" ref="order_rangers"/>
         <field name="status">sworn</field>
@@ -140,6 +147,7 @@
 
     <record id="brother_rykker" model="nw.brother">
         <field name="name">Jeremy Rykker</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/jeremy.png"/>
         <field name="role_id" ref="role_first_ranger"/>
         <field name="order_id" ref="order_rangers"/>
         <field name="status">sworn</field>
@@ -157,6 +165,7 @@
 
     <record id="brother_jon" model="nw.brother">
         <field name="name">Jon Snow</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/jon.jpeg"/>
         <field name="nickname">Lord Snow</field>
         <field name="order_id" ref="order_stewards"/>
         <field name="serves_id" ref="brother_mormont"/>
@@ -177,6 +186,7 @@
 
     <record id="brother_sam" model="nw.brother">
         <field name="name">Samwell Tarly</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/sam.png"/>
         <field name="nickname">Ser Piggy</field>
         <field name="order_id" ref="order_stewards"/>
         <field name="serves_id" ref="brother_aemon"/>
@@ -210,6 +220,7 @@
 
     <record id="brother_dareon" model="nw.brother">
         <field name="name">Dareon</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/dareon.png"/>
         <field name="nickname">The Lover</field>
         <field name="order_id" ref="order_stewards"/>
         <field name="status">sworn</field>
@@ -226,6 +237,7 @@
 
     <record id="brother_grenn" model="nw.brother">
         <field name="name">Grenn</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/grenn.png"/>
         <field name="nickname">Aurochs</field>
         <field name="order_id" ref="order_rangers"/>
         <field name="status">sworn</field>
@@ -241,6 +253,7 @@
 
     <record id="brother_pyp" model="nw.brother">
         <field name="name">Pypar</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/pyp.png"/>
         <field name="nickname">Pyp</field>
         <field name="order_id" ref="order_rangers"/>
         <field name="status">sworn</field>
@@ -256,6 +269,7 @@
 
     <record id="brother_todder" model="nw.brother">
         <field name="name">Todder</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/toad.png"/>
         <field name="nickname">Toad</field>
         <field name="order_id" ref="order_rangers"/>
         <field name="status">sworn</field>
@@ -284,6 +298,7 @@
 
     <record id="brother_gared" model="nw.brother">
         <field name="name">Gared</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/gared.png"/>
         <field name="order_id" ref="order_rangers"/>
         <field name="status">executed</field>
         <field name="castle_id" ref="castle_black"/>
@@ -297,6 +312,7 @@
 
     <record id="brother_will" model="nw.brother">
         <field name="name">Will</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/will.png"/>
         <field name="order_id" ref="order_rangers"/>
         <field name="status">fallen</field>
         <field name="castle_id" ref="castle_black"/>
@@ -312,6 +328,7 @@
 
     <record id="brother_waymar" model="nw.brother">
         <field name="name">Waymar Royce</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/waymar.png"/>
         <field name="order_id" ref="order_rangers"/>
         <field name="status">fallen</field>
         <field name="castle_id" ref="castle_black"/>
@@ -355,6 +372,7 @@
 
     <record id="brother_halder" model="nw.brother">
         <field name="name">Halder</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/halder.jpg"/>
         <field name="nickname">Stone Head</field>
         <field name="order_id" ref="order_builders"/>
         <field name="status">sworn</field>
@@ -417,6 +435,7 @@
 
     <record id="brother_cotter_pyke" model="nw.brother">
         <field name="name">Cotter Pyke</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/cotter.jpg"/>
         <field name="role_id" ref="role_commander"/>
         <field name="status">sworn</field>
         <field name="castle_id" ref="castle_eastwatch"/>
@@ -431,6 +450,7 @@
 
     <record id="brother_mallister" model="nw.brother">
         <field name="name">Denys Mallister</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/denys.png"/>
         <field name="role_id" ref="role_commander"/>
         <field name="status">sworn</field>
         <field name="castle_id" ref="castle_shadow_tower"/>
@@ -463,6 +483,7 @@
 
     <record id="brother_qhorin" model="nw.brother">
         <field name="name">Qhorin</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/qhorin.jpg"/>
         <field name="nickname">Halfhand</field>
         <field name="order_id" ref="order_rangers"/>
         <field name="status">fallen</field>
@@ -521,6 +542,7 @@
 
     <record id="brother_mance" model="nw.brother">
         <field name="name">Mance Rayder</field>
+        <field name="image" type="base64" file="nights_watch/static/img/brothers/mance.png"/>
         <field name="nickname">The King-Beyond-the-Wall</field>
         <field name="order_id" ref="order_rangers"/>
         <field name="status">deserted</field>
