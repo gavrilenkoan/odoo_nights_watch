@@ -34,6 +34,19 @@ $nw-header: #26262b;
         border: 1px solid $nw-ink;
     }
 
+    .o_nw_company {
+        font-size: 0.86rem;
+        line-height: 1.45;
+        text-align: right;
+    }
+
+    .o_nw_company_logo {
+        float: right;
+        max-width: 38%;
+        max-height: 64px;
+        margin-left: 12px;
+    }
+
     .o_nw_section {
         margin: 24px 0 8px;
         color: $nw-ink;
@@ -209,6 +222,13 @@ $nw-header: #26262b;
             padding: 1px 0;
         }
     }
+}
+
+.o_nw_foot {
+    padding-top: 8px;
+    border-top: 1px solid #1a1a1a;
+    color: #7a7a7a;
+    font-size: 0.8rem;
 }
 
 .header,

@@ -7,27 +7,35 @@
         <field name="report_name">nights_watch.report_nw_brother</field>
         <field name="report_file">nights_watch.report_nw_brother</field>
         <field name="print_report_name">'Dossier - %s' % (object.name)</field>
+        <field name="paperformat_id" ref="paperformat_nw"/>
         <field name="binding_model_id" ref="model_nw_brother"/>
         <field name="binding_type">report</field>
     </record>
 
     <template id="report_nw_brother_document">
-        <t t-call="web.external_layout">
+        <t t-call="web.basic_layout">
             <t t-set="o" t-value="brother"/>
+            <t t-set="company" t-value="brother.env.company"/>
             <div class="page o_nw_report">
 
                 <div class="o_nw_head row">
-                    <div class="col-3" t-if="brother.image_128">
+                    <div class="col-2" t-if="brother.image_128">
                         <img t-att-src="image_data_uri(brother.image_128)"
                              class="o_nw_portrait" alt="Portrait"/>
                     </div>
-                    <div t-attf-class="col-#{brother.image_128 and 9 or 12}">
+                    <div t-attf-class="col-#{brother.image_128 and 6 or 8}">
                         <h2 class="o_nw_name"><span t-field="brother.name"/></h2>
                         <div t-if="brother.nickname" class="o_nw_sub">
                             "<span t-field="brother.nickname"/>"
                         </div>
                         <span t-attf-class="o_nw_badge o_nw_badge_#{brother.status}"
                               t-field="brother.status"/>
+                    </div>
+                    <div class="col-4 o_nw_company">
+                        <img t-if="company.logo" class="o_nw_company_logo"
+                             t-att-src="image_data_uri(company.logo)" alt="Logo"/>
+                        <span t-field="company.partner_id"
+                              t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
                     </div>
                 </div>
 
@@ -168,6 +176,11 @@
                     <p class="o_nw_prose" t-field="brother.notable_deed"/>
                 </div>
 
+            </div>
+            <div class="footer o_nw_foot">
+                <div t-if="report_type == 'pdf'">
+                    Page <span class="page"/> / <span class="topage"/>
+                </div>
             </div>
         </t>
     </template>

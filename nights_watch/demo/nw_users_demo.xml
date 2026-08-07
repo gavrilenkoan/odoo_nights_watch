@@ -28,6 +28,13 @@
         <field name="group_ids" eval="[Command.link(ref('base.group_user'))]"/>
     </record>
 
+    <record id="user_cuger" model="res.users">
+        <field name="name">Cuger</field>
+        <field name="login">cuger</field>
+        <field name="password">cuger</field>
+        <field name="group_ids" eval="[Command.link(ref('base.group_user'))]"/>
+    </record>
+
     <record id="user_aemon" model="res.users">
         <field name="name">Aemon Targaryen</field>
         <field name="login">aemon</field>
@@ -78,6 +85,10 @@
 
     <record id="brother_rast" model="nw.brother">
         <field name="user_id" ref="user_rast"/>
+    </record>
+
+    <record id="brother_cuger" model="nw.brother">
+        <field name="user_id" ref="user_cuger"/>
     </record>
 
     <record id="brother_aemon" model="nw.brother">
