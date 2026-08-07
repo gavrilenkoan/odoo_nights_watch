@@ -275,6 +275,14 @@ msgid "A steward is assigned to a senior brother he serves."
 msgstr "Стюарда призначають старшому побратимові, якому він служить."
 
 #. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid ""
+"A steward serves a senior brother of his own castle. %(senior)s is quartered"
+" at \"%(castle)s\", and %(name)s is not."
+msgstr "Стюард служить старшому побратимові свого замку. %(senior)s квартирує в «%(castle)s», а %(name)s — ні."
+
+#. module: nights_watch
 #: model:nw.castle,description:nights_watch.castle_greyguard
 msgid "Abandoned castle, half fallen into ruin."
 msgstr "Покинутий замок, наполовину обернений на руїни."

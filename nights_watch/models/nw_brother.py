@@ -431,14 +431,20 @@ class NwBrother(models.Model):
         for brother in self:
             brother.ranging_count = len(brother.ranging_ids)
 
-    @api.constrains('serves_id', 'order_id')
+    @api.constrains('serves_id', 'order_id', 'castle_id')
     def _check_steward(self):
-        """A personal steward is a steward, and he serves a senior brother.
+        """A personal steward is a steward of the castle he serves in.
 
-        :raises ValidationError: when the server is not of the Stewards, or
-            when the served brother holds no senior office.
+        A man waits on his senior at table and carries his letters, so the two
+        share a roof or the arrangement is a fiction. The stewards of the
+        served brother are walked as well: were only his own castle to change,
+        the pairing would quietly outlive the rule that allowed it.
+
+        :raises ValidationError: when the server is not of the Stewards, when
+            the served brother holds no senior office, or when the two are
+            quartered in different castles.
         """
-        for brother in self:
+        for brother in self | self.steward_ids:
             if not brother.serves_id:
                 continue
 
@@ -454,6 +460,15 @@ class NwBrother(models.Model):
                     'A personal steward may only be assigned to a senior brother. '
                     '%(name)s holds no senior office.',
                     name=brother.serves_id.name,
+                ))
+
+            if brother.castle_id != brother.serves_id.castle_id:
+                raise ValidationError(self.env._(
+                    'A steward serves a senior brother of his own castle. '
+                    '%(senior)s is quartered at "%(castle)s", and %(name)s is not.',
+                    senior=brother.serves_id.name,
+                    castle=brother.serves_id.castle_id.name,
+                    name=brother.name,
                 ))
 
     @api.constrains('role_id', 'castle_id', 'status')
