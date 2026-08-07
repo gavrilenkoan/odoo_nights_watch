@@ -1,5 +1,6 @@
 from odoo import api, fields, models
 from odoo.exceptions import UserError
+from odoo.tools.image import FILETYPE_BASE64_MAGICWORD
 
 
 class ResPartner(models.Model):
@@ -63,6 +64,26 @@ class ResPartner(models.Model):
                     name=partner.display_name,
                 ))
 
+    def _nw_portrait(self):
+        """The likeness to carry onto the rolls, if there is a real one.
+
+        A user created without a picture is handed a drawn initial by
+        ``res.users``, and it lands in ``image_1920`` as an SVG. That is an
+        avatar, not a portrait: it says nothing about the man, and carrying it
+        across would leave every faceless recruit looking as though someone
+        had drawn him.
+
+        :return: the base64 image, or False when there is nothing but a letter.
+        """
+        self.ensure_one()
+
+        if not self.image_1920:
+            return False
+
+        drawn = FILETYPE_BASE64_MAGICWORD.get(self.image_1920[:1]) == 'svg+xml'
+
+        return False if drawn else self.image_1920
+
     def action_take_the_black(self, castle=None, reason=None):
         """Enlist a contact into the Watch as a recruit.
 
@@ -73,7 +94,8 @@ class ResPartner(models.Model):
 
         His login follows him onto the rolls, so that the words of the oath
         are his to say and no one else's, and the groups of the Watch are
-        handed to him the moment he is written down.
+        handed to him the moment he is written down. So does his likeness, if
+        the contact carried a real one — see :meth:`_nw_portrait`.
 
         :param castle: the ``nw.castle`` he is sent to train in.
         :param reason: why he ended up on the Wall.
@@ -96,6 +118,7 @@ class ResPartner(models.Model):
             'castle_id': castle.id if castle else False,
             'recruitment_reason': reason,
             'user_id': self.user_ids[:1].id,
+            'image': self._nw_portrait(),
         })
         brother._sync_user_groups()
         self.sudo().write({'nw_recruit_brother_id': brother.id})

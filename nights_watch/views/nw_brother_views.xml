@@ -87,7 +87,8 @@
                             <field name="birth_date"/>
                             <field name="age"/>
                             <field name="origin"/>
-                            <field name="user_id"/>
+                            <field name="user_id"
+                                   context="{'form_view_ref': 'base.view_users_form'}"/>
                             <field name="active" invisible="1"/>
                         </group>
                         <group string="Service">
