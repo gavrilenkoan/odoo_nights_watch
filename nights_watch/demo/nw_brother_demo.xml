@@ -15,7 +15,7 @@
         <field name="is_noble_born" eval="True"/>
         <field name="can_read" eval="True"/>
         <field name="skills">command, sword, letters</field>
-        <field name="notable_deed">Gave up his lordship and Longclaw to his son, took the black, and rose to command Castle Black.</field>
+        <field name="notable_deed">Gave up his lordship and Longclaw to his sister, took the black, and rose to command Castle Black.</field>
     </record>
 
     <record id="brother_aemon" model="nw.brother">

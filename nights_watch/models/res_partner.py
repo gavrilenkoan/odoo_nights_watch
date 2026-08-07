@@ -28,11 +28,13 @@ class ResPartner(models.Model):
     def _compute_nw_can_take_the_black(self):
         """Whose choice it is to take the black, and whose it is not."""
         keeps_the_rolls = self.env.user.has_group('base.group_system')
+        enrolled = self._nw_enrolled_users()
 
         for partner in self:
             partner.nw_can_take_the_black = bool(
                 partner.user_ids
                 and not partner.nw_recruit_brother_id
+                and not (partner.user_ids & enrolled)
                 and (keeps_the_rolls or partner == self.env.user.partner_id)
             )
 
@@ -45,6 +47,12 @@ class ResPartner(models.Model):
 
         :raises UserError: when the contact is not the user's own.
         """
+        if self.nw_recruit_brother_id or self._nw_enrolled_users():
+            raise UserError(self.env._(
+                '%(name)s has already taken the black.',
+                name=self.display_name,
+            ))
+
         for partner in self:
             if not partner.user_ids:
                 raise UserError(self.env._(
@@ -83,6 +91,23 @@ class ResPartner(models.Model):
         drawn = FILETYPE_BASE64_MAGICWORD.get(self.image_1920[:1]) == 'svg+xml'
 
         return False if drawn else self.image_1920
+
+    def _nw_enrolled_users(self):
+        """The logins among these contacts that already answer for a brother.
+
+        The stored link is written only by :meth:`action_take_the_black`, so a
+        man who came onto the rolls another way — demo data, or an officer
+        writing him in — leaves it empty and the contact looks untouched. The
+        rolls themselves are the honest answer, and they are keyed by login.
+
+        :return: the ``res.users`` of this recordset already on the rolls.
+        """
+        return (
+            self.env['nw.brother']
+            .sudo()
+            .search([('user_id', 'in', self.user_ids.ids)])
+            .user_id
+        )
 
     def action_take_the_black(self, castle=None, reason=None):
         """Enlist a contact into the Watch as a recruit.
