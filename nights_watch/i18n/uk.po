@@ -1,0 +1,2527 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* nights_watch
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-07 13:34+0000\n"
+"PO-Revision-Date: 2026-08-07 13:34+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: uk\n"
+"Plural-Forms: nplurals=4; plural=(n % 1 == 0 && n % 10 == 1 && n % 100 != 11 "
+"? 0 : n % 1 == 0 && n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > "
+"14) ? 1 : n % 1 == 0 && (n % 10 ==0 || (n % 10 >=5 && n % 10 <=9) || (n % "
+"100 >=11 && n % 100 <=14 )) ? 2: 3);\n"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid "\"%(castle)s\" already answers to a commander."
+msgstr "\"%(castle)s\" уже має коменданта."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_castle.py:0
+msgid "\"%(castle)s\" cannot hold more than %(capacity)s brothers."
+msgstr "\"%(castle)s\" не вмістить більше ніж %(capacity)s побратимів."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_ranging.py:0
+msgid "\"%(name)s\" has already departed."
+msgstr "\"%(name)s\" уже вирушила."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_ranging.py:0
+msgid "\"%(name)s\" is not beyond the Wall."
+msgstr "\"%(name)s\" не за Стіною."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid "\"%(role)s\" commands a castle, so %(name)s must be quartered in one."
+msgstr "\"%(role)s\" командує замком, тож %(name)s мусить бути приписаний до якогось."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_role.py:0
+msgid "\"%(role)s\" heads an order, so it must name which one."
+msgstr "\"%(role)s\" очолює орден, тож має бути вказано, який саме."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid "\"%(role)s\" is already held by another brother."
+msgstr "\"%(role)s\" уже обіймає інший побратим."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid ""
+"\"%(role)s\" is an office of a castle, so %(name)s must be quartered in one."
+msgstr "\"%(role)s\" — посада замку, тож %(name)s мусить бути приписаний до якогось."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid ""
+"\"%(role)s\" is an office of the %(order)s, so %(name)s must belong to that "
+"order."
+msgstr "\"%(role)s\" — посада ордену %(order)s, тож %(name)s мусить належати до нього."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid ""
+"\"%(role)s\" stands above the three orders, so %(name)s belongs to none of "
+"them."
+msgstr "\"%(role)s\" стоїть над трьома орденами, тож %(name)s не належить до жодного."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__brother_count
+msgid "# Holders"
+msgstr "К-ть носіїв"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_order__member_count
+msgid "# Members"
+msgstr "К-ть членів"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid "%(name)s has already said the words."
+msgstr "%(name)s уже промовив слова."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid ""
+"%(name)s has already said the words. The Watch does not release a sworn "
+"brother."
+msgstr "%(name)s уже промовив слова. Варта не відпускає присяглого побратима."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/res_partner.py:0
+msgid "%(name)s has already taken the black."
+msgstr "%(name)s уже взяв чорне."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid "%(name)s is no longer on the rolls of the Watch."
+msgstr "%(name)s більше не значиться в реєстрі Варти."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid "%(name)s is not awaiting an assignment."
+msgstr "%(name)s не чекає на призначення."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid "%(name)s is not lost beyond the Wall."
+msgstr "%(name)s не зник за Стіною."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid "%(name)s is still awaiting an assignment, so he holds no office yet."
+msgstr "%(name)s ще чекає на призначення, тож посади поки не обіймає."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/res_partner.py:0
+msgid ""
+"%(name)s keeps no book of his own. Give him a login before he takes the "
+"black, for the words are his to say."
+msgstr "%(name)s не має власної книги. Заведіть йому обліковий запис, перш ніж він візьме чорне, бо слова промовляти йому."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid "%(name)s must be posted to a castle before the oath."
+msgstr "%(name)s мусить бути приписаний до замку перед присягою."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid "%(name)s waits at a castle for its commander to post him. He has none."
+msgstr "%(name)s чекає в замку, доки комендант його призначить. Замку в нього немає."
+
+#. module: nights_watch
+#: model:ir.actions.report,print_report_name:nights_watch.action_report_nw_brother
+msgid "'Dossier - %s' % (object.name)"
+msgstr "'Досьє - %s' % (object.name)"
+
+#. module: nights_watch
+#: model:ir.actions.report,print_report_name:nights_watch.action_report_nw_ranging
+msgid "'Ranging - %s' % (object.name)"
+msgstr "'Вилазка - %s' % (object.name)"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_kanban
+msgid "<i class=\"fa fa-fort-awesome me-1\" title=\"Castle\"/>"
+msgstr "<i class=\"fa fa-fort-awesome me-1\" title=\"Замок\"/>"
+
+#. module: nights_watch
+#: model:ir.model.constraint,message:nights_watch.constraint_nw_brother_serves_not_self
+msgid "A brother cannot serve himself."
+msgstr "Побратим не може служити сам собі."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_role__is_senior
+msgid "A brother holding this role may be assigned a personal steward."
+msgstr "Побратимові на цій посаді можна призначити особистого стюарда."
+
+#. module: nights_watch
+#: model:ir.model.constraint,message:nights_watch.constraint_nw_castle_name_uniq
+msgid "A castle with this name already exists."
+msgstr "Замок із такою назвою вже існує."
+
+#. module: nights_watch
+#: model:res.groups,comment:nights_watch.group_nw_officer
+msgid ""
+"A holder of a senior office. He enrols and posts the men of his own castle, "
+"but deletes nothing."
+msgstr "Носій старшої посади. Записує й призначає людей свого замку, але нічого не видаляє."
+"Носій старшої посади. Записує й призначає людей свого замку, але нічого не "
+"видаляє."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_res_partner__nw_can_take_the_black
+#: model:ir.model.fields,help:nights_watch.field_res_users__nw_can_take_the_black
+msgid ""
+"A man takes the black himself, and no one takes it for him, and he keeps a "
+"book of his own so the words are his to say. The Lord Commander keeps the "
+"rolls, and may enter a man who walked up to the gate on his own."
+msgstr "Чоловік бере чорне сам, і ніхто не бере його замість нього, і має власну книгу, тож слова промовляти йому. Лорд-командувач веде реєстр і може вписати того, хто сам прийшов до брами."
+"Чоловік бере чорне сам, і ніхто не бере його замість нього, і має власну "
+"книгу, тож слова промовляти йому. Лорд-командувач веде реєстр і може вписати"
+" того, хто сам прийшов до брами."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid ""
+"A personal steward may only be assigned to a senior brother. %(name)s holds "
+"no senior office."
+msgstr "Особистого стюарда призначають лише старшому побратимові. %(name)s не обіймає старшої посади."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_ranging.py:0
+msgid "A ranging cannot come back before it departs."
+msgstr "Вилазка не може повернутися раніше, ніж вирушила."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/wizard/nw_ranging_wizard.py:0
+msgid ""
+"A ranging is raised from the garrison of one castle. These men answer to "
+"another: %(names)s."
+msgstr "Загін збирають із залоги одного замку. Ці люди підпорядковані іншому: %(names)s."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_ranging.py:0
+#: code:addons/nights_watch/wizard/nw_ranging_wizard.py:0
+msgid "A ranging needs at least one brother."
+msgstr "Для вилазки потрібен щонайменше один побратим."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid "A recruit holds no office until he says the words."
+msgstr "Новобранець не обіймає посади, доки не промовить слова."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid "A recruit joins an order only when he says the words."
+msgstr "Новобранець вступає до ордену лише тоді, коли промовить слова."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_take_black_wizard__castle_id
+msgid ""
+"A recruit trains under the master-at-arms of the castle he is sent to, and "
+"cannot say the words until he has one."
+msgstr "Новобранець навчається в майстра зброї того замку, куди його направлено, і не може промовити слова, доки замку немає."
+"Новобранець навчається в майстра зброї того замку, куди його направлено, і "
+"не може промовити слова, доки замку немає."
+
+#. module: nights_watch
+#: model:ir.model.constraint,message:nights_watch.constraint_nw_role_code_uniq
+msgid "A role with this code already exists."
+msgstr "Посада з таким кодом уже існує."
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_jeren
+msgid "A septon's bastard, and as weak as a girl on the training yard."
+msgstr "Байстрюк септона, і на дворі для вправ слабкий, наче дівчина."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_brother__serves_id
+msgid "A steward is assigned to a senior brother he serves."
+msgstr "Стюарда призначають старшому побратимові, якому він служить."
+
+#. module: nights_watch
+#: model:nw.castle,description:nights_watch.castle_greyguard
+msgid "Abandoned castle, half fallen into ruin."
+msgstr "Покинутий замок, наполовину обернений на руїни."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__active
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__active
+msgid "Active"
+msgstr "Активний"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__age
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "Age"
+msgstr "Вік"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/wizard/nw_take_black_wizard.py:0
+msgid "Already on the rolls of the Watch: %(names)s."
+msgstr "Уже в реєстрі Варти: %(names)s."
+
+#. module: nights_watch
+#: model:ir.model.constraint,message:nights_watch.constraint_nw_order_code_uniq
+msgid "An order with this code already exists."
+msgstr "Орден із таким кодом уже існує."
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_todder
+msgid ""
+"An ugly short lad with an unpleasant voice. Learned his drinking songs in "
+"his father's winesink; Pyp says his singing is like pissing on a fire."
+msgstr "Незугарний коротун із неприємним голосом. Застільних пісень навчився в батьковій винарні; Піп каже, що його спів — наче сцяти на вогонь."
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "And Now Their Watch Is Ended"
+msgstr "І тепер їхня варта скінчилася"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "Answers To"
+msgstr "Підпорядкований"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_kanban
+msgid "Archive"
+msgstr "Архівувати"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_search
+msgid "Archived"
+msgstr "Архівовано"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+msgid "Assign to Order"
+msgstr "Призначити до ордену"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__standing__waiting
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__status__waiting
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_search
+msgid "Awaiting Assignment"
+msgstr "Чекає на призначення"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+msgid "Background"
+msgstr "Передісторія"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__recruitment_reason__bastard
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_take_black_wizard__recruitment_reason__bastard
+msgid "Bastard Born"
+msgstr "Байстрюк"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "Before the Wall"
+msgstr "До Стіни"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_ranging__status__ongoing
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_search
+msgid "Beyond the Wall"
+msgstr "За Стіною"
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_pyp
+msgid ""
+"Big-eared and small, and a born player with a hundred voices: king, "
+"swineherd, tavern girl or maiden princess. His eunuchs always sound like Ser"
+" Alliser. Holds a sword like a dagger."
+msgstr "Малий і вухатий, природжений лицедій на сто голосів: король, свинопас, шинкарка чи цнотлива принцеса. Його євнухи завжди звучать як сер Алісер. Меч тримає, наче кинджал."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__birth_date
+msgid "Birth Date"
+msgstr "Дата народження"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "Born"
+msgstr "Народжений"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_form
+msgid "Bring Home"
+msgstr "Привести додому"
+
+#. module: nights_watch
+#: model:ir.model,name:nights_watch.model_nw_ranging_return_wizard
+msgid "Bring a Ranging Home"
+msgstr "Повернення вилазки"
+
+#. module: nights_watch
+#: model:ir.actions.act_window,name:nights_watch.action_nw_ranging_return_wizard
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_return_wizard_form
+msgid "Bring the Ranging Home"
+msgstr "Повернути вилазку додому"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/res_partner.py:0
+#: model:res.groups,name:nights_watch.group_nw_brother
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "Brother"
+msgstr "Побратим"
+
+#. module: nights_watch
+#: model:ir.actions.report,name:nights_watch.action_report_nw_brother
+msgid "Brother Dossier"
+msgstr "Досьє побратима"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_res_partner__nw_recruit_brother_id
+#: model:ir.model.fields,field_description:nights_watch.field_res_users__nw_recruit_brother_id
+msgid "Brother Record"
+msgstr "Запис побратима"
+
+#. module: nights_watch
+#: model:ir.model,name:nights_watch.model_nw_brother
+msgid "Brother of the Night's Watch"
+msgstr "Побратим Нічної Варти"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_res_users__nw_brother_id
+msgid "Brother of the Watch"
+msgstr "Побратим Варти"
+
+#. module: nights_watch
+#: model:ir.actions.act_window,name:nights_watch.action_nw_brother
+#: model:ir.model.fields,field_description:nights_watch.field_nw_assign_wizard__brother_ids
+#: model:ir.model.fields,field_description:nights_watch.field_nw_castle__brother_ids
+#: model:ir.ui.menu,name:nights_watch.menu_nw_brother
+#: model:ir.ui.menu,name:nights_watch.menu_nw_brothers_root
+msgid "Brothers"
+msgstr "Побратими"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_assign_wizard_form
+msgid "Brothers to Post"
+msgstr "Побратими до призначення"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__standing__builders
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_order__code__builders
+#: model:nw.order,name:nights_watch.order_builders
+msgid "Builders"
+msgstr "Будівельники"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "Came Back"
+msgstr "Повернулися"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "Came back"
+msgstr "Повернувся"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_assign_wizard_form
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_return_wizard_form
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_wizard_form
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_take_black_wizard_form
+msgid "Cancel"
+msgstr "Скасувати"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_castle__capacity
+msgid "Capacity"
+msgstr "Місткість"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__castle_id
+#: model:ir.model.fields,field_description:nights_watch.field_res_users__nw_castle_id
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_search
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_search
+msgid "Castle"
+msgstr "Замок"
+
+#. module: nights_watch
+#: model:nw.role,name:nights_watch.role_commander
+#: model:res.groups,name:nights_watch.group_nw_commander
+msgid "Castle Commander"
+msgstr "Комендант замку"
+
+#. module: nights_watch
+#: model:ir.model,name:nights_watch.model_nw_castle
+msgid "Castle on the Wall"
+msgstr "Замок на Стіні"
+
+#. module: nights_watch
+#: model:ir.actions.act_window,name:nights_watch.action_nw_castle
+#: model:ir.ui.menu,name:nights_watch.menu_nw_castle
+msgid "Castles"
+msgstr "Замки"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__casualty_ids
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_return_wizard__casualty_ids
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_form
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_return_wizard_form
+msgid "Casualties"
+msgstr "Полеглі"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__casualty_count
+msgid "Casualty Count"
+msgstr "К-ть полеглих"
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_stonesnake
+msgid "Climbs the Frostfangs where other men would not walk."
+msgstr "Видирається на Морозні Ікла там, де інші не пройшли б і кроку."
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_return_wizard_form
+msgid "Close the Ranging"
+msgstr "Закрити вилазку"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_order__code
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__code
+msgid "Code"
+msgstr "Код"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__origin
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "Comes From"
+msgstr "Походить із"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_castle__commander_id
+msgid "Commander"
+msgstr "Комендант"
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_cotter_pyke
+msgid ""
+"Commands Eastwatch and its fleet. Cannot read a word of it, and has a "
+"steward read his letters aloud."
+msgstr "Командує Східною Вартою та її флотом. Не читає ані слова, тож листи йому вголос читає стюард."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__commands_castle
+msgid "Commands a Castle"
+msgstr "Командує замком"
+
+#. module: nights_watch
+#: model:nw.role,description:nights_watch.role_commander
+msgid ""
+"Commands his castle and its garrison. The Wall has no single head: every "
+"castle stands on its own."
+msgstr "Командує своїм замком і його залогою. Стіна не має єдиного голови: кожен замок стоїть сам за себе."
+"Командує своїм замком і його залогою. Стіна не має єдиного голови: кожен "
+"замок стоїть сам за себе."
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_mallister
+msgid "Commands the Shadow Tower and leads its rangers."
+msgstr "Командує Тінявою вежею і веде її розвідників."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_castle__commander_id
+msgid "Commands this castle and answers for it to no one on the Wall."
+msgstr "Командує цим замком і не звітує за нього нікому на Стіні."
+
+#. module: nights_watch
+#: model:ir.ui.menu,name:nights_watch.menu_nw_config_root
+msgid "Configuration"
+msgstr "Налаштування"
+
+#. module: nights_watch
+#: model:ir.model,name:nights_watch.model_res_partner
+msgid "Contact"
+msgstr "Контакт"
+
+#. module: nights_watch
+#: model:nw.role,name:nights_watch.role_cook
+msgid "Cook"
+msgstr "Кухар"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+msgid "Count this brother among the fallen? And now his watch is ended."
+msgstr "Визнати цього побратима полеглим? І тепер його варта скінчилася."
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_sam
+msgid ""
+"Craven by his own account, and the best-read man at Castle Black. Steward to"
+" Maester Aemon."
+msgstr "Боягуз за власним визнанням і найначитаніший чоловік у Чорному Замку. Стюард мейстра Емона."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_assign_wizard__create_uid
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__create_uid
+#: model:ir.model.fields,field_description:nights_watch.field_nw_castle__create_uid
+#: model:ir.model.fields,field_description:nights_watch.field_nw_order__create_uid
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__create_uid
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_return_wizard__create_uid
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_wizard__create_uid
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__create_uid
+#: model:ir.model.fields,field_description:nights_watch.field_nw_take_black_wizard__create_uid
+#: model:ir.model.fields,field_description:nights_watch.field_nw_threat__create_uid
+msgid "Created by"
+msgstr "Створив"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_assign_wizard__create_date
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__create_date
+#: model:ir.model.fields,field_description:nights_watch.field_nw_castle__create_date
+#: model:ir.model.fields,field_description:nights_watch.field_nw_order__create_date
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__create_date
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_return_wizard__create_date
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_wizard__create_date
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__create_date
+#: model:ir.model.fields,field_description:nights_watch.field_nw_take_black_wizard__create_date
+#: model:ir.model.fields,field_description:nights_watch.field_nw_threat__create_date
+msgid "Created on"
+msgstr "Створено"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__date_end
+msgid "Date End"
+msgstr "Дата завершення"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__date_start
+msgid "Date Start"
+msgstr "Дата початку"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__oath_date
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "Date of the Oath"
+msgstr "Дата присяги"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "Days"
+msgstr "Днів"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "Days Beyond the Wall"
+msgstr "Днів за Стіною"
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_ranging__duration
+msgid "Days spent beyond the Wall."
+msgstr "Днів, проведених за Стіною."
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__recruitment_reason__debt
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_take_black_wizard__recruitment_reason__debt
+msgid "Debt"
+msgstr "Борг"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+msgid "Declare Deserter"
+msgstr "Оголосити дезертиром"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+msgid "Declare Fallen"
+msgstr "Визнати полеглим"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_kanban
+msgid "Delete"
+msgstr "Видалити"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_form
+msgid "Depart"
+msgstr "Вирушити"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__castle_id
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_wizard__castle_id
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "Departs From"
+msgstr "Вирушає з"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_wizard__date_start
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "Departure"
+msgstr "Виступ"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_castle__description
+#: model:ir.model.fields,field_description:nights_watch.field_nw_order__description
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__description
+#: model:ir.model.fields,field_description:nights_watch.field_nw_threat__description
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_castle_form
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_role_form
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_threat_form
+msgid "Description"
+msgstr "Опис"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__status__deserted
+msgid "Deserted"
+msgstr "Дезертирував"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_threat__threat_type__deserter
+msgid "Deserters"
+msgstr "Дезертири"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_assign_wizard__display_name
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__display_name
+#: model:ir.model.fields,field_description:nights_watch.field_nw_castle__display_name
+#: model:ir.model.fields,field_description:nights_watch.field_nw_order__display_name
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__display_name
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_return_wizard__display_name
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_wizard__display_name
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__display_name
+#: model:ir.model.fields,field_description:nights_watch.field_nw_take_black_wizard__display_name
+#: model:ir.model.fields,field_description:nights_watch.field_nw_threat__display_name
+#: model:ir.model.fields,field_description:nights_watch.field_res_partner__display_name
+#: model:ir.model.fields,field_description:nights_watch.field_res_users__display_name
+msgid "Display Name"
+msgstr "Назва для відображення"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__duration
+msgid "Duration"
+msgstr "Тривалість"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_order_form
+msgid "Duties"
+msgstr "Обовʼязки"
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_order__description
+msgid "Duties the order is responsible for."
+msgstr "Обовʼязки, за які відповідає орден."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_role.py:0
+msgid ""
+"Each castle has its own First, so \"%(role)s\" must be limited to one per "
+"castle."
+msgstr "Кожен замок має власного Першого, тож \"%(role)s\" має бути обмежена одним на замок."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_brother__order_id
+msgid "Empty until the recruit says the words."
+msgstr "Порожньо, доки новобранець не промовить слова."
+
+#. module: nights_watch
+#: model_terms:ir.actions.act_window,help:nights_watch.action_nw_brother
+msgid "Enlist the first brother of the Watch"
+msgstr "Запишіть першого побратима Варти"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_return_wizard_form
+msgid ""
+"Every man not named below is given up as lost beyond the Wall.\n"
+"                    His office passes to another."
+msgstr "Кожен, кого не названо нижче, вважається зниклим за Стіною.\n                    Його посада переходить іншому."
+"Кожен, кого не названо нижче, вважається зниклим за Стіною.\n"
+"                    Його посада переходить іншому."
+
+#. module: nights_watch
+#: model:res.groups,comment:nights_watch.group_nw_brother
+msgid ""
+"Every man of the Watch. He reads the rolls of the whole Wall and changes "
+"nothing."
+msgstr "Кожен побратим Варти. Читає реєстри всієї Стіни й нічого не змінює."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid "Every sworn brother belongs to an order. %(name)s has none."
+msgstr "Кожен присяглий побратим належить до ордену. %(name)s — до жодного."
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+msgid "Execute"
+msgstr "Стратити"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__status__executed
+msgid "Executed"
+msgstr "Страчений"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__recruitment_reason__exile
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_take_black_wizard__recruitment_reason__exile
+msgid "Exiled"
+msgstr "Вигнанець"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_threat__severity__existential
+msgid "Existential"
+msgstr "Загроза існуванню"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__status__fallen
+msgid "Fallen"
+msgstr "Полеглий"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "Fate"
+msgstr "Доля"
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_hobb
+msgid "Feeds every man at Castle Black, and lost two fingers doing it."
+msgstr "Годує кожного в Чорному Замку, і двох пальців на цьому позбувся."
+
+#. module: nights_watch
+#: model:nw.role,description:nights_watch.role_cook
+msgid ""
+"Feeds the garrison. A steward's duty, and the one every brother notices."
+msgstr "Годує залогу. Обовʼязок стюарда, і той, який помічає кожен побратим."
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "Fell"
+msgstr "Поліг"
+
+#. module: nights_watch
+#: model:nw.role,name:nights_watch.role_first_builder
+msgid "First Builder"
+msgstr "Перший будівничий"
+
+#. module: nights_watch
+#: model:nw.role,name:nights_watch.role_first_ranger
+msgid "First Ranger"
+msgstr "Перший розвідник"
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_benjen
+msgid ""
+"First Ranger of Castle Black until he rode north with six men and never came"
+" back."
+msgstr "Перший розвідник Чорного Замку, доки не подався на північ із шістьма людьми й не повернувся."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_threat__first_seen
+msgid "First Seen"
+msgstr "Уперше помічено"
+
+#. module: nights_watch
+#: model:nw.role,name:nights_watch.role_first_steward
+msgid "First Steward"
+msgstr "Перший стюард"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_order__head_ids
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_order_form
+msgid "Firsts"
+msgstr "Перші"
+
+#. module: nights_watch
+#: model:ir.actions.act_window,name:nights_watch.action_nw_ranging_wizard
+#: model:ir.model,name:nights_watch.model_nw_ranging_wizard
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_wizard_form
+msgid "Form a Ranging Party"
+msgstr "Сформувати загін"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_wizard_form
+msgid "Form the Party"
+msgstr "Сформувати загін"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__former_life
+msgid "Former Life"
+msgstr "Життя до Стіни"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__is_wildling
+msgid "Former Wildling"
+msgstr "Колишній дикун"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_search
+msgid "Former Wildlings"
+msgstr "Колишні дикуни"
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_gared
+msgid ""
+"Forty years on the Wall, and the cold took both ears, three toes and the "
+"little finger of his left hand. Counted himself lucky: his brother froze on "
+"watch and was found smiling. Then he ran, was taken south of the Wall, and "
+"Lord Eddard Stark took his head."
+msgstr "Сорок років на Стіні, і мороз забрав обидва вуха, три пальці на ногах і мізинець лівої руки. Вважав себе щасливцем: його брат замерз на чатах, і знайшли його усміхненим. Тоді він утік, його схопили на південь від Стіни, і лорд Едард Старк стяв йому голову."
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+msgid "Found Alive"
+msgstr "Знайшовся живим"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "Free Folk"
+msgstr "Вільний народ"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_castle.py:0
+#: model:ir.model.fields,field_description:nights_watch.field_nw_castle__garrison
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_castle_form
+msgid "Garrison"
+msgstr "Залога"
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_mormont
+msgid ""
+"Gave up his lordship and Longclaw to his sister, took the black, and rose to"
+" command Castle Black."
+msgstr "Віддав сестрі лордство й Довгопазур, узяв чорне і піднявся до коменданта Чорного Замку."
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_threat__threat_type__giant
+msgid "Giants"
+msgstr "Велетні"
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_waymar
+msgid ""
+"Grey-eyed, graceful and slim as a knife, mounted on a great black destrier "
+"and clad head to heel in black leather, moleskin and fine supple ringmail. "
+"Less than half a year in the Watch, and no one doubted he was ready for his "
+"command. His wardrobe was, at least."
+msgstr "Сіроокий, зграбний і тонкий, наче ніж, на великому вороному дестрієрі, з голови до пʼят у чорній шкірі, кротовому хутрі й тонкій гнучкій кольчузі. У Варті менше півроку, і ніхто не сумнівався, що він готовий командувати. Принаймні його гардероб був готовий."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_assign_wizard__role_id
+msgid ""
+"Hand him an office along with his order. One man at a time: an office is "
+"held by one brother."
+msgstr "Дати йому посаду разом з орденом. По одному: посаду обіймає один побратим."
+"Дати йому посаду разом з орденом. По одному: посаду обіймає один побратим."
+
+#. module: nights_watch
+#: model:res.groups,comment:nights_watch.group_nw_commander
+msgid ""
+"He answers for a castle, and may strike its records out entirely. Other "
+"castles are not his to touch."
+msgstr "Відповідає за замок і може повністю викреслювати його записи. Інших замків він не чіпає."
+"Відповідає за замок і може повністю викреслювати його записи. Інших замків "
+"він не чіпає."
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "He has never ridden beyond the Wall."
+msgstr "Він жодного разу не їздив за Стіну."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__is_order_head
+msgid "Heads the Order"
+msgstr "Очолює орден"
+
+#. module: nights_watch
+#: model:nw.role,description:nights_watch.role_septon
+msgid "Hears the vows of those who keep the faith of the Seven."
+msgstr "Приймає обітниці тих, хто тримається віри Сімох."
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_threat__severity__high
+msgid "High"
+msgstr "Висока"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_threat_search
+msgid "High & Existential"
+msgstr "Висока і загроза існуванню"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_role.py:0
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__brother_ids
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_role_form
+msgid "Holders"
+msgstr "Носії"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "How He Came to the Wall"
+msgstr "Як він потрапив на Стіну"
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_role__scope
+msgid "How many brothers may hold this office at the same time."
+msgstr "Скільки побратимів можуть обіймати цю посаду водночас."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_assign_wizard__id
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__id
+#: model:ir.model.fields,field_description:nights_watch.field_nw_castle__id
+#: model:ir.model.fields,field_description:nights_watch.field_nw_order__id
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__id
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_return_wizard__id
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_wizard__id
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__id
+#: model:ir.model.fields,field_description:nights_watch.field_nw_take_black_wizard__id
+#: model:ir.model.fields,field_description:nights_watch.field_nw_threat__id
+#: model:ir.model.fields,field_description:nights_watch.field_res_partner__id
+#: model:ir.model.fields,field_description:nights_watch.field_res_users__id
+msgid "ID"
+msgstr "ID"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_role_form
+msgid "Identification"
+msgstr "Ідентифікація"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+msgid "Identity"
+msgstr "Особа"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__in_service
+msgid "In Service"
+msgstr "У строю"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__is_current_user
+msgid "Is Current User"
+msgstr "Це поточний користувач"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__is_senior
+msgid "Is Senior"
+msgstr "Старший"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__is_steward
+msgid "Is Steward"
+msgstr "Стюард"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/wizard/nw_take_black_wizard.py:0
+msgid ""
+"Keeps no book of his own, so the words could never be his to say: %(names)s."
+msgstr "Не має власної книги, тож слова ніколи не були б його: %(names)s."
+
+#. module: nights_watch
+#: model:nw.role,description:nights_watch.role_maester
+msgid "Keeps the ravens, the library and the health of the garrison."
+msgstr "Доглядає круків, бібліотеку і здоровʼя залоги."
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_chett
+msgid ""
+"Kept Maester Aemon's chambers and his hounds until Samwell Tarly was given "
+"the place beside him."
+msgstr "Доглядав покої мейстра Емона і його псів, доки місце поруч не віддали Семвелові Тарлі."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_assign_wizard__write_uid
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__write_uid
+#: model:ir.model.fields,field_description:nights_watch.field_nw_castle__write_uid
+#: model:ir.model.fields,field_description:nights_watch.field_nw_order__write_uid
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__write_uid
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_return_wizard__write_uid
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_wizard__write_uid
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__write_uid
+#: model:ir.model.fields,field_description:nights_watch.field_nw_take_black_wizard__write_uid
+#: model:ir.model.fields,field_description:nights_watch.field_nw_threat__write_uid
+msgid "Last Updated by"
+msgstr "Востаннє змінив"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_assign_wizard__write_date
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__write_date
+#: model:ir.model.fields,field_description:nights_watch.field_nw_castle__write_date
+#: model:ir.model.fields,field_description:nights_watch.field_nw_order__write_date
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__write_date
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_return_wizard__write_date
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_wizard__write_date
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__write_date
+#: model:ir.model.fields,field_description:nights_watch.field_nw_take_black_wizard__write_date
+#: model:ir.model.fields,field_description:nights_watch.field_nw_threat__write_date
+msgid "Last Updated on"
+msgstr "Востаннє змінено"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__leader_id
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_wizard__leader_id
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "Leader"
+msgstr "Командир"
+
+#. module: nights_watch
+#: model:nw.role,description:nights_watch.role_first_builder
+msgid "Leads the builders of his castle and keeps its walls standing."
+msgstr "Веде будівельників свого замку й тримає його мури."
+
+#. module: nights_watch
+#: model:nw.role,description:nights_watch.role_first_ranger
+msgid ""
+"Leads the rangers of his castle and answers for every patrol that leaves it."
+msgstr "Веде розвідників свого замку й відповідає за кожен патруль, що виходить із нього."
+"Веде розвідників свого замку й відповідає за кожен патруль, що виходить із "
+"нього."
+
+#. module: nights_watch
+#: model:nw.role,description:nights_watch.role_first_steward
+msgid "Leads the stewards of his castle and answers for its stores."
+msgstr "Веде стюардів свого замку й відповідає за його припаси."
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "Letters"
+msgstr "Письмо"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__can_read
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_search
+msgid "Literate"
+msgstr "Письменний"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "Logo"
+msgstr "Логотип"
+
+#. module: nights_watch
+#: model:nw.threat,description:nights_watch.threat_others
+msgid ""
+"Long thought a children's tale. Sightings confirmed by returning rangers; "
+"the dead do not stay dead."
+msgstr "Довго вважалися дитячою казкою. Розвідники, що повернулися, підтвердили: мертві не лишаються мертвими."
+"Довго вважалися дитячою казкою. Розвідники, що повернулися, підтвердили: "
+"мертві не лишаються мертвими."
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_dareon
+msgid ""
+"Lord Rowan found him in his daughter's bed. The girl swore she helped him "
+"through the window; her father called it rape. Quick with a blade, but "
+"afraid of being cut."
+msgstr "Лорд Рован застав його в ліжку своєї доньки. Дівчина божилася, що сама впустила його у вікно; батько назвав це зґвалтуванням. Меткий із клинком, але боїться порізів."
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_ranging__status__lost
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_search
+msgid "Lost"
+msgstr "Зниклий"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__status__lost
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_search
+msgid "Lost Beyond the Wall"
+msgstr "Зник за Стіною"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "Lost beyond the Wall"
+msgstr "Зник за Стіною"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_threat__severity__low
+msgid "Low"
+msgstr "Низька"
+
+#. module: nights_watch
+#: model:nw.role,name:nights_watch.role_maester
+msgid "Maester"
+msgstr "Мейстер"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_castle__is_active
+msgid "Manned"
+msgstr "Залюднений"
+
+#. module: nights_watch
+#: model:nw.order,description:nights_watch.order_builders
+msgid ""
+"Masons and carpenters who maintain the Wall, the castles and the tunnels "
+"beneath the ice."
+msgstr "Каменярі й теслі, що доглядають Стіну, замки й тунелі під кригою."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_castle__instructor_id
+#: model:nw.role,name:nights_watch.role_instructor
+msgid "Master-at-arms"
+msgstr "Майстер зброї"
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_thorne
+msgid ""
+"Master-at-arms of Castle Black. Hands out mocking names to every boy he "
+"drills."
+msgstr "Майстер зброї Чорного Замку. Роздає глузливі прізвиська кожному хлопцеві, якого муштрує."
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_endrew
+msgid ""
+"Master-at-arms of the Shadow Tower, and a gentler teacher than Ser Alliser "
+"ever was."
+msgstr "Майстер зброї Тінявої вежі, і наставник лагідніший, ніж будь-коли був сер Алісер."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_castle__capacity
+msgid "Maximum garrison. 0 means unlimited."
+msgstr "Найбільша залога. 0 — без обмежень."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_brother__is_senior
+msgid "May be assigned a personal steward."
+msgstr "Можна призначити особистого стюарда."
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_threat__severity__medium
+msgid "Medium"
+msgstr "Середня"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__member_count
+msgid "Member Count"
+msgstr "К-ть членів"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_order.py:0
+#: model:ir.model.fields,field_description:nights_watch.field_nw_order__member_ids
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_order_form
+msgid "Members"
+msgstr "Члени"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_take_black_wizard__partner_ids
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_take_black_wizard_form
+msgid "Men"
+msgstr "Люди"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "Men Who Rode"
+msgstr "Вирушило"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__mentor_id
+msgid "Mentor"
+msgstr "Наставник"
+
+#. module: nights_watch
+#: model:nw.threat,description:nights_watch.threat_giants
+msgid "Mostly peaceful unless their camps are disturbed."
+msgstr "Здебільшого мирні, доки не чіпати їхніх стійбищ."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__name
+#: model:ir.model.fields,field_description:nights_watch.field_nw_castle__name
+#: model:ir.model.fields,field_description:nights_watch.field_nw_order__name
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__name
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__name
+#: model:ir.model.fields,field_description:nights_watch.field_nw_threat__name
+msgid "Name"
+msgstr "Назва"
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_brother__nickname
+msgid "Name he is known by on the Wall."
+msgstr "Імʼя, під яким його знають на Стіні."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid "Name the order %(name)s is to serve in."
+msgstr "Вкажіть орден, у якому служитиме %(name)s."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__nickname
+msgid "Nickname"
+msgstr "Прізвисько"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_take_black_wizard_form
+msgid ""
+"Night gathers, and now my watch begins. It shall not end until my death."
+msgstr "Ніч збирається, і моя варта починається. Вона не скінчиться до моєї смерті."
+"Ніч збирається, і моя варта починається. Вона не скінчиться до моєї смерті."
+
+#. module: nights_watch
+#: model:ir.module.category,name:nights_watch.module_category_nights_watch
+#: model:ir.ui.menu,name:nights_watch.menu_nights_watch_root
+#: model:res.groups.privilege,name:nights_watch.privilege_nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_users_form_nights_watch
+msgid "Night's Watch"
+msgstr "Нічна Варта"
+
+#. module: nights_watch
+#: model:ir.model,name:nights_watch.model_nw_order
+msgid "Night's Watch Order"
+msgstr "Орден Нічної Варти"
+
+#. module: nights_watch
+#: model:ir.model,name:nights_watch.model_nw_role
+msgid "Night's Watch Role"
+msgstr "Посада Нічної Варти"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_role__scope__free
+msgid "No limit"
+msgstr "Без обмежень"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid ""
+"No man says the words for another. This is %(name)s to answer, and no one "
+"else."
+msgstr "Ніхто не промовляє слова за іншого. Відповідати %(name)s, і нікому більше."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/res_partner.py:0
+msgid ""
+"No man takes the black in another man's place. This is %(name)s to choose, "
+"and no one else."
+msgstr "Ніхто не бере чорне замість іншого. Обирати %(name)s, і нікому більше."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/wizard/nw_take_black_wizard.py:0
+msgid "No man takes the black in another man's place: %(names)s."
+msgstr "Ніхто не бере чорне замість іншого: %(names)s."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__is_noble_born
+msgid "Noble Born"
+msgstr "Шляхетного роду"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/wizard/nw_assign_wizard.py:0
+msgid "Not awaiting an assignment: %(names)s."
+msgstr "Не чекають на призначення: %(names)s."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__notable_deed
+msgid "Notable Deed"
+msgstr "Помітний вчинок"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+msgid "Notable Deeds"
+msgstr "Помітні вчинки"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_assign_wizard__note
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_wizard__note
+#: model:ir.model.fields,field_description:nights_watch.field_nw_take_black_wizard__note
+msgid "Note"
+msgstr "Примітка"
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_castle__garrison
+msgid "Number of brothers quartered in the castle."
+msgstr "Кількість побратимів, приписаних до замку."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_res_partner__nw_can_take_the_black
+#: model:ir.model.fields,field_description:nights_watch.field_res_users__nw_can_take_the_black
+msgid "Nw Can Take The Black"
+msgstr "Може взяти чорне"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_search
+msgid "Oathbreakers"
+msgstr "Клятвопорушники"
+
+#. module: nights_watch
+#: model:nw.threat,description:nights_watch.threat_deserters
+msgid "Oathbreakers fleeing south. The penalty for desertion is death."
+msgstr "Клятвопорушники, що тікають на південь. Кара за дезертирство — смерть."
+"Клятвопорушники, що тікають на південь. Кара за дезертирство — смерть."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__objective
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_wizard__objective
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_form
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_wizard_form
+msgid "Objective"
+msgstr "Мета"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_assign_wizard__role_id
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__role_id
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_search
+msgid "Office"
+msgstr "Посада"
+
+#. module: nights_watch
+#: model:res.groups,name:nights_watch.group_nw_officer
+msgid "Officer"
+msgstr "Офіцер"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_role__scope__watch
+msgid "One in the whole Watch"
+msgstr "Одна на всю Варту"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_role__scope__castle
+msgid "One per castle"
+msgstr "Одна на замок"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid ""
+"Only a brother of the Stewards may be assigned to serve someone. %(name)s "
+"does not belong to that order."
+msgstr "Служити комусь може лише побратим зі Стюардів. %(name)s не належить до цього ордену."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid ""
+"Only a man still on the rolls, or one lost beyond the Wall, may be counted "
+"among the fallen. %(name)s left the Watch by another road."
+msgstr "Полеглим можна визнати лише того, хто ще в реєстрі, або того, хто зник за Стіною. %(name)s покинув Варту іншою дорогою."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_ranging.py:0
+msgid "Only sworn brothers ride beyond the Wall. These cannot: %(names)s."
+msgstr "За Стіну їдуть лише присяглі побратими. Ці не можуть: %(names)s."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/wizard/nw_ranging_wizard.py:0
+msgid ""
+"Only sworn brothers ride beyond the Wall. These stay behind: %(names)s."
+msgstr "За Стіну їдуть лише присяглі побратими. Ці лишаються: %(names)s."
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_kanban
+msgid "Open"
+msgstr "Відкрити"
+
+#. module: nights_watch
+#: model:ir.ui.menu,name:nights_watch.menu_nw_operations_root
+msgid "Operations"
+msgstr "Операції"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_assign_wizard__order_id
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__order_id
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__order_id
+#: model:ir.model.fields,field_description:nights_watch.field_res_users__nw_order_id
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_search
+msgid "Order"
+msgstr "Орден"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_castle__head_ids
+msgid "Order Firsts"
+msgstr "Перші орденів"
+
+#. module: nights_watch
+#: model:ir.actions.act_window,name:nights_watch.action_nw_order
+#: model:ir.ui.menu,name:nights_watch.menu_nw_order
+msgid "Orders"
+msgstr "Ордени"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__recruitment_reason__orphan
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_take_black_wizard__recruitment_reason__orphan
+msgid "Orphan"
+msgstr "Сирота"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_threat__threat_type__other
+msgid "Other"
+msgstr "Інше"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_return_wizard__outcome
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "Outcome"
+msgstr "Підсумок"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__standing__outside
+msgid "Outside the Orders"
+msgstr "Поза орденами"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "Page <span class=\"page\"/> / <span class=\"topage\"/>"
+msgstr "Сторінка <span class=\"page\"/> / <span class=\"topage\"/>"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__brother_ids
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_return_wizard__party_ids
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_wizard__brother_ids
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_form
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_wizard_form
+msgid "Party"
+msgstr "Загін"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__steward_ids
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+msgid "Personal Stewards"
+msgstr "Особисті стюарди"
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_brother__role_id
+msgid ""
+"Personal appointment on top of the order: castle commander, maester, septon,"
+" master-at-arms, recruiter."
+msgstr "Особисте призначення понад орденом: комендант замку, мейстер, септон, майстер зброї, вербувальник."
+"Особисте призначення понад орденом: комендант замку, мейстер, септон, "
+"майстер зброї, вербувальник."
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_ranging__status__planned
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_search
+msgid "Planned"
+msgstr "Запланована"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__recruitment_reason__political
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_take_black_wizard__recruitment_reason__political
+msgid "Political Reasons"
+msgstr "Політичні причини"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__image
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "Portrait"
+msgstr "Портрет"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__image_128
+msgid "Portrait (128)"
+msgstr "Портрет (128)"
+
+#. module: nights_watch
+#: model:ir.model,name:nights_watch.model_nw_assign_wizard
+msgid "Post Brothers to an Order"
+msgstr "Призначення побратимів до ордену"
+
+#. module: nights_watch
+#: model:ir.actions.act_window,name:nights_watch.action_nw_assign_wizard
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_assign_wizard_form
+msgid "Post to an Order"
+msgstr "Призначити до ордену"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_assign_wizard_form
+msgid "Post to the Order"
+msgstr "Призначити до ордену"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/wizard/nw_assign_wizard.py:0
+msgid "Quartered in another castle, and not yours to post: %(names)s."
+msgstr "Приписані до іншого замку, і призначати їх не вам: %(names)s."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/wizard/nw_ranging_wizard.py:0
+msgid "Quartered in another castle, and not yours to send: %(names)s."
+msgstr "Приписані до іншого замку, і посилати їх не вам: %(names)s."
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__standing__rangers
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_order__code__rangers
+#: model:nw.order,name:nights_watch.order_rangers
+msgid "Rangers"
+msgstr "Розвідники"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/wizard/nw_ranging_wizard.py:0
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_return_wizard__ranging_id
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_wizard__name
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__status__ranging
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_search
+msgid "Ranging"
+msgstr "На вилазці"
+
+#. module: nights_watch
+#: model:ir.model,name:nights_watch.model_nw_ranging
+msgid "Ranging Beyond the Wall"
+msgstr "Вилазка за Стіну"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__ranging_count
+#: model:ir.model.fields,field_description:nights_watch.field_nw_threat__ranging_count
+msgid "Ranging Count"
+msgstr "К-ть вилазок"
+
+#. module: nights_watch
+#: model:ir.actions.report,name:nights_watch.action_report_nw_ranging
+msgid "Ranging Report"
+msgstr "Звіт про вилазку"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "Ranging beyond the Wall"
+msgstr "Вилазка за Стіну"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+#: code:addons/nights_watch/models/nw_threat.py:0
+#: model:ir.actions.act_window,name:nights_watch.action_nw_ranging
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__ranging_ids
+#: model:ir.model.fields,field_description:nights_watch.field_nw_threat__ranging_ids
+#: model:ir.ui.menu,name:nights_watch.menu_nw_ranging
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_graph
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_threat_form
+msgid "Rangings"
+msgstr "Вилазки"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "Rangings Beyond the Wall"
+msgstr "Вилазки за Стіну"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "Reason"
+msgstr "Причина"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__status__recruit
+msgid "Recruit"
+msgstr "Новобранець"
+
+#. module: nights_watch
+#: model:nw.role,name:nights_watch.role_recruiter
+msgid "Recruiter"
+msgstr "Вербувальник"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__recruitment_reason
+msgid "Recruitment Reason"
+msgstr "Причина вступу"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/wizard/nw_take_black_wizard.py:0
+#: model:ir.model.fields,field_description:nights_watch.field_nw_castle__recruit_ids
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__standing__recruit
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_search
+msgid "Recruits"
+msgstr "Новобранці"
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_brother__mentor_id
+msgid ""
+"Recruits answer to the master-at-arms, sworn brothers to the First of their "
+"order, the Firsts to the commander of their castle. The commander answers to"
+" no one on the Wall."
+msgstr "Новобранці підпорядковані майстрові зброї, присяглі побратими — Першому свого ордену, Перші — комендантові свого замку. Комендант не підпорядкований нікому на Стіні."
+"Новобранці підпорядковані майстрові зброї, присяглі побратими — Першому "
+"свого ордену, Перші — комендантові свого замку. Комендант не підпорядкований"
+" нікому на Стіні."
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_castle_form
+msgid "Recruits in Training"
+msgstr "Новобранці на навчанні"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+msgid "Refuse the Oath"
+msgstr "Відмовитися від присяги"
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_aemon
+msgid ""
+"Refused a throne and took the black instead. Blind now, and older than any "
+"man on the Wall."
+msgstr "Відмовився від престолу і взяв чорне натомість. Тепер сліпий і старший за будь-кого на Стіні."
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__status__refused
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_search
+msgid "Refused the Oath"
+msgstr "Відмовився від присяги"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_castle__region
+#: model:ir.model.fields,field_description:nights_watch.field_nw_threat__region
+msgid "Region"
+msgstr "Регіон"
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_brother__origin
+msgid "Region or house he was born in."
+msgstr "Край або дім, де він народився."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__summary
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_return_wizard__summary
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_form
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_return_wizard_form
+msgid "Report"
+msgstr "Звіт"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_return_wizard__date_end
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "Return"
+msgstr "Повернення"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_ranging__status__returned
+msgid "Returned"
+msgstr "Повернулася"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_wizard__depart_now
+msgid "Ride at Once"
+msgstr "Вирушити негайно"
+
+#. module: nights_watch
+#: model:nw.role,description:nights_watch.role_recruiter
+msgid "Rides the kingsroad gathering men for the Wall."
+msgstr "Їздить королівським шляхом, збираючи людей для Стіни."
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_jafer
+msgid ""
+"Rode north with Benjen Stark. Found beside Othor, six days dead and no sign "
+"of rot."
+msgstr "Подався на північ із Бендженом Старком. Знайдений поряд з Отором, шість днів мертвий і без сліду тління."
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_othor
+msgid ""
+"Rode north with Benjen Stark. His body was found beyond the Wall and carried"
+" back to Castle Black, and it did not stay dead."
+msgstr "Подався на північ із Бендженом Старком. Його тіло знайшли за Стіною й привезли до Чорного Замку, і воно не лишилося мертвим."
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_mance
+msgid ""
+"Rode with the rangers of the Shadow Tower until he chose a torn red-silk "
+"cloak over his black one. Never taken, and now he leads the Free Folk "
+"gathering beyond the Wall."
+msgstr "Їздив із розвідниками Тінявої вежі, доки не обрав подертий плащ із червоного шовку замість чорного. Так і не спійманий, а тепер веде Вільний народ, що збирається за Стіною."
+
+#. module: nights_watch
+#: model:ir.actions.act_window,name:nights_watch.action_nw_role
+#: model:ir.ui.menu,name:nights_watch.menu_nw_role
+msgid "Roles"
+msgstr "Посади"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_role_form
+msgid "Rules"
+msgstr "Правила"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+msgid "Say the Words"
+msgstr "Промовити слова"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__scope
+msgid "Scope"
+msgstr "Область дії"
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_ranging_wizard__depart_now
+msgid ""
+"Send the party beyond the Wall straight away, instead of leaving it planned."
+msgstr "Відправити загін за Стіну одразу, замість лишати запланованим."
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_search
+msgid "Senior Brothers"
+msgstr "Старші побратими"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__is_senior
+msgid "Senior Office"
+msgstr "Старша посада"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__seniority
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__seniority
+msgid "Seniority"
+msgstr "Старшинство"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_take_black_wizard__castle_id
+msgid "Sent to"
+msgstr "Направлений до"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__recruitment_reason__crime
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_take_black_wizard__recruitment_reason__crime
+msgid "Sentenced for a Crime"
+msgstr "Засуджений за злочин"
+
+#. module: nights_watch
+#: model:nw.role,name:nights_watch.role_septon
+msgid "Septon"
+msgstr "Септон"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_castle__sequence
+#: model:ir.model.fields,field_description:nights_watch.field_nw_order__sequence
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__sequence
+msgid "Sequence"
+msgstr "Послідовність"
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_grenn
+msgid "Ser Alliser named him Aurochs for his thick neck and thicker head."
+msgstr "Сер Алісер прозвав його Туром за товсту шию і ще товщу голову."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__serves_id
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "Serves"
+msgstr "Служить"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+msgid "Service"
+msgstr "Служба"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_threat__severity
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_threat_search
+msgid "Severity"
+msgstr "Небезпечність"
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_ebben
+msgid ""
+"Short, bald and built like a barrel, and quicker with an axe than any man "
+"expects."
+msgstr "Низький, лисий і збитий, наче бочка, і з сокирою моторніший, ніж від нього чекають."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_assign_wizard__single_brother
+msgid "Single Brother"
+msgstr "Один побратим"
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_halder
+msgid ""
+"Sixteen, tall and muscled, and hits harder than any boy on the yard. Hates "
+"to defend: goad him enough and he opens up plain as day."
+msgstr "Шістнадцять років, високий і мускулистий, бʼє важче за будь-якого хлопця на дворі. Ненавидить боронитися: розізли його — і він розкриється як на долоні."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__skills
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "Skills"
+msgstr "Навички"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__standing
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_search
+msgid "Standing"
+msgstr "Становище"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__role_outside_orders
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__outside_orders
+msgid "Stands Outside the Orders"
+msgstr "Стоїть поза орденами"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__status
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__status
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_search
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_search
+msgid "Status"
+msgstr "Стан"
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_jon
+msgid ""
+"Steward to the commander of Castle Black; bonded to the direwolf Ghost."
+msgstr "Стюард коменданта Чорного Замку; повʼязаний із деривовком Привидом."
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__standing__stewards
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_order__code__stewards
+#: model:nw.order,name:nights_watch.order_stewards
+msgid "Stewards"
+msgstr "Стюарди"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_threat__is_active
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_threat_search
+msgid "Still Active"
+msgstr "Ще активна"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_search
+msgid "Still in Service"
+msgstr "Ще в строю"
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_brother__in_service
+msgid ""
+"Still on the rolls. A brother lost beyond the Wall, fallen or deserted holds"
+" no office: his post passes to another man."
+msgstr "Ще в реєстрі. Побратим, що зник за Стіною, поліг чи дезертирував, посади не обіймає: вона переходить іншому."
+"Ще в реєстрі. Побратим, що зник за Стіною, поліг чи дезертирував, посади не "
+"обіймає: вона переходить іншому."
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+msgid "Strike this brother from the rolls as an oathbreaker?"
+msgstr "Викреслити цього побратима з реєстру як клятвопорушника?"
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_brother__skills
+msgid "Sword, bow, healing, scouting, letters..."
+msgstr "Меч, лук, зцілення, розвідка, письмо..."
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__status__sworn
+msgid "Sworn"
+msgstr "Присяглий"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_search
+msgid "Sworn Only"
+msgstr "Лише присяглі"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__user_id
+msgid "System User"
+msgstr "Системний користувач"
+
+#. module: nights_watch
+#: model:ir.actions.act_window,name:nights_watch.action_nw_take_black_wizard
+#: model:ir.model,name:nights_watch.model_nw_take_black_wizard
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_take_black_wizard_form
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_partner_form_nights_watch
+msgid "Take the Black"
+msgstr "Взяти чорне"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__threat_id
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging_wizard__threat_id
+msgid "Target Threat"
+msgstr "Ціль"
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_role__code
+msgid "Technical identifier, e.g. \"instructor\"."
+msgstr "Технічний ідентифікатор, напр. \"instructor\"."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_role__is_order_head
+msgid ""
+"The First of his order in his castle. The brothers of that order quartered "
+"with him answer to him."
+msgstr "Перший свого ордену у своєму замку. Побратими цього ордену, приписані до нього, йому підпорядковані."
+"Перший свого ордену у своєму замку. Побратими цього ордену, приписані до "
+"нього, йому підпорядковані."
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "The Party"
+msgstr "Склад загону"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_ranging_return_wizard__outcome__returned
+msgid "The Party Came Back"
+msgstr "Загін повернувся"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_ranging_return_wizard__outcome__lost
+msgid "The Party Never Came Back"
+msgstr "Загін не повернувся"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid ""
+"The Watch beheads deserters, and only deserters. %(names)s never broke his "
+"oath."
+msgstr "Варта стинає голови дезертирам, і тільки їм. %(names)s не порушував присяги."
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+msgid "The Watch beheads deserters. Carry out the sentence?"
+msgstr "Варта стинає голови дезертирам. Виконати вирок?"
+
+#. module: nights_watch
+#: model:nw.order,description:nights_watch.order_rangers
+msgid ""
+"The fighting arm of the Watch. They patrol the haunted forest beyond the "
+"Wall and hunt down deserters."
+msgstr "Бойова рука Варти. Патрулюють примарний ліс за Стіною й ловлять дезертирів."
+"Бойова рука Варти. Патрулюють примарний ліс за Стіною й ловлять дезертирів."
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_qhorin
+msgid ""
+"The finest ranger of his generation. Lost half a hand to a wildling axe and "
+"kept the name."
+msgstr "Найкращий розвідник свого покоління. Втратив півдолоні від сокири дикуна і лишив собі це прізвисько."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_brother__seniority
+#: model:ir.model.fields,help:nights_watch.field_nw_role__seniority
+msgid "The higher the number, the higher the office stands in the Watch."
+msgstr "Що більше число, то вища посада у Варті."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_role__commands_castle
+msgid ""
+"The holder commands the castle he is quartered in. Only one brother per "
+"castle may hold such an office."
+msgstr "Носій командує замком, до якого приписаний. Таку посаду може обіймати лише один побратим на замок."
+"Носій командує замком, до якого приписаний. Таку посаду може обіймати лише "
+"один побратим на замок."
+
+#. module: nights_watch
+#: model:nw.castle,description:nights_watch.castle_black
+msgid ""
+"The largest and oldest of the manned castles, and the heart of the Watch."
+msgstr "Найбільший і найдавніший із залюднених замків, серце Варти."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_ranging.py:0
+msgid "The leader of \"%(ranging)s\" must be part of the ranging party."
+msgstr "Командир вилазки \"%(ranging)s\" має бути в складі загону."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_role__trains_recruits
+msgid "The master-at-arms: recruits of his castle are trained by him."
+msgstr "Майстер зброї: новобранців його замку навчає він."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_role__order_id
+msgid ""
+"The office belongs to this order: only its members may hold it. Empty for "
+"offices open to a brother of any order."
+msgstr "Посада належить цьому орденові: обіймати її можуть лише його члени. Порожньо — посада відкрита побратимові будь-якого ордену."
+"Посада належить цьому орденові: обіймати її можуть лише його члени. Порожньо"
+" — посада відкрита побратимові будь-якого ордену."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_brother__role_outside_orders
+#: model:ir.model.fields,help:nights_watch.field_nw_role__outside_orders
+msgid ""
+"The office places its holder above the three orders: he belongs to none of "
+"them. The castle commander, the maester, the septon."
+msgstr "Посада ставить носія над трьома орденами: він не належить до жодного. Комендант замку, мейстер, септон."
+"Посада ставить носія над трьома орденами: він не належить до жодного. "
+"Комендант замку, мейстер, септон."
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_dalbridge
+msgid "The oldest ranger of the Shadow Tower, and still the best bow in it."
+msgstr "Найстарший розвідник Тінявої вежі, і досі найкращий лук у ній."
+
+#. module: nights_watch
+#: model:nw.castle,description:nights_watch.castle_eastwatch
+msgid "The port castle of the Watch, guarding the Bay of Seals."
+msgstr "Портовий замок Варти, що стереже Тюленячу затоку."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_res_partner__nw_recruit_brother_id
+#: model:ir.model.fields,help:nights_watch.field_res_users__nw_recruit_brother_id
+msgid "The record opened on the Wall the day this man took the black."
+msgstr "Запис, відкритий на Стіні того дня, коли цей чоловік узяв чорне."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/wizard/nw_assign_wizard.py:0
+msgid "There is no one here to post to an order."
+msgstr "Тут нікого призначати до ордену."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/wizard/nw_take_black_wizard.py:0
+msgid "There is no one here to take the black."
+msgstr "Тут нікому брати чорне."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_ranging.py:0
+msgid "These brothers were not part of \"%(ranging)s\": %(names)s."
+msgstr "Ці побратими не були в складі вилазки \"%(ranging)s\": %(names)s."
+
+#. module: nights_watch
+#: model:nw.order,description:nights_watch.order_stewards
+msgid ""
+"They feed, clothe and supply the Watch, keep the ravens and serve the senior"
+" brothers in person."
+msgstr "Годують, одягають і постачають Варту, доглядають круків і особисто служать старшим побратимам."
+"Годують, одягають і постачають Варту, доглядають круків і особисто служать "
+"старшим побратимам."
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+msgid "This is for the officers of the Watch to decide."
+msgstr "Це вирішують офіцери Варти."
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+msgid "This man turns back before saying the words. Let him go?"
+msgstr "Цей чоловік повертає назад, не промовивши слів. Відпустити його?"
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_ranging_return_wizard__outcome
+msgid ""
+"Those not counted among the casualties go back to their duty, or are given "
+"up as lost beyond the Wall."
+msgstr "Ті, кого не визнано полеглими, повертаються до служби або вважаються зниклими за Стіною."
+"Ті, кого не визнано полеглими, повертаються до служби або вважаються "
+"зниклими за Стіною."
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_search
+msgid "Threat"
+msgstr "Загроза"
+
+#. module: nights_watch
+#: model:ir.model,name:nights_watch.model_nw_threat
+msgid "Threat Beyond the Wall"
+msgstr "Загроза за Стіною"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_ranging__threat_type
+#: model:ir.model.fields,field_description:nights_watch.field_nw_threat__threat_type
+msgid "Threat Type"
+msgstr "Тип загрози"
+
+#. module: nights_watch
+#: model:ir.actions.act_window,name:nights_watch.action_nw_threat
+#: model:ir.ui.menu,name:nights_watch.menu_nw_threat
+msgid "Threats"
+msgstr "Загрози"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_role__trains_recruits
+msgid "Trains Recruits"
+msgstr "Навчає новобранців"
+
+#. module: nights_watch
+#: model:nw.role,description:nights_watch.role_instructor
+msgid "Trains the recruits of his castle until they say the words."
+msgstr "Навчає новобранців свого замку, доки ті не промовлять слова."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_castle__instructor_id
+msgid "Trains the recruits sent to this castle."
+msgstr "Навчає новобранців, направлених до цього замку."
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+msgid "Traits"
+msgstr "Риси"
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_brother__is_current_user
+msgid "True on the record of the man who is looking at it."
+msgstr "Істина на записі того, хто його переглядає."
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_rast
+msgid ""
+"Two years older than Pyp and half a stone heavier, and he makes sure the "
+"smaller boys know it."
+msgstr "На два роки старший за Піпа і на півстоуна важчий, і дбає, щоб менші хлопці про це знали."
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_threat_search
+msgid "Type"
+msgstr "Тип"
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_rykker
+msgid ""
+"Tywin Lannister offered him a fine choice: the black, or his head on a spike"
+" by evening. Took the post of First Ranger of Castle Black when Benjen Stark"
+" did not return."
+msgstr "Тайвін Ланністер запропонував йому добрий вибір: чорне або голова на палі до вечора. Обійняв посаду Першого розвідника Чорного Замку, коли Бенджен Старк не повернувся."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_castle__is_active
+msgid "Uncheck for an abandoned castle."
+msgstr "Зніміть позначку для покинутого замку."
+
+#. module: nights_watch
+#: model:ir.model,name:nights_watch.model_res_users
+msgid "User"
+msgstr "Користувач"
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_brother__recruitment_reason__volunteer
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_take_black_wizard__recruitment_reason__volunteer
+msgid "Volunteer"
+msgstr "Доброволець"
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_yoren
+msgid ""
+"Walks the kingsroad twice a year, gathering men for the Wall from the black "
+"cells."
+msgstr "Двічі на рік проходить королівським шляхом, збираючи людей для Стіни з чорних камер."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__is_warg
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "Warg"
+msgstr "Варг"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_search
+msgid "Wargs"
+msgstr "Варги"
+
+#. module: nights_watch
+#: model:nw.brother,notable_deed:nights_watch.brother_will
+msgid ""
+"Was caught skinning a Mallister buck in Mallister woods: the black or his "
+"hand. No man moved through the woods as quietly, and the black brothers "
+"found that out soon enough."
+msgstr "Його спіймали, коли білував Маллістерового оленя в Маллістерових лісах: чорне або рука. Ніхто не рухався лісом так тихо, і чорні брати невдовзі про це дізналися."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_res_users__nw_brother_ids
+msgid "Watch Records"
+msgstr "Записи Варти"
+
+#. module: nights_watch
+#: model:nw.castle,description:nights_watch.castle_shadow_tower
+msgid "Watches the Gorge and the mountain passes of the Frostfangs."
+msgstr "Наглядає за Ущелиною і гірськими перевалами Морозних Іклів."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__weapon
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "Weapon"
+msgstr "Зброя"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "What Came of It"
+msgstr "Чим це скінчилося"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "What He Can Do"
+msgstr "Що він уміє"
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_brother__former_life
+msgid "What he was before the Wall: smith, lord, thief..."
+msgstr "Ким він був до Стіни: коваль, лорд, злодій..."
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_form
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_wizard_form
+msgid "What the party is sent to do..."
+msgstr "Що загін має зробити..."
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_order_form
+msgid "What this order is responsible for..."
+msgstr "За що відповідає цей орден..."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_brother__standing
+msgid ""
+"Where a brother stands relative to the three orders: a man of an order, an "
+"office above them all, or a recruit who has joined none of them yet."
+msgstr "Де побратим стоїть щодо трьох орденів: людина ордену, посада над усіма трьома, чи новобранець, що не вступив до жодного."
+"Де побратим стоїть щодо трьох орденів: людина ордену, посада над усіма "
+"трьома, чи новобранець, що не вступив до жодного."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_castle__region
+msgid "Where on the Wall the castle stands."
+msgstr "Де на Стіні стоїть замок."
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_threat__region
+msgid "Where the threat was spotted."
+msgstr "Де загрозу помічено."
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_threat__threat_type__white_walker
+msgid "White Walkers"
+msgstr "Білі Ходоки"
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_assign_wizard__note
+msgid "Who was dropped from the selection, and why."
+msgstr "Кого відкинуто з вибірки і чому."
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_take_black_wizard__recruitment_reason
+msgid "Why He Came"
+msgstr "Чому прийшов"
+
+#. module: nights_watch
+#: model:ir.model.fields,help:nights_watch.field_nw_brother__recruitment_reason
+msgid "Why he ended up on the Wall."
+msgstr "Чому він опинився на Стіні."
+
+#. module: nights_watch
+#: model:nw.threat,description:nights_watch.threat_free_folk
+msgid "Wildling host gathering beyond the Wall under a King-Beyond-the-Wall."
+msgstr "Військо дикунів, що збирається за Стіною під проводом Короля-за-Стіною."
+"Військо дикунів, що збирається за Стіною під проводом Короля-за-Стіною."
+
+#. module: nights_watch
+#: model:ir.model.fields.selection,name:nights_watch.selection__nw_threat__threat_type__wildling
+msgid "Wildlings"
+msgstr "Дикуни"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_search
+msgid "With Casualties"
+msgstr "З полеглими"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_search
+msgid "Year"
+msgstr "Рік"
+
+#. module: nights_watch
+#: model:ir.model.fields,field_description:nights_watch.field_nw_brother__years_of_service
+msgid "Years Of Service"
+msgstr "Років служби"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "Years Served"
+msgstr "Років служби"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "against"
+msgstr "проти"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "came from beyond the Wall"
+msgstr "прийшов з-за Стіни"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_castle.py:0
+msgid "castle_id"
+msgstr ""
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "common born"
+msgstr "простого роду"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_castle_form
+msgid "e.g. Castle Black"
+msgstr "напр. Чорний Замок"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+msgid "e.g. Jon Snow"
+msgstr "напр. Джон Сноу"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+msgid "e.g. Lord Snow"
+msgstr "напр. Лорд Сноу"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_role_form
+msgid "e.g. Master-at-arms"
+msgstr "напр. Майстер зброї"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_order_form
+msgid "e.g. Rangers"
+msgstr "напр. Розвідники"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_threat_form
+msgid "e.g. The Free Folk"
+msgstr "напр. Вільний народ"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_form
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_ranging_wizard_form
+msgid "e.g. The Great Ranging"
+msgstr "напр. Велика вилазка"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_role_form
+msgid "e.g. instructor"
+msgstr "напр. instructor"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_brother.py:0
+#: code:addons/nights_watch/wizard/nw_take_black_wizard.py:0
+msgid "id"
+msgstr ""
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "leader"
+msgstr "командир"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "led"
+msgstr "вів"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "no"
+msgstr "ні"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "no one on the Wall"
+msgstr "нікому на Стіні"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "noble born"
+msgstr "шляхетного роду"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "not yet sworn"
+msgstr "ще не присягнув"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "of"
+msgstr "з"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_order.py:0
+msgid "order_id"
+msgstr ""
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "reads and writes"
+msgstr "читає й пише"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_role.py:0
+msgid "role_id"
+msgstr ""
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "said to walk in the skins of beasts"
+msgstr "кажуть, ходить у шкурах звірів"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_ranging_document
+msgid "still beyond the Wall"
+msgstr "ще за Стіною"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.view_nw_brother_form
+msgid "sword, bow, scouting"
+msgstr "меч, лук, розвідка"
+
+#. module: nights_watch
+#. odoo-python
+#: code:addons/nights_watch/models/nw_threat.py:0
+msgid "threat_id"
+msgstr ""
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "unknown"
+msgstr "невідомо"
+
+#. module: nights_watch
+#: model_terms:ir.ui.view,arch_db:nights_watch.report_nw_brother_document
+msgid "unlettered"
+msgstr "неписьменний"
