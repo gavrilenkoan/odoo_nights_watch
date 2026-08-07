@@ -1,0 +1,120 @@
+<section style="font-family: Helvetica, Arial, sans-serif; color: #1a1a1a; line-height: 1.6; max-width: 960px; margin: 0 auto; padding: 8px 0 32px;">
+
+  <div style="border-bottom: 2px solid #1a1a1a; padding-bottom: 18px; margin-bottom: 28px;">
+    <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #7a7a7a; font-weight: 600;">Odoo 19 &middot; Human Resources</div>
+    <h1 style="font-size: 34px; font-weight: 700; margin: 8px 0 10px;">Night's Watch</h1>
+    <p style="font-size: 17px; color: #55534d; margin: 0;">
+      Registry of the sworn brotherhood of the Wall: three orders, manned castles,
+      an extended brother card, ranging parties sent beyond the Wall, and the
+      threats they are sent against.
+    </p>
+  </div>
+
+  <h2 style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin: 32px 0 12px;">Three axes, not one rank</h2>
+  <p style="margin: 0 0 16px;">
+    A brother is described by three independent things, and everything else is
+    derived from them &mdash; the chain of command, the commander of a castle,
+    the master-at-arms who trains its recruits. None of it is typed in by hand.
+  </p>
+
+  <table style="width: 100%; border-collapse: collapse; margin-bottom: 8px;">
+    <tr>
+      <td style="width: 33.33%; vertical-align: top; padding: 14px 16px; background-color: #f3f2ee; border: 1px solid #e2e0da;">
+        <div style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #7a7a7a; font-weight: 600; margin-bottom: 6px;">Order</div>
+        What he does day to day: ranging, building, or keeping the stores.
+      </td>
+      <td style="width: 33.33%; vertical-align: top; padding: 14px 16px; background-color: #f3f2ee; border: 1px solid #e2e0da;">
+        <div style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #7a7a7a; font-weight: 600; margin-bottom: 6px;">Office</div>
+        A personal appointment on top of it: commander, maester, septon, master-at-arms, First of an order.
+      </td>
+      <td style="width: 33.33%; vertical-align: top; padding: 14px 16px; background-color: #f3f2ee; border: 1px solid #e2e0da;">
+        <div style="font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: #7a7a7a; font-weight: 600; margin-bottom: 6px;">Standing</div>
+        Where he is on the road: recruit, awaiting an assignment, sworn, ranging, or gone from the rolls.
+      </td>
+    </tr>
+  </table>
+
+  <h2 style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin: 32px 0 12px;">The road a man travels</h2>
+  <ol style="margin: 0 0 8px; padding-left: 22px;">
+    <li style="margin-bottom: 5px;">A contact <b>takes the black</b> and becomes a recruit at a castle.</li>
+    <li style="margin-bottom: 5px;"><b>He says the words himself</b> &mdash; nobody may do it for him &mdash; and joins the queue.</li>
+    <li style="margin-bottom: 5px;">An officer <b>posts him to an order</b>, and he is sworn.</li>
+    <li style="margin-bottom: 5px;">He <b>rides beyond the Wall</b> with a ranging party.</li>
+    <li style="margin-bottom: 5px;">The ranging is <b>brought home</b>: the fallen are counted, the rest go back to duty.</li>
+  </ol>
+
+  <h2 style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin: 32px 0 12px;">The rolls on screen</h2>
+  <p style="margin: 0 0 18px;">
+    Brothers are laid out by <b>standing</b>: a column for each order, one for the
+    offices that stand above all three, one for the men awaiting a posting, and
+    one for the recruits. Each card carries the portrait, the office, the castle
+    and the status of the man.
+  </p>
+  <img src="kanban.png" alt="Brothers, grouped by standing" style="width: 100%; border: 1px solid #d8d6d0;"/>
+
+  <h2 style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin: 32px 0 12px;">Printed reports</h2>
+  <p style="margin: 0 0 18px;">
+    Two QWeb-PDF reports, both under &#9881; Actions &rarr; Print, and both able to
+    print a whole selection at once.
+  </p>
+
+  <table style="width: 100%; border-collapse: collapse;">
+    <tr>
+      <td style="width: 50%; vertical-align: top; padding: 0 12px 0 0;">
+        <img src="dossier.png" alt="Brother Dossier" style="width: 100%; border: 1px solid #d8d6d0;"/>
+        <div style="font-size: 13px; color: #55534d; padding-top: 8px;">
+          <b>Brother Dossier</b> &mdash; the card of one man: service, how he came to the
+          Wall, what he can do, notable deeds, and the table of every ranging he rode.
+        </div>
+      </td>
+      <td style="width: 50%; vertical-align: top; padding: 0 0 0 12px;">
+        <img src="ranging.png" alt="Ranging Report" style="width: 100%; border: 1px solid #d8d6d0;"/>
+        <div style="font-size: 13px; color: #55534d; padding-top: 8px;">
+          <b>Ranging Report</b> &mdash; the party and the fate of every man in it, the
+          objective, what came of it, and the roll of the fallen.
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <h2 style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin: 32px 0 12px;">Rules the module keeps for you</h2>
+  <ul style="margin: 0 0 8px; padding-left: 22px;">
+    <li style="margin-bottom: 5px;"><b>An office passes over rather than clashing.</b> Appointing a man to a castle-wide office unseats whoever held it.</li>
+    <li style="margin-bottom: 5px;"><b>Leaving the rolls frees the office.</b> A man out of service holds nothing, and no separate act is needed.</li>
+    <li style="margin-bottom: 5px;"><b>The chain of command is computed.</b> Recruits answer to the master-at-arms, sworn brothers to the First of their own order in their own castle, the Firsts to their commander.</li>
+    <li style="margin-bottom: 5px;"><b>The Watch beheads deserters, and only deserters.</b></li>
+    <li style="margin-bottom: 5px;"><b>The oath is personal.</b> No officer and no administrator says the words for another man.</li>
+  </ul>
+
+  <h2 style="font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin: 32px 0 12px;">Who may do what</h2>
+  <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+    <tr style="background-color: #26262b; color: #ffffff;">
+      <th style="text-align: left; padding: 8px 12px; font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase;">Group</th>
+      <th style="text-align: left; padding: 8px 12px; font-size: 12px; letter-spacing: 0.07em; text-transform: uppercase;">May do</th>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border-bottom: 1px solid #e2e0da;"><b>Brother</b></td>
+      <td style="padding: 8px 12px; border-bottom: 1px solid #e2e0da;">Reads the rolls of the whole Wall and changes nothing.</td>
+    </tr>
+    <tr style="background-color: #faf9f6;">
+      <td style="padding: 8px 12px; border-bottom: 1px solid #e2e0da;"><b>Officer</b></td>
+      <td style="padding: 8px 12px; border-bottom: 1px solid #e2e0da;">Enrols and posts the men of his own castle. Deletes nothing.</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px 12px; border-bottom: 1px solid #1a1a1a;"><b>Castle Commander</b></td>
+      <td style="padding: 8px 12px; border-bottom: 1px solid #1a1a1a;">May strike out the records of the castle he commands. Other castles are not his to touch.</td>
+    </tr>
+  </table>
+  <p style="font-size: 13px; color: #7a7a7a; margin: 12px 0 0;">
+    Groups are never assigned by hand: they follow the office a brother holds and
+    are kept in step automatically.
+  </p>
+
+  <div style="margin-top: 32px; padding: 16px 18px; background-color: #f8ead0; border: 1px solid #f0dfb8; font-size: 14px; color: #5c4a20;">
+    <b>Demo data.</b> Installing with demo gives four castles, thirty-six brothers,
+    four rangings and nine logins &mdash; the password of every demo user equals the
+    login. Two commanders sit in different castles on purpose: that pair is what
+    shows the castle isolation working.
+  </div>
+
+</section>
