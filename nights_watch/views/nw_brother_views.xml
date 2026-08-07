@@ -104,7 +104,8 @@
                             <field name="oath_date" invisible="status == 'recruit'"/>
                             <field name="years_of_service" invisible="status == 'recruit'"/>
                             <field name="serves_id"
-                                   domain="[('is_senior', '=', True), ('id', '!=', id)]"
+                                   domain="[('is_senior', '=', True), ('id', '!=', id),
+                                            ('castle_id', '=', castle_id)]"
                                    invisible="not is_steward"/>
                         </group>
                     </group>
